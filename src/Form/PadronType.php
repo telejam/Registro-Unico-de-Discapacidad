@@ -6,13 +6,15 @@ use App\Entity\Padron;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class PadronType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('cuil')
+            ->add('cuil', type: IntegerType::class)
             ->add('cud')
             ->add('cudvigencia')
             ->add('cuddiagnostico')
@@ -24,10 +26,10 @@ class PadronType extends AbstractType
             ->add('actividades')
             ->add('niveleducacion')
             ->add('residencia')
-            ->add('obrasocial')
-            ->add('discapacidad')
-            ->add('id')
-            ->add('idresponsable')
+            ->add('obrasocial', type: IntegerType::class)
+            ->add('discapacidad', type: IntegerType::class)
+            // ->add('id')
+            // ->add('idresponsable')
             ->add('Registrar', SubmitType::class)
         ;
     }
