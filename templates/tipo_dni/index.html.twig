@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tipo DNI{% endblock %}
+
+{% block body %}
+
+    <h1>{{ controller_name }}</h1>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {{ form(formulario)}}
+
+{% endblock %}
