@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Discapacidad;
 use App\Entity\ObraSocial;
 use App\Entity\Padron;
+use App\Entity\Persona;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -38,8 +39,10 @@ class PadronType extends AbstractType
                 'class' =>Discapacidad::class,
                 'choice_label' =>'nombre'
             ])
-            //->add('id')
-            //->add('idresponsable')
+            ->add('id', EntityType::class, [
+                'class' =>Persona::class,
+                'choice_label' =>'nombre'
+            ])
             ->add('Registrar', SubmitType::class)
         ;
     }
