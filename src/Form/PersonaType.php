@@ -22,18 +22,20 @@ class PersonaType extends AbstractType
         $builder
             ->add('nombre')
             ->add('apellido')
-            ->add('fechanacimiento', DateType::class)
+            ->add('fechanacimiento', DateType::class, ['label'=>'Fecha de Nacimiento'])
             ->add('sexo')
             ->add('estadocivil', EntityType::class, [
+                'label'=>'Estado Civil',
                 'class' => EstadoCivil::class,
                 'choice_label' => 'tipoEstado'
             ])
             ->add('dnitipo', EntityType::class, [
+                'label'=>'Tipo de Documento',
                 'class' => TipoDni::class,
                 'choice_label' => 'tipo'
             ])
-            ->add('dnitramite', IntegerType::class)
-            ->add('dninumero', IntegerType::class)
+            ->add('dnitramite', IntegerType::class, ['label'=>'Nro. de Trámite'])
+            ->add('dninumero', IntegerType::class, ['label'=>'Nro. de Documento'])
             ->add('nacionalidad', EntityType::class, [
                 'class' => Nacionalidad::class,
                 'choice_label' => 'pais'
