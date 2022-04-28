@@ -3,32 +3,30 @@
 namespace App\Controller;
 
 use App\Entity\ObraSocial;
-use App\Entity\Padron;
-use App\Form\PadronType;
+use App\Form\ObraSocialType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-class PadronController extends AbstractController
+class ObraSocialController extends AbstractController
 {
     /**
-     * @Route("/padron", name="app_padron")
+     * @Route("/obrasocial", name="app_obra_social")
      */
     public function index(Request $request): Response
     {
-        $padron = new Padron();
-        $form = $this->createForm(PadronType::class, $padron);
+        $obra = new ObraSocial();
+        $form = $this->createForm(ObraSocialType::class, $obra);
         $form->handleRequest($request);
-
         if($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($padron);
+            $em->persist($obra);
             $em->flush();
             $this->addFlash(type: 'exito', message: 'Se ha registrado exitosamente.');
         }
-        return $this->render('padron/index.html.twig', [
-            'controller_name' => 'PadronController',
+        return $this->render('obra_social/index.html.twig', [
+            'controller_name' => 'ObraSocialController',
             'formulario'=>$form->createView()
         ]);
     }

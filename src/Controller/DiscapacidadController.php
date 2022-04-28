@@ -2,33 +2,31 @@
 
 namespace App\Controller;
 
-use App\Entity\ObraSocial;
-use App\Entity\Padron;
-use App\Form\PadronType;
+use App\Entity\Discapacidad;
+use App\Form\DiscapacidadType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-class PadronController extends AbstractController
+class DiscapacidadController extends AbstractController
 {
     /**
-     * @Route("/padron", name="app_padron")
+     * @Route("/discapacidad", name="app_discapacidad")
      */
     public function index(Request $request): Response
     {
-        $padron = new Padron();
-        $form = $this->createForm(PadronType::class, $padron);
+        $discapacidad = new Discapacidad();
+        $form = $this->createForm(DiscapacidadType::class, $discapacidad);
         $form->handleRequest($request);
-
         if($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($padron);
+            $em->persist($discapacidad);
             $em->flush();
             $this->addFlash(type: 'exito', message: 'Se ha registrado exitosamente.');
         }
-        return $this->render('padron/index.html.twig', [
-            'controller_name' => 'PadronController',
+        return $this->render('discapacidad/index.html.twig', [
+            'controller_name' => 'DiscapacidadController',
             'formulario'=>$form->createView()
         ]);
     }
