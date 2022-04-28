@@ -66,7 +66,7 @@ class Persona
     private $dninumero;
 
     /**
-     * @var \EstadoCivil
+     * @var EstadoCivil
      *
      * @ORM\ManyToOne(targetEntity="EstadoCivil")
      * @ORM\JoinColumns({
@@ -76,7 +76,7 @@ class Persona
     private $estadocivil;
 
     /**
-     * @var \Usuario
+     * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="Usuario")
      * @ORM\JoinColumns({
@@ -86,7 +86,7 @@ class Persona
     private $usuario;
 
     /**
-     * @var \TipoDni
+     * @var TipoDni
      *
      * @ORM\ManyToOne(targetEntity="TipoDni")
      * @ORM\JoinColumns({
@@ -96,7 +96,7 @@ class Persona
     private $dnitipo;
 
     /**
-     * @var \Nacionalidad
+     * @var Nacionalidad
      *
      * @ORM\ManyToOne(targetEntity="Nacionalidad")
      * @ORM\JoinColumns({
