@@ -29,7 +29,7 @@ class Ciudad
     private $ciudad;
 
     /**
-     * @var \Provincia
+     * @var Provincia
      *
      * @ORM\ManyToOne(targetEntity="Provincia")
      * @ORM\JoinColumns({
