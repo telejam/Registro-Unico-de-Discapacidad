@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Padrón
+{% endblock %}
+
+{% block body %}
+
+	{{parent()}}
+	{% for message in app.flashes('exito') %}
+		<div class="alert alert-success">
+			{{message}}
+		</div>
+	{% endfor %}
+
+
+	<div class="sectionTitle">
+		<h2>Agregar persona con discapacidad</h2>
+	</div>
+
+	{{form(formulario)}}
+
+	<script>
+    	let cuil = document.querySelectorAll('label')[0];
+        cuil.innerHTML = 'CUIL';
+
+        let cud = document.querySelectorAll('label')[1];
+        cud.innerHTML = 'CUD';
+
+		let cudVigencia = document.querySelectorAll('label')[2];
+        cudVigencia.innerHTML = 'CUD Vigencia';
+
+        let cudDiagnostico = document.querySelectorAll('label')[3];
+        cudDiagnostico.innerHTML = 'CUD Diagnóstico';
+
+        let pension = document.querySelectorAll('label')[5];
+        pension.innerHTML = 'Pensión';
+        
+        let nivelInstruccion = document.querySelectorAll('label')[6];
+        nivelInstruccion.innerHTML = 'Nivel Instrucción';
+
+        let tipoModalidad = document.querySelectorAll('label')[7];
+        tipoModalidad.innerHTML = 'Tipo Modalidad';
+
+        let experienciaLaboral = document.querySelectorAll('label')[8];
+        experienciaLaboral.innerHTML = 'Experiencia Laboral';
+
+        let nivelEducacion = document.querySelectorAll('label')[10];
+        nivelEducacion.innerHTML = 'Nivel Educación';
+
+        let obraSocial = document.querySelectorAll('label')[12];
+        obraSocial.innerHTML = 'Obra Social';
+	</script>
+
+	{% endblock %}

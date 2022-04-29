@@ -99,7 +99,7 @@ class Padron
     private $residencia;
 
     /**
-     * @var \ObraSocial
+     * @var ObraSocial
      *
      * @ORM\ManyToOne(targetEntity="ObraSocial")
      * @ORM\JoinColumns({
@@ -109,7 +109,7 @@ class Padron
     private $obrasocial;
 
     /**
-     * @var \Discapacidad
+     * @var Discapacidad
      *
      * @ORM\ManyToOne(targetEntity="Discapacidad")
      * @ORM\JoinColumns({
@@ -119,7 +119,7 @@ class Padron
     private $discapacidad;
 
     /**
-     * @var \Persona
+     * @var Persona
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
