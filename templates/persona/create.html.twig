@@ -6,8 +6,12 @@
 
     <h1>{{ controller_name }}</h1>
 
-    {% for persona in personas %}
-        <p>{{ persona.nombre }} {{ persona.apellido }}</p>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
     {% endfor %}
+
+    {{ form(formulario)}}
 
 {% endblock %}

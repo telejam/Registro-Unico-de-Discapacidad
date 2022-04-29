@@ -108,8 +108,6 @@ class Persona
     /**
      * @var Domicilio
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="Domicilio")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="domicilio", referencedColumnName="id")
