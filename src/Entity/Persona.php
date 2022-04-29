@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Persona
  *
- * @ORM\Table(name="persona", indexes={@ORM\Index(name="personaEstadoCivil_idx", columns={"estadoCivil"}), @ORM\Index(name="personaDNI_idx", columns={"dniTipo"}), @ORM\Index(name="personaUsuario_idx", columns={"usuario"}), @ORM\Index(name="personaNacionalidad_idx", columns={"nacionalidad"})})
+ * @ORM\Table(name="persona", indexes={@ORM\Index(name="personaEstadoCivil_idx", columns={"estadoCivil"}), @ORM\Index(name="personaDNI_idx", columns={"dniTipo"}), @ORM\Index(name="personaUsuario_idx", columns={"usuario"}), @ORM\Index(name="personaNacionalidad_idx", columns={"nacionalidad"}), @ORM\Index(name="personaDomicilio_idx", columns={"domicilio"})})
  * @ORM\Entity
  */
 class Persona
@@ -104,6 +104,18 @@ class Persona
      * })
      */
     private $nacionalidad;
+
+    /**
+     * @var Domicilio
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Domicilio")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="domicilio", referencedColumnName="id")
+     * })
+     */
+    private $domicilio;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -249,6 +261,18 @@ class Persona
     public function setNacionalidad(?Nacionalidad $nacionalidad): self
     {
         $this->nacionalidad = $nacionalidad;
+
+        return $this;
+    }
+
+    public function getDomicilio(): ?Domicilio
+    {
+        return $this->domicilio;
+    }
+
+    public function setDomicilio(?Domicilio $domicilio): self
+    {
+        $this->domicilio = $domicilio;
 
         return $this;
     }

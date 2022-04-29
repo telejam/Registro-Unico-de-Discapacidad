@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Domicilio
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="calle", type="string", length=45, nullable=false)
@@ -41,7 +50,7 @@ class Domicilio
     private $dpto = 'NULL';
 
     /**
-     * @var \Ciudad
+     * @var Ciudad
      *
      * @ORM\ManyToOne(targetEntity="Ciudad")
      * @ORM\JoinColumns({
@@ -51,7 +60,7 @@ class Domicilio
     private $idciudad;
 
     /**
-     * @var \Barrio
+     * @var Barrio
      *
      * @ORM\ManyToOne(targetEntity="Barrio")
      * @ORM\JoinColumns({
@@ -59,18 +68,6 @@ class Domicilio
      * })
      */
     private $barrio;
-
-    /**
-     * @var \Persona
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Persona")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idPersona", referencedColumnName="id")
-     * })
-     */
-    private $idpersona;
 
     public function getCalle(): ?string
     {
@@ -143,18 +140,5 @@ class Domicilio
 
         return $this;
     }
-
-    public function getIdpersona(): ?Persona
-    {
-        return $this->idpersona;
-    }
-
-    public function setIdpersona(?Persona $idpersona): self
-    {
-        $this->idpersona = $idpersona;
-
-        return $this;
-    }
-
 
 }
