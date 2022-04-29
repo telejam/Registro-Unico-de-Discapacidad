@@ -5,16 +5,16 @@
 {% block body %}
 
 	{{parent()}}
-	{% for message in app.flashes('exito') %}
-		<div class="alert alert-success">
-			{{message}}
-		</div>
-	{% endfor %}
-
 
 	<div class="sectionTitle">
 		<h2>Agregar información de discapacidad</h2>
 	</div>
+
+    {% for message in app.flashes('exito') %}
+	<div class="alert alert-success">
+		{{message}}
+	</div>
+	{% endfor %}
 
 	{{form(formulario)}}
 
