@@ -1,0 +1,32 @@
+* {
+    font-family: 'Montserrat';
+}
+
+label {
+    display: inline-block;
+    margin-left: 25%;
+    text-align: left;
+}
+
+input {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: lightgray;
+    border: none;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 5px;
+}
+
+select {
+    display: flex;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    background-color: lightgray;
+    border: none;
+    width: 70.1%;
+    padding: 5px;
+    margin-right: 5px;
+    margin-bottom: 15px;
+}
