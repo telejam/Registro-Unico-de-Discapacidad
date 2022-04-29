@@ -1,0 +1,92 @@
+* {
+    font-family: 'Montserrat';
+}
+
+#padron {
+    text-align: center ;
+}
+
+#padron div {
+    display: flex;
+    flex-direction: column;
+}
+
+.sectionTitle {
+    text-align: center;
+    background-color: #33BB66;
+    color: #ffffff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.sectionTitle h2 {
+    border-bottom: 1px solid white;
+    width: 40%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+input {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: lightgray;
+    border: none;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 5px;
+}
+
+select {
+    display: flex;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    background-color: lightgray;
+    border: none;
+    width: 70.1%;
+    padding: 5px;
+    margin-right: 5px;
+    margin-bottom: 15px;
+}
+
+#padron_Registrar {
+    background-color: #33BB66;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    color: #ffffff;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+label {
+    display: inline-block;
+    margin-left: 25%;
+    text-align: left;
+}
+
+#padron_cudvigencia {
+    display: -webkit-box !important;
+    width: 23.5%;
+    margin-left: 25%;
+}
+
+#padron_obrasocial {
+    display: -webkit-box !important;
+    width: 50%;
+    margin-left: 25%;
+}
+
+#padron_discapacidad {
+    display: -webkit-box !important;
+    width: 50%;
+    margin-left: 25%;
+}
+
+#padron_id {
+    display: -webkit-box !important;
+    width: 50%;
+    margin-left: 25%;
+}
