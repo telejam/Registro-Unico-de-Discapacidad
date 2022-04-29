@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 class PadronController extends AbstractController
 {
     /**
-     * @Route("/padron", name="app_padron")
+     * @Route("/createpadron", name="app_padron")
      */
     public function index(Request $request): Response
     {
