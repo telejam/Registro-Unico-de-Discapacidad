@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\ObraSocial;
 use App\Entity\Padron;
 use App\Form\PadronType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
