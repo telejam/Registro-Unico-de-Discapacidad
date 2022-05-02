@@ -67,7 +67,6 @@ class PadronController extends AbstractController
     {
         $padron = new Padron();
         $form = $this->createForm(PadronType::class, $padron);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
