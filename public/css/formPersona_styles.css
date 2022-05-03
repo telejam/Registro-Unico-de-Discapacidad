@@ -1,0 +1,37 @@
+form {
+}
+
+form label {
+    display: block;
+    margin: auto;
+}
+
+form > div {
+    width: 50%;
+    margin: auto;
+}
+
+form > div > div > div {
+    display: flex;
+}
+
+form > div > div > select {
+    width: 100%;
+}
+
+form input {
+    width: 100%;
+}
+
+form button{
+    background-color: #33BB66;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    color: #ffffff;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    
+}
