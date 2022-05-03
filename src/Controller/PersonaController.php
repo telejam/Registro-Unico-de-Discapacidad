@@ -56,7 +56,7 @@ class PersonaController extends AbstractController
             $em->flush();
             $this->addFlash('success', 'Persona agregada');
 
-            return $this->redirectToRoute('persona');
+            return $this->redirectToRoute('personas');
         }
 
         return $this->render('persona/create.html.twig', [
