@@ -5,7 +5,9 @@
 {% block body %}
 
     <h1>{{ controller_name }}</h1>
-
+<div class="sectionTitle">
+        <h2>Agregar persona</h2>
+    </div>
     {% for message in app.flashes('success') %}
         <div class="alert alert-success">
             {{ message }}
