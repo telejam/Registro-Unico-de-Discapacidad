@@ -10,12 +10,6 @@
 		<h2>Agregar información de discapacidad</h2>
 	</div>
 
-    {% for message in app.flashes('exito') %}
-	<div class="alert alert-success">
-		{{message}}
-	</div>
-	{% endfor %}
-
 	{{form(formulario)}}
 
 	<script>
@@ -72,6 +66,7 @@
 
         let obraSocial = document.querySelectorAll('label')[12];
         obraSocial.innerHTML = 'Obra Social';
+        
 	</script>
 
 	{% endblock %}

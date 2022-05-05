@@ -1,5 +1,5 @@
 #padron {
-    text-align: center ;
+    text-align: center;
 }
 
 #padron div {
@@ -29,31 +29,27 @@
     margin-bottom: 10px;
     border: none;
     color: #ffffff;
-    width: 50%;
+    width: 100%;
     margin-right: auto;
     margin-left: auto;
 }
 
 #padron_cudvigencia {
     display: -webkit-box !important;
-    width: 23.5%;
-    margin-left: 25%;
+    width: 47%;
 }
 
 #padron_obrasocial {
     display: -webkit-box !important;
-    width: 50%;
-    margin-left: 25%;
+    width: 100%;
 }
 
 #padron_discapacidad {
     display: -webkit-box !important;
-    width: 50%;
-    margin-left: 25%;
+    width: 100%;
 }
 
 #padron_id {
     display: -webkit-box !important;
-    width: 50%;
-    margin-left: 25%;
+    width: 100%;
 }
