@@ -4,13 +4,12 @@
 
 {% block body %}
 
-{% for message in app.flashes('exito') %}
+    {{parent()}}
 
-<div class="alert alert-success">
-{{message}}
-</div>
-{% endfor %}
+    <div class="sectionTitle">
+	    <h2>Obra social</h2>
+	</div>
 
-{{form(formulario)}}
+    {{form(formulario)}}
 
 {% endblock %}

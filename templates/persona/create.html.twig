@@ -4,16 +4,28 @@
 
 {% block body %}
 
-    <h1>{{ controller_name }}</h1>
-<div class="sectionTitle">
-        <h2>Agregar persona</h2>
-    </div>
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success">
-            {{ message }}
-        </div>
-    {% endfor %}
+    {{parent()}}
 
-    {{ form(formulario)}}
+	<div class="sectionTitle">
+		<h2>Agregar persona</h2>
+	</div>
+
+	{{ form(formulario)}}
+
+    <script>
+        let selectMes = document.querySelectorAll('select')[0];
+        selectMes[0].text = 'Enero';
+        selectMes[1].text = 'Febrero';
+        selectMes[2].text = 'Marzo';
+        selectMes[3].text = 'Abril';
+        selectMes[4].text = 'Mayo';
+        selectMes[5].text = 'Junio';
+        selectMes[6].text = 'Julio';
+        selectMes[7].text = 'Agosto';
+        selectMes[8].text = 'Septiembre';
+        selectMes[9].text = 'Octubre';
+        selectMes[10].text = 'Noviembre';
+        selectMes[11].text = 'Diciembre';
+    </script>
 
 {% endblock %}
