@@ -26,6 +26,11 @@
         selectMes[9].text = 'Octubre';
         selectMes[10].text = 'Noviembre';
         selectMes[11].text = 'Diciembre';
+
+        document.querySelectorAll('label + select')
+                .forEach(function(elm) {
+                    elm.value = "";
+                });
     </script>
 
 {% endblock %}
