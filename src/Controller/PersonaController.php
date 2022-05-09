@@ -68,20 +68,21 @@ class PersonaController extends AbstractController
     /**
      * @Route("/editpersona/{id}", name="editpersona")
      */
-    public function edit(Request $request): Response
+    public function edit(Request $request, $id): Response
     {
-        $persona = new Persona();
+        $em =  $this->getDoctrine()->getManager();
+        $persona = $em->getRepository(Persona::class)->find($id);
         $form = $this->createForm(PersonaType::class, $persona);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em =  $this->getDoctrine()->getManager();
             $em->persist($persona);
             $em->flush();
             $this->addFlash('success', 'Persona Modificada');
 
-            return $this->redirectToRoute('persona');
+            return $this->redirectToRoute('persona', [
+                'id'=>$id]);
         }
 
         return $this->render('persona/edit.html.twig', [
