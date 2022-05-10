@@ -30,3 +30,116 @@ select {
     margin-right: 5px;
     margin-bottom: 15px;
 }
+
+/*** INICIO NAVBAR ***/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+i {
+    margin-right: 10px;
+}
+
+.navbar-logo {
+    padding: 15px;
+    color: #fff;
+}
+
+.navbar-mainbg {
+    background-color: #33BB66;
+    padding: 0;
+}
+
+#navbarSupportedContent {
+    overflow: hidden;
+    position: relative;
+}
+
+#navbarSupportedContent ul {
+    padding: 0;
+    margin: 0;
+    gap: 25px;
+}
+
+#navbarSupportedContent ul li a i {
+    margin-right: 10px;
+}
+
+#navbarSupportedContent li {
+    list-style-type: none;
+    float: left;
+    border: 1px solid #33BB66;
+}
+
+#navbarSupportedContent ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    display: block;
+    /* transition-duration: 0.3s; */
+    position: relative;
+    font-weight: 600;
+    padding: 10px 10px 10px 2px;
+}
+
+#navbarSupportedContent>ul>li.active>a {
+    color: #ffffff;
+    background-color: transparent;
+    /* transition: all 0.3s; */
+}
+
+#navbarSupportedContent a:not(:only-child):after {
+    content: "\f105";
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 14px;
+    font-family: "Font Awesome 5 Free";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+    /* transition: 0.3s; */
+}
+
+#navbarSupportedContent ul li a:hover {
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    color: #33BB66;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.dropdown:hover {
+    background-color: #ffffff;
+    color: #33BB66;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 100;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+@media (max-width:991px) {
+    #navbarSupportedContent ul li a {
+        padding: 12px 30px;
+    }
+}
+
+/*** FIN NAVBAR ***/
