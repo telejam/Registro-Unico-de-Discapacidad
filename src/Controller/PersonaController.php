@@ -33,10 +33,24 @@ class PersonaController extends AbstractController
     {
             $em = $this->getDoctrine()->getManager();
             $persona = $em->getRepository(Persona::class)->find($id);
+            $estadoCivil = $persona->getEstadoCivil();
+            $dniTipo = $persona->getDniTipo();
+            $domicilio = $persona->getDomicilio();
+            $barrio = $domicilio->getBarrio();
+            $ciudad = $domicilio->getIdciudad();
+            $provincia = $ciudad->getIdprovincia();
+            $nacionalidad = $persona->getNacionalidad();
 
             return $this->render('persona/verpersona.html.twig', [
                 'controller_name' => 'PersonaController',
-                'persona' => $persona
+                'persona' => $persona,
+                'estadocivil' => $estadoCivil,
+                'dnitipo' => $dniTipo,
+                'domicilio' => $domicilio,
+                'barrio' => $barrio,
+                'ciudad' => $ciudad,
+                'provincia' => $provincia,
+                'nacionalidad' => $nacionalidad
             ]);
     }
 
@@ -45,13 +59,13 @@ class PersonaController extends AbstractController
      */
     public function create(Request $request): Response
     {
+        $em =  $this->getDoctrine()->getManager();
         $persona = new Persona();
         $form = $this->createForm(PersonaType::class, $persona);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em =  $this->getDoctrine()->getManager();
             $em->persist($persona);
             $em->flush();
             $this->addFlash('success', 'Persona agregada');
@@ -72,6 +86,9 @@ class PersonaController extends AbstractController
     {
         $em =  $this->getDoctrine()->getManager();
         $persona = $em->getRepository(Persona::class)->find($id);
+        $domicilio = $persona->getDomicilio();
+        $ciudad = $domicilio->getIdciudad();
+        $provincia = $ciudad->getIdprovincia();
         $form = $this->createForm(PersonaType::class, $persona);
 
         $form->handleRequest($request);
@@ -89,6 +106,19 @@ class PersonaController extends AbstractController
             'controller_name' => 'PersonaController',
             'formulario' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/deletepersona/{id}", name="deletepersona")
+     */
+    public function delete($id)
+    {
+            $em = $this->getDoctrine()->getManager();
+            $persona = $em->getRepository(Persona::class)->find($id);
+            $em->remove($persona);
+            $em->flush();
+
+            return $this->redirectToRoute('personas');
     }
 
 }
