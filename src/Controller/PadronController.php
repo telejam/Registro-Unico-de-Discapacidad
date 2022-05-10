@@ -64,35 +64,21 @@ class PadronController extends AbstractController
     /**
      * @Route("/editpadron/{id}", name="editpadron")
      */
-    public function edit(Padron $padron, Request $request): Response
+    public function edit(Padron $padron, Request $request, $id): Response
     {
         
         $em = $this->getDoctrine()->getManager();
+        $padron = $em->getRepository(Padron::class)->find($id);
         $form = $this->createForm(PadronType::class, $padron);
-        $padron = $em->getRepository(Padron::class)->find($padron->getId());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
-            $padron->setCuil($form->get('cuil')->getData());
-            $padron->setCud($form->get('cud')->getData());
-            $padron->setCudvigencia($form->get('cudvigencia')->getData());
-            $padron->setCuddiagnostico($form->get('cuddiagnostico')->getData());
-            $padron->setCausa($form->get('causa')->getData());
-            $padron->setPension($form->get('pension')->getData());
-            $padron->setNivelinstruccion($form->get('nivelinstruccion')->getData());
-            $padron->setTipomodalidad($form->get('tipomodalidad')->getData());
-            $padron->setExperiencialaboral($form->get('experiencialaboral')->getData());
-            $padron->setActividades($form->get('actividades')->getData());
-            $padron->setNiveleducacion($form->get('niveleducacion')->getData());
-            $padron->setResidencia($form->get('residencia')->getData());
-            $padron->setObrasocial($form->get('obrasocial')->getData());
-            $padron->setDiscapacidad($form->get('discapacidad')->getData());
+            $em->persist($padron);
             $em->flush();
             $this->addFlash('success', 'Padron Modificado');
 
             return $this->redirectToRoute('padron', [
-                'id'=>$padron->getId()
+                'id'=>$id
             ]);
         }
 
