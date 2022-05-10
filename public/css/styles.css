@@ -110,17 +110,30 @@ i {
     color: #33BB66;
 }
 
-#dropdownMenuButton {
-    background-color: #33BB66;
-    border: none;
+.dropdown {
+    position: relative;
+    display: inline-block;
+    color: #ffffff;
     font-weight: 600;
-    margin-top: 4px;
 }
 
-#dropdownMenuButton:hover {
+.dropdown:hover {
     background-color: #ffffff;
     color: #33BB66;
-    border-radius: 0%;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 100;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 @media (max-width:991px) {
