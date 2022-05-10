@@ -39,7 +39,7 @@ class PadronController extends AbstractController
                 'controller_name' => 'PadronController',
                 'discapacitado' => $discapacitado,
                 'discapacidad' => $discapacidad,
-                'obrasocial' => $obrasocial,
+                'obrasocial' => $obrasocial
             ]);
     }
     
