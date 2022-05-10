@@ -31,36 +31,15 @@ class PadronController extends AbstractController
     public function getBy($id)
     {
             $em = $this->getDoctrine()->getManager();
-            $discapacitado = $em->getRepository(Padron::class)->find($id);
-            $cudvigencia = $discapacitado->getCudvigencia();
-            $cuddiagnostico = $discapacitado->getCuddiagnostico();
-            $discapacidad = $discapacitado->getDiscapacidad();
-            $causa = $discapacitado->getCausa();
-            $pension = $discapacitado->getPension();
+            $discapacitado = $em->getRepository(Padron::class)->find($id); 
+            $discapacidad = $discapacitado->getDiscapacidad();          
             $obrasocial = $discapacitado->getObrasocial();
-            $nivelinstruccion = $discapacitado->getNivelinstruccion();
-            $tipomodalidad = $discapacitado->getTipomodalidad();
-            $experiencialaboral = $discapacitado->getExperiencialaboral();
-            $actividades = $discapacitado->getActividades();
-            $niveleducacion = $discapacitado->getNiveleducacion();
-            $residencia = $discapacitado->getResidencia();
 
             return $this->render('padron/verpadron.html.twig', [
                 'controller_name' => 'PadronController',
                 'discapacitado' => $discapacitado,
-                'cudvigencia' => $cudvigencia,
-                'cuddiagnostico' => $cuddiagnostico,
                 'discapacidad' => $discapacidad,
-                'causa'=> $causa,
-                'pension'=> $pension,
                 'obrasocial' => $obrasocial,
-                'nivelinstruccion' => $nivelinstruccion,
-                'tipomodalidad' => $tipomodalidad,
-                'experiencialaboral' => $experiencialaboral,
-                'actividades' => $actividades,
-                'niveleducacion' => $niveleducacion,
-                'residencia' => $residencia,
-
             ]);
     }
     
