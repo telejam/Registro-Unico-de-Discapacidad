@@ -4,14 +4,16 @@
 
 {% block body %}
 
-    <p>CUIL: {{ discapacitado.cuil }}</p>
+    <p>CUIL: {{discapacitado.cuil}}</p>
 
-    <p>Datos discapacidad: CUD: {{ discapacitado.cud }} Vigencia: {{discapacitado.cudvigencia|date('d-m-Y')}}
+    <p>Datos discapacidad: CUD: {{discapacitado.cud}} Vigencia: {{discapacitado.cudvigencia|date('d-m-Y')}}
     Diagnóstico: {{discapacitado.cuddiagnostico}} Discapacidad: {{discapacidad.nombre}}
     Causa: {{discapacitado.causa}} Pensión: {{discapacitado.pension}} Obra social: {{obrasocial.denominacion}}</p>
     
     <p>Datos educación-trabajo: Nivel Instrucción: {{discapacitado.nivelinstruccion}} Tipo Modalidad: {{discapacitado.tipomodalidad}}
     Experiencia laboral: {{discapacitado.experiencialaboral}} Actividades: {{discapacitado.actividades}}
     Nivel Educación: {{discapacitado.niveleducacion}} Residencia: {{discapacitado.residencia}}</p>
+
+    
 
 {% endblock %}
