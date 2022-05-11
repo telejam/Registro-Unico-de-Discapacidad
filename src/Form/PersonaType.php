@@ -2,8 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Barrio;
 use App\Entity\Ciudad;
-use App\Entity\Domicilio;
+use App\Entity\Provincia;
 use App\Entity\EstadoCivil;
 use App\Entity\Nacionalidad;
 use App\Entity\Persona;
@@ -42,9 +43,21 @@ class PersonaType extends AbstractType
                 'class' => Nacionalidad::class,
                 'choice_label' => 'pais'
             ])
-            ->add('domicilio', EntityType::class, [
-                'class' => Domicilio::class,
-                'choice_label' => 'calle'
+            ->add('provincia', EntityType::class, [
+                'class' => Provincia::class,
+                'choice_label' => 'nombre'
+            ])
+            ->add('ciudad', EntityType::class, [
+                'class' => Ciudad::class,
+                'choice_label' => 'nombre'
+            ])
+            ->add('calle')
+            ->add('altura', IntegerType::class)
+            ->add('piso', IntegerType::class)
+            ->add('dpto')
+            ->add('barrio', EntityType::class, [
+                'class' => Barrio::class,
+                'choice_label' => 'nombre'
             ])
             ->add('usuario', EntityType::class, [
                 'class' => Usuario::class,

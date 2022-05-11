@@ -35,10 +35,9 @@ class PersonaController extends AbstractController
             $persona = $em->getRepository(Persona::class)->find($id);
             $estadoCivil = $persona->getEstadoCivil();
             $dniTipo = $persona->getDniTipo();
-            $domicilio = $persona->getDomicilio();
-            $barrio = $domicilio->getBarrio();
-            $ciudad = $domicilio->getIdciudad();
-            $provincia = $ciudad->getIdprovincia();
+            $barrio = $persona->getBarrio();
+            $ciudad = $persona->getCiudad();
+            $provincia = $persona->getProvincia();
             $nacionalidad = $persona->getNacionalidad();
 
             return $this->render('persona/verpersona.html.twig', [
@@ -46,7 +45,6 @@ class PersonaController extends AbstractController
                 'persona' => $persona,
                 'estadocivil' => $estadoCivil,
                 'dnitipo' => $dniTipo,
-                'domicilio' => $domicilio,
                 'barrio' => $barrio,
                 'ciudad' => $ciudad,
                 'provincia' => $provincia,
@@ -86,9 +84,6 @@ class PersonaController extends AbstractController
     {
         $em =  $this->getDoctrine()->getManager();
         $persona = $em->getRepository(Persona::class)->find($id);
-        $domicilio = $persona->getDomicilio();
-        $ciudad = $domicilio->getIdciudad();
-        $provincia = $ciudad->getIdprovincia();
         $form = $this->createForm(PersonaType::class, $persona);
 
         $form->handleRequest($request);
