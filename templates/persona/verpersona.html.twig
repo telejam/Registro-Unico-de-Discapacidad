@@ -4,8 +4,20 @@
 
 {% block body %}
 
-    <h1>{{ controller_name }}</h1>
+  <p>{{ persona.nombre }} {{ persona.apellido }}</p>
 
-    <p>{{ persona.nombre }} {{ persona.apellido }}</p>
+  <p>Fecha nac.: {{ persona.fechaNacimiento|date('d-m-Y') }}</p>
+
+  <p>Sexo: {{ persona.sexo }}</p>
+
+  <p>{{ estadocivil.tipoEstado }}</p>
+
+  <p>{{ dnitipo.tipo }} {{ persona.dniNumero }} Trám: {{ persona.dnitramite }}</p>
+
+  <p>{{ domicilio.calle }} Nº{{ domicilio.altura }} Piso: {{ domicilio.piso }} Dpto.: {{ domicilio.dpto }}</p>
+
+  <p>Barrio: {{ barrio.nombre }}</p>
+
+  <p>{{ ciudad.ciudad }} - {{ provincia.provincia }} - {{ nacionalidad.pais }}</p>
 
 {% endblock %}
