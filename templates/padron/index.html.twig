@@ -4,10 +4,46 @@
 
 {% block body %}
 
-    <h1>{{ controller_name }}</h1>
+    {{parent()}}
 
-    {% for discapacitado in discapacitados %}
-        <p>{{ discapacitado.cuil }} {{ discapacitado.cud }}</p>
-    {% endfor %}
+    <table>
+        <thead>
+            <tr>
+                <th>CUIL</th>
+                <th>CUD</th>
+                <th>Vigencia</th>
+                <th>Diagnóstico</th>
+                <th>Discapacidad</th>
+                <th>Causa</th>
+                <th>Pensión</th>
+                <th>Obra social</th>
+                <th>Nivel Instrucción</th>
+                <th>Tipo Modalidad</th>
+                <th>Experiencia laboral</th>
+                <th>Actividades</th>
+                <th>Nivel Educación</th>
+                <th>Residencia</th>
+            </tr>
+        </thead>
+
+        {% for discapacitado in discapacitados %}
+            <tr>
+                <td>{{discapacitado.cuil}}</td>
+                <td>{{discapacitado.cud}}</td>
+                <td>{{discapacitado.cudvigencia|date('d-m-Y')}}</td>
+                <td>{{discapacitado.cuddiagnostico}}</td>
+                {# <td>{{discapacidad.nombre}}</td> #}
+                <td>{{discapacitado.causa}}</td>
+                <td>{{discapacitado.pension}}</td>
+                {# <td>{{obrasocial.denominacion}}</td> #}
+                <td>{{discapacitado.nivelinstruccion}}</td>
+                <td>{{discapacitado.tipomodalidad}}</td>
+                <td>{{discapacitado.experiencialaboral}}</td>
+                <td>{{discapacitado.actividades}}</td>
+                <td>{{discapacitado.niveleducacion}}</td>
+                <td>{{discapacitado.residencia}}</td>
+            </tr>
+        {% endfor %}
+    </table>
 
 {% endblock %}
