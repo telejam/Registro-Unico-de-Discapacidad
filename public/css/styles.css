@@ -89,20 +89,6 @@ i {
     /* transition: all 0.3s; */
 }
 
-#navbarSupportedContent a:not(:only-child):after {
-    content: "\f105";
-    position: absolute;
-    right: 20px;
-    top: 10px;
-    font-size: 14px;
-    font-family: "Font Awesome 5 Free";
-    display: inline-block;
-    padding-right: 3px;
-    vertical-align: middle;
-    font-weight: 900;
-    /* transition: 0.3s; */
-}
-
 #navbarSupportedContent ul li a:hover {
     border: 1px solid #ffffff;
     background-color: #ffffff;
@@ -114,11 +100,6 @@ i {
     display: inline-block;
     color: #ffffff;
     font-weight: 600;
-}
-
-.dropdown:hover {
-    background-color: #ffffff;
-    color: #33BB66;
 }
 
 .dropdown-content {
@@ -141,11 +122,6 @@ i {
     border: 1px solid #33BB66;
     border-radius: 0px;
     font-weight: 600;
-}
-
-#dropdownMenuButton:hover {
-    color: #33BB66;
-    background-color: #ffffff;
 }
 
 .dropdown-content p:hover {

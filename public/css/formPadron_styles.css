@@ -9,10 +9,11 @@
 
 .sectionTitle {
     text-align: center;
-    background-color: #33BB66;
+    background-color: #00A65A;
     color: #ffffff;
     padding-top: 10px;
     padding-bottom: 10px;
+    margin-bottom: 15px
 }
 
 .sectionTitle h2 {
