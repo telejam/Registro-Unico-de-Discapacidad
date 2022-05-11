@@ -92,4 +92,17 @@ class PadronController extends AbstractController
         ]);
     }
 
+     /**
+     * @Route("/deletepadron/{id}", name="deletepadron")
+     */
+    public function delete($id)
+    {
+            $em = $this->getDoctrine()->getManager();
+            $padron = $em->getRepository(Padron::class)->find($id);
+            $em->remove($padron);
+            $em->flush();
+
+            return $this->redirectToRoute('padron');
+    }
+
 }
