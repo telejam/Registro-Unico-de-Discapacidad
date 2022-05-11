@@ -24,23 +24,23 @@ class Provincia
     /**
      * @var string
      *
-     * @ORM\Column(name="provincia", type="string", length=45, nullable=false)
+     * @ORM\Column(name="nombre", type="string", length=100, nullable=false)
      */
-    private $provincia;
+    private $nombre;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getProvincia(): ?string
+    public function getNombre(): ?string
     {
-        return $this->provincia;
+        return $this->nombre;
     }
 
-    public function setProvincia(string $provincia): self
+    public function setNombre(string $nombre): self
     {
-        $this->provincia = $provincia;
+        $this->nombre = $nombre;
 
         return $this;
     }
