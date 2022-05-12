@@ -1,13 +1,11 @@
 #tipo_discapacidad {
-    text-align: center ;
+    text-align: left;
     padding: 2rem 0;
 }
 
 #tipo_discapacidad div {
-    display: flex;
     flex-direction: column;
     margin: 1rem 0;
-
 }
 
 #tipo_discapacidad_Guardar {
@@ -17,7 +15,7 @@
     margin-bottom: 10px;
     border: none;
     color: #ffffff;
-    width: 50%;
+    width: 100%;
     margin-right: auto;
     margin-left: auto;
 }

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ObraSocialController!{% endblock %}
+{% block title %}Obra social{% endblock %}
 
 {% block body %}
 
@@ -11,5 +11,16 @@
 	</div>
 
     {{form(formulario)}}
+
+    <script>
+        let denominacion = document.querySelectorAll('label')[0];
+        denominacion.innerHTML = 'Denominación';
+
+        let observacion = document.querySelectorAll('label')[3];
+        observacion.innerHTML = "Observación"
+
+        let telefonoNumero = document.querySelectorAll('label')[4];
+        telefonoNumero.innerHTML = "Número de teléfono"
+    </script>
 
 {% endblock %}

@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Persona con discapacidad{% endblock %}
+{% block title %}Registro de discapacidad{% endblock %}
 
 {% block body %}
 
     {{parent()}}
 
-    <table>
+    <a href="/createpadron" class="btn mt-4" id="crearPadron"><i class="fas fa-plus"></i>Agregar persona con discapacidad</a>
+
+    <table id="tabla" class="table table-bordered table-striped text-center mt-4">
         <thead>
             <tr>
                 <th>CUIL</th>
@@ -17,33 +19,40 @@
                 <th>Causa</th>
                 <th>Pensión</th>
                 <th>Obra social</th>
-                <th>Nivel Instrucción</th>
-                <th>Tipo Modalidad</th>
+                <th>Nivel instrucción</th>
+                <th>Tipo modalidad</th>
                 <th>Experiencia laboral</th>
                 <th>Actividades</th>
-                <th>Nivel Educación</th>
+                <th>Nivel educación</th>
                 <th>Residencia</th>
+                <th>Acciones</th>
             </tr>
         </thead>
 
-        {% for discapacitado in discapacitados %}
-            <tr>
-                <td>{{discapacitado.cuil}}</td>
-                <td>{{discapacitado.cud}}</td>
-                <td>{{discapacitado.cudvigencia|date('d-m-Y')}}</td>
-                <td>{{discapacitado.cuddiagnostico}}</td>
-                {# <td>{{discapacidad.nombre}}</td> #}
-                <td>{{discapacitado.causa}}</td>
-                <td>{{discapacitado.pension}}</td>
-                {# <td>{{obrasocial.denominacion}}</td> #}
-                <td>{{discapacitado.nivelinstruccion}}</td>
-                <td>{{discapacitado.tipomodalidad}}</td>
-                <td>{{discapacitado.experiencialaboral}}</td>
-                <td>{{discapacitado.actividades}}</td>
-                <td>{{discapacitado.niveleducacion}}</td>
-                <td>{{discapacitado.residencia}}</td>
-            </tr>
-        {% endfor %}
+        <tbody>
+            {% for discapacitado in discapacitados %}
+                <tr>
+                    <td>{{discapacitado.cuil}}</td>
+                    <td>{{discapacitado.cud}}</td>
+                    <td>{{discapacitado.cudvigencia|date('d-m-Y')}}</td>
+                    <td>{{discapacitado.cuddiagnostico}}</td>
+                    {# <td>{{discapacidad.nombre}}</td> #}
+                    <td>{{discapacitado.causa}}</td>
+                    <td>{{discapacitado.pension}}</td>
+                    {# <td>{{obrasocial.denominacion}}</td> #}
+                    <td>{{discapacitado.nivelinstruccion}}</td>
+                    <td>{{discapacitado.tipomodalidad}}</td>
+                    <td>{{discapacitado.experiencialaboral}}</td>
+                    <td>{{discapacitado.actividades}}</td>
+                    <td>{{discapacitado.niveleducacion}}</td>
+                    <td>{{discapacitado.residencia}}</td>
+
+                    <td>
+                        {# <a href="edit/{{discapacitado.id}}"><i class="fas fa-trash-alt"></i></a> #}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
     </table>
 
 {% endblock %}

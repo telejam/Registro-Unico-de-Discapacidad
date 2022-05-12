@@ -1,9 +1,4 @@
-#padron {
-    text-align: center;
-}
-
 #padron div {
-    display: flex;
     flex-direction: column;
 }
 
@@ -53,4 +48,8 @@
 #padron_id {
     display: -webkit-box !important;
     width: 100%;
+}
+
+#padron {
+    text-align: left;
 }

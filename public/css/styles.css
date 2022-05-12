@@ -80,7 +80,7 @@ i {
     /* transition-duration: 0.3s; */
     position: relative;
     font-weight: 600;
-    padding: 10px 10px 10px 2px;
+    padding: 10px 10px 10px 10px;
 }
 
 #navbarSupportedContent>ul>li.active>a {
@@ -126,6 +126,11 @@ i {
 
 .dropdown-content p:hover {
     color: #000000;
+}
+
+.fa-trash-alt{
+    color: rgb(230, 23, 23);
+    margin-left: 15px;
 }
 
 @media (max-width:991px) {

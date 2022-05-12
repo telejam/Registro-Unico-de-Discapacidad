@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TipoDiscapacidadController!{% endblock %}
+{% block title %}Tipos de discapacidades{% endblock %}
 
 {% block body %}
+
+{{parent()}}
 
 {% for message in app.flashes('exito') %}
 
@@ -15,7 +17,13 @@
 		<h2>Formulario tipo de discapacidad</h2>
 	</div>
 
-{{form(formulario)}}
+	{{form(formulario)}}
+
+	<script>
+
+		let descripcion = document.querySelectorAll('label')[1];
+		descripcion.innerHTML = 'Descripción';
+		
+	</script>
 
 {% endblock %}
-

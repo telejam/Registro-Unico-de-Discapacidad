@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		{# BOOTSTRAP #}
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 		<meta charset="UTF-8">
+
 		<title>
-			{% block title %}Welcome Delfina!
-			{% endblock %}
+			{% block title %}Welcome!{% endblock %}
 		</title>
 
 		{% block stylesheets %}
@@ -17,11 +19,15 @@
 			<link rel="stylesheet" href="{{ asset('css/formDiscapacidad_styles.css') }}">
 			<link rel="stylesheet" href="{{ asset('css/formTipoDiscapacidad_styles.css') }}">
 			<link rel="stylesheet" href="{{ asset('css/formPersona_styles.css') }}">
+			<link rel="stylesheet" href="{{ asset('css/padron_styles.css') }}">
+			<script src="https://kit.fontawesome.com/6c34cb54f2.js" crossorigin="anonymous"></script>
 		{% endblock %}
 
 		{% block javascripts %}
 
-			<script></script>
+			<script>
+
+			</script>
 
 		{% endblock %}
 
@@ -38,30 +44,30 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
-							<a class="nav-link" href="">
-								<i class="fa fa-tachometer"></i>Mesa de entrada</a>
+							<a class="nav-link" href="/">
+								<i class="fas fa-home"></i>Mesa de entrada</a>
 						</li>
 						<li class="nav-item active">
 							<a class="nav-link" href="/personas">
-								<i class="fa fa-address-book"></i>Personas</a>
+								<i class="fas fa-user"></i>Personas</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="/padron">
-								<i class="fa fa-clone"></i>Discapacitados</a>
+								<i class="fab fa-accessible-icon"></i>Registro de discapacidad</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="">
-								<i class="fa fa-calendar"></i>Trámites</a>
+								<i class="fas fa-paperclip"></i>Trámites</a>
 						</li>
 						<li class="nav-item">
 							<div class="dropdown show">
-								<a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mantenimiento</a>
+								<a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-wrench"></i>Mantenimiento</a>
 								<div class="dropdown-content">
 									<a class="dropdown-item" href="/tramites">Trámites</a>
 									<a class="dropdown-item" href="/tipotramites">Tipos de trámites</a>
 									<a class="dropdown-item" href="/discapacidad">Discapacidades</a>
 									<a class="dropdown-item" href="/tipodiscapacidad">Tipos de discapacidades</a>
-									<a class="dropdown-item" href="/obrasocial">Obras sociales</a>
+									<a class="dropdown-item" href="/obrasocial">Obra social</a>
 								</div>
 							</div>
 						</li>
