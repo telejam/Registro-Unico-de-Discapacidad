@@ -28,6 +28,16 @@ class Ciudad
      */
     private $nombre;
 
+    /**
+     * @var Provincia
+     *
+     * @ORM\ManyToOne(targetEntity="Provincia")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="provincia", referencedColumnName="id")
+     * })
+     */
+    private $provincia;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,5 +55,16 @@ class Ciudad
         return $this;
     }
 
+    public function getProvincia(): ?Provincia
+    {
+        return $this->provincia;
+    }
+
+    public function setProvincia(?Provincia $provincia): self
+    {
+        $this->provincia = $provincia;
+
+        return $this;
+    }
 
 }

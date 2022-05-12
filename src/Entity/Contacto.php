@@ -13,82 +13,43 @@ use Doctrine\ORM\Mapping as ORM;
 class Contacto
 {
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="email", type="string", length=100, nullable=true, options={"default"="NULL"})
-     */
-    private $email = 'NULL';
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="tipoTelefono", type="string", length=10, nullable=false)
+     * @ORM\Column(name="contacto", type="string", length=100, nullable=false)
      */
-    private $tipotelefono;
+    private $contacto;
 
     /**
-     * @var string
+     * @var Persona
      *
-     * @ORM\Column(name="numeroTelefono", type="string", length=10, nullable=false)
-     */
-    private $numerotelefono;
-
-    /**
-     * @var \Persona
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Persona")
+     * @ORM\ManyToOne(targetEntity="Persona")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="persona", referencedColumnName="id")
      * })
      */
-    private $id;
+    private $persona;
 
-    public function getEmail(): ?string
+    public function getContacto(): ?string
     {
-        return $this->email;
+        return $this->contacto;
     }
 
-    public function setEmail(?string $email): self
+    public function setContacto(string $contacto): self
     {
-        $this->email = $email;
+        $this->contacto = $contacto;
 
         return $this;
     }
 
-    public function getTipotelefono(): ?string
+
+    public function getPersona(): ?Persona
     {
-        return $this->tipotelefono;
+        return $this->persona;
     }
 
-    public function setTipotelefono(string $tipotelefono): self
+    public function setPersona(?Persona $persona): self
     {
-        $this->tipotelefono = $tipotelefono;
-
-        return $this;
-    }
-
-    public function getNumerotelefono(): ?string
-    {
-        return $this->numerotelefono;
-    }
-
-    public function setNumerotelefono(string $numerotelefono): self
-    {
-        $this->numerotelefono = $numerotelefono;
-
-        return $this;
-    }
-
-    public function getId(): ?Persona
-    {
-        return $this->id;
-    }
-
-    public function setId(?Persona $id): self
-    {
-        $this->id = $id;
+        $this->persona = $persona;
 
         return $this;
     }
