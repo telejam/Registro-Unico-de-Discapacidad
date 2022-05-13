@@ -44,7 +44,7 @@ class PadronController extends AbstractController
     }
     
     /**
-     * @Route("/createpadron", name="createpadron")
+     * @Route("/padron/create", name="createpadron")
      */
     public function create(Request $request): Response
     {
@@ -66,7 +66,7 @@ class PadronController extends AbstractController
     }
 
     /**
-     * @Route("/editpadron/{id}", name="editpadron")
+     * @Route("/padron/edit/{id}", name="editpadron")
      */
     public function edit(Padron $padron, Request $request, $id): Response
     {
@@ -93,7 +93,7 @@ class PadronController extends AbstractController
     }
 
      /**
-     * @Route("/deletepadron/{id}", name="deletepadron")
+     * @Route("/padron/delete/{id}", name="deletepadron")
      */
     public function delete($id)
     {

@@ -12,21 +12,21 @@ use Symfony\Component\HttpFoundation\Request;
 class TramiteController extends AbstractController
 {
     /**
-     * @Route("/tramites", name="tramites")
+     * @Route("/tramite", name="tramite")
      */
     public function getAll(): Response
     {
         $em = $this->getDoctrine()->getManager();
-        $tramites = $em->getRepository(Tramite::class)->findAll();
+        $tramite = $em->getRepository(Tramite::class)->findAll();
 
         return $this->render('tramite/index.html.twig', [
             'controller_name' => 'TramiteController',
-            'tramites' => $tramites
+            'tramite' => $tramite
         ]);
     }
     
     /**
-     * @Route("/createtramite", name="createtramite")
+     * @Route("/tramite/create", name="createtramite")
      */
     public function create(Request $request): Response
     {
@@ -48,14 +48,14 @@ class TramiteController extends AbstractController
     }
 
       /**
-     * @Route("/edittramite/{id}", name="edittramite")
+     * @Route("/tramite/edit/{id}", name="edittramite")
      */
-    public function edit(Tramite $padron, Request $request, $id): Response
+    public function edit(Tramite $tramite, Request $request, $id): Response
     {
         
         $em = $this->getDoctrine()->getManager();
         $tramite = $em->getRepository(Tramite::class)->find($id);
-        $form = $this->createForm(TramiteType::class, $padron);
+        $form = $this->createForm(TramiteType::class, $tramite);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -68,19 +68,19 @@ class TramiteController extends AbstractController
             ]);
         }
 
-        return $this->render('padron/edit.html.twig', [
+        return $this->render('tramite/edit.html.twig', [
             'controller_name' => 'TramiteController',
             'formulario' => $form->createView()
         ]);
     }
 
      /**
-     * @Route("/deletepadron/{id}", name="deletepadron")
+     * @Route("/tramite/delete/{id}", name="deletetramite")
      */
     public function delete($id)
     {
             $em = $this->getDoctrine()->getManager();
-            $tramite = $em->getRepository(Padron::class)->find($id);
+            $tramite = $em->getRepository(Tramite::class)->find($id);
             $em->remove($tramite);
             $em->flush();
 
