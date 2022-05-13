@@ -21,10 +21,10 @@ class TramiteType extends AbstractType
         $builder
             ->add('fechainicio')
             ->add('observacion')
-            ->add('fecharesolucion', DateType::class)
+            //->add('fecharesolucion', DateType::class)
             ->add('persona',EntityType::class, [
                 'class' =>Persona::class,
-                'choice_label' =>'id'
+                'choice_label' =>'dniNumero'
             ])
             ->add('usuario', EntityType::class, [
                 'class' =>Usuario::class,

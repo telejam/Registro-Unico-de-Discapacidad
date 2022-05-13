@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tramites{% endblock %}
+
+{% block body %}
+    
+    {% for tramite in tramites %}
+        <p>{{ tramite.fechaInicio }} {{ tramite.tipoTramite }}</p>
+    {% endfor %}
+
+{% endblock %}

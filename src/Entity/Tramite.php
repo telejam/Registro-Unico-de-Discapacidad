@@ -40,7 +40,7 @@ class Tramite
      *
      * @ORM\Column(name="fechaResolucion", type="date", nullable=true, options={"default"="NULL"})
      */
-    private $fecharesolucion = 'NULL';
+    private $fecharesolucion = NULL;
 
     /**
      * @var \Persona
