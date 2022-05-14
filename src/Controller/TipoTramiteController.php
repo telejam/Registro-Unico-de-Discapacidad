@@ -48,7 +48,7 @@ class TipoTramiteController extends AbstractController
     }
 
     /**
-     * @Route("/tipotramite/edit/{id}", name="edittramite")
+     * @Route("/tipotramite/edit/{id}", name="tipotramiteedit")
      */
     public function edit(TipoTramite $tipotramite, Request $request, $id): Response
     {
