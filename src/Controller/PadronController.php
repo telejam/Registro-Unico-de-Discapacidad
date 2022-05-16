@@ -44,7 +44,7 @@ class PadronController extends AbstractController
     }
     
     /**
-     * @Route("/padron/create", name="createpadron")
+     * @Route("/createpadron", name="createpadron")
      */
     public function create(Request $request): Response
     {
