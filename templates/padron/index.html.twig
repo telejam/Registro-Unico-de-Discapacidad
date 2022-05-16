@@ -6,7 +6,9 @@
 
     {{parent()}}
 
-    <a href="/createpadron" class="btn mt-4" id="crearPadron"><i class="fas fa-plus"></i>Agregar persona con discapacidad</a>
+    <div class="btnCrearPadron">
+        <a href="/createpadron" class="btn mt-4" id="crearPadron"><i class="fas fa-plus"></i>Agregar persona con discapacidad</a>
+    </div>
 
     <table id="tabla" class="table table-bordered table-striped text-center mt-4">
         <thead>
@@ -25,7 +27,7 @@
                 <th>Actividades</th>
                 <th>Nivel educación</th>
                 <th>Residencia</th>
-                <th>Acciones</th>
+                <th>Acción</th>
             </tr>
         </thead>
 
@@ -36,10 +38,10 @@
                     <td>{{discapacitado.cud}}</td>
                     <td>{{discapacitado.cudvigencia|date('d-m-Y')}}</td>
                     <td>{{discapacitado.cuddiagnostico}}</td>
-                    {# <td>{{discapacidad.nombre}}</td> #}
+                    <td>{{discapacitado.discapacidad.nombre}}</td>
                     <td>{{discapacitado.causa}}</td>
                     <td>{{discapacitado.pension}}</td>
-                    {# <td>{{obrasocial.denominacion}}</td> #}
+                    <td>{{discapacitado.obrasocial.denominacion}}</td>
                     <td>{{discapacitado.nivelinstruccion}}</td>
                     <td>{{discapacitado.tipomodalidad}}</td>
                     <td>{{discapacitado.experiencialaboral}}</td>
@@ -48,7 +50,8 @@
                     <td>{{discapacitado.residencia}}</td>
 
                     <td>
-                        {# <a href="edit/{{discapacitado.id}}"><i class="fas fa-trash-alt"></i></a> #}
+                        {# <a href="{{ path('editpadron', {'id': discapacitado.id}) }}"><i class="fas fa-edit"></i></a>
+                        <a href=""><i class="fas fa-trash-alt"></i></a> #}
                     </td>
                 </tr>
             {% endfor %}

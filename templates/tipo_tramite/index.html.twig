@@ -3,9 +3,43 @@
 {% block title %}Tipo de Tramites{% endblock %}
 
 {% block body %}
-    
-    {% for tipo in tipotramite %}
-        <p>{{ tipo.nombre }} {{ tipo.descripcion }}</p>
-    {% endfor %}
+
+    {{parent()}}
+
+    <div class="btnVerTramite">
+        <a href="/tipotramite/create" class="btn mt-4" id="verTramite"><i class="fas fa-plus"></i>Agregar nuevo tipo de trámite</a>
+    </div>
+
+    <table id="tabla" class="table table-bordered table-striped text-center mt-4">
+
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Tipo</th>
+                <th>Intervenciones</th>
+                <th>Vigente</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for tipo in tipotramite %}
+                <tr>
+                    <td>{{tipo.nombre}}</td>
+                    <td>{{tipo.descripcion}}</td>
+                    <td>{{tipo.tipo}}</td>
+                    <td>{{tipo.intervenciones}}</td>
+                    <td>{{tipo.vigente}}</td>
+
+                    <td>
+                        <a href="{{ path('tipotramiteedit', {'id': tipo.id}) }}"><i class="fas fa-edit"></i></a>
+                        <a href="{{ path('deletetipotramite', {'id': tipo.id}) }}"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
 
 {% endblock %}

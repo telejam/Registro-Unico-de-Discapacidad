@@ -1,10 +1,10 @@
-.btnCrearPadron {
+.btnVerTramite {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#crearPadron {
+#verTramite {
     border: 1px solid #00A65A;
     background-color: #00A65A;
     color: #ffffff;
@@ -12,7 +12,7 @@
     margin-left: 20px;
 }
 
-#crearPadron:hover {
+#verTramite:hover {
     border: 1px solid #33BB66;
     background-color: #33BB66;
     color: #ffffff;

@@ -1,8 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TipoTramiteController!{% endblock %}
+{% block title %}Tipos de trámites{% endblock %}
 
 {% block body %}
+
+	{{parent()}}
+
+	<div class="sectionTitle">
+		<h2>Tipo de trámite</h2>
+	</div>
+
 	{{form(formulario)}}
 
 {% endblock %}

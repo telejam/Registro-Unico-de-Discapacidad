@@ -3,6 +3,13 @@
 {% block title %}Hello TipoTramiteController!{% endblock %}
 
 {% block body %}
+
+	{{parent()}}
+
+	<div class="sectionTitle">
+		<h2>Editar información de tipo trámite</h2>
+	</div>
+
 	{{form(formulario)}}
 
 {% endblock %}
