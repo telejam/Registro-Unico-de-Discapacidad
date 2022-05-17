@@ -4,17 +4,12 @@
 
 {% block body %}
 
-{{parent()}}
+	{{parent()}}
 
 	<div class="sectionTitle">
 		<h2>Formulario discapacidad</h2>
 	</div>
 
 	{{form(formulario)}}
-
-	<script>
-		let descripcion = document.querySelectorAll('label')[1];
-		descripcion.innerHTML = 'Descripción';
-	</script>
 
 {% endblock %}

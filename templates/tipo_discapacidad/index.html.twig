@@ -1,17 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tipo de discapacidades{% endblock %}
+{% block title %}Tipo de discapacidades
+{% endblock %}
 
 {% block body %}
 
-    {{parent()}}
+	{{parent()}}
 
-  <div class="sectionTitle">
-		<h2>Tipo de discapacidades</h2>
+	<div class="sectionTitle">
+		<h2>Tipos de discapacidades</h2>
 	</div>
 
-   {% for tipo in tipodiscapacidad %}
-        <p>{{ tipo.nombre }} {{ tipo.descripcion }}</p>
-    {% endfor %}
+    <div class="btnAgregar">
+        <a href="/tipodiscapacidad/create" class="btn mt-4" id="agregar"><i class="fas fa-plus"></i>Agregar nuevo tipo de discapacidad</a>
+    </div>
 
-{% endblock %}
+	<table id="tabla" class="table table-bordered table-striped text-center mt-4">
+
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Descripción</th>
+				<th>Vigente</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for tipo in tipodiscapacidad %}
+				<tr>
+					<td>{{tipo.nombre}}</td>
+					<td>{{tipo.descripcion}}</td>
+					<td>{{tipo.vigente}}</td>
+
+					<td>
+						<a href="{{ path('edittipodiscapacidad', {'id': tipo.id}) }}"><i class="fas fa-edit"></i></a>
+						<a href="{{ path('deletetipodiscapacidad', {'id': tipo.id}) }}"><i class="fas fa-trash-alt"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+
+	{% endblock %}

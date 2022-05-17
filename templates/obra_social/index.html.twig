@@ -6,12 +6,44 @@
 
     {{parent()}}
 
-  <div class="sectionTitle">
+    <div class="sectionTitle">
 		<h2>Obras sociales</h2>
 	</div>
 
-   {% for obra in obrasocial %}
-        <p>{{ obra.nombre }} {{ obra.denominacion }}</p>
-    {% endfor %}
+    <div class="btnAgregar">
+        <a href="/obrasocial/create" class="btn mt-4" id="agregar"><i class="fas fa-plus"></i>Agregar obra social</a>
+    </div>
+
+    <table id="tabla" class="table table-bordered table-striped text-center mt-4 obraSocial">
+
+		<thead>
+			<tr>
+				<th>Denominación</th>
+				<th>Nombre</th>
+				<th>Domicilio</th>
+                <th>Observación</th>
+                <th>Nro. de Teléfono</th>
+                <th>Vigente</th>
+                <th>Acción</th>
+			</tr>
+		</thead>
+
+		<tbody>
+            {% for obra in obrasocial %}
+				<tr>
+					<td>{{obra.denominacion}}</td>
+					<td>{{obra.nombre}}</td>
+					<td>{{obra.domicilio}}</td>
+                    <td>{{obra.observacion}}</td>
+                    <td>{{obra.telefonoNumero}}</td>
+                    <td>{{obra.Vigente}}</td>
+
+					<td>
+						<a href="{{ path('editobrasocial', {'id': obra.id}) }}"><i class="fas fa-edit"></i></a>
+						<a href="{{ path('deleteobrasocial', {'id': obra.id}) }}"><i class="fas fa-trash-alt"></i></a>
+					</td>
+				</tr>
+            {% endfor %}
+		</tbody>
 
 {% endblock %}

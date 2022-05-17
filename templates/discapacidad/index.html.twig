@@ -6,12 +6,42 @@
 
     {{parent()}}
 
-  <div class="sectionTitle">
+    <div class="sectionTitle">
 		<h2>Discapacidades</h2>
 	</div>
+        
+    <div class="btnAgregar">
+        <a href="/discapacidad/create" class="btn mt-4" id="agregar"><i class="fas fa-plus"></i>Agregar nueva discapacidad</a>
+    </div>
 
-   {% for disca in discapacidad %}
-        <p>{{ disca.nombre }} {{ disca.descripcion }}</p>
-    {% endfor %}
+    <table id="tabla" class="table table-bordered table-striped text-center mt-4">
+
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Tipo</th>
+                <th>Vigente</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for disca in discapacidad %}
+                <tr>
+                    <td>{{disca.nombre}}</td>
+                    <td>{{disca.descripcion}}</td>
+                    {# <td>{{disca.tipodiscapacidad.tipo}}</td> #}
+                    <td>{{disca.vigente}}</td>
+
+                    <td>
+                        <a href="{{ path('editdiscapacidad', {'id': disca.id}) }}"><i class="fas fa-edit"></i></a>
+                        <a href="{{ path('deletediscapacidad', {'id': disca.id}) }}"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
 
 {% endblock %}

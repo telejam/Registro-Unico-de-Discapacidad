@@ -140,3 +140,11 @@ i {
 }
 
 /*** FIN NAVBAR ***/
+
+.obraSocial thead tr th:first-child {
+    width: 30%;
+}
+
+.obraSocial thead tr th:nth-child(3n) {
+    width: 15%;
+}

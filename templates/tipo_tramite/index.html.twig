@@ -6,8 +6,8 @@
 
     {{parent()}}
 
-    <div class="btnVerTramite">
-        <a href="/tipotramite/create" class="btn mt-4" id="verTramite"><i class="fas fa-plus"></i>Agregar nuevo tipo de trámite</a>
+    <div class="btnAgregar">
+        <a href="/tipotramite/create" class="btn mt-4" id="agregar"><i class="fas fa-plus"></i>Agregar nuevo tipo de trámite</a>
     </div>
 
     <table id="tabla" class="table table-bordered table-striped text-center mt-4">
@@ -33,7 +33,7 @@
                     <td>{{tipo.vigente}}</td>
 
                     <td>
-                        <a href="{{ path('tipotramiteedit', {'id': tipo.id}) }}"><i class="fas fa-edit"></i></a>
+                        <a href="{{ path('edittipotramite', {'id': tipo.id}) }}"><i class="fas fa-edit"></i></a>
                         <a href="{{ path('deletetipotramite', {'id': tipo.id}) }}"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
