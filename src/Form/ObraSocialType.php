@@ -18,7 +18,9 @@ class ObraSocialType extends AbstractType
             ->add('nombre')
             ->add('domicilio')
             ->add('observacion')
-            ->add('telefononumero', TelType::class)
+            ->add('telefononumero', TelType::class, [
+                'label'=>'Numero de Telefono'
+            ])
             ->add('vigente')
             ->add('Guardar', SubmitType::class)
         ;
