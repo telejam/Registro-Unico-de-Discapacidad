@@ -21,7 +21,7 @@ class TipoDiscapacidadController extends AbstractController
 
             return $this->render('tipo_discapacidad/index.html.twig', [
                 'controller_name' => 'TipoDiscapacidadController',
-                'tipoDiscapacidad' => $tipoDiscapacidad
+                'tipodiscapacidad' => $tipoDiscapacidad
             ]);
     } 
     

@@ -4,24 +4,14 @@
 
 {% block body %}
 
-{{parent()}}
+    {{parent()}}
 
-{% for message in app.flashes('exito') %}
-
-<div class="alert alert-success">
-{{message}}
-</div>
-{% endfor %}
-
-	<div class="sectionTitle">
-		<h2>Formulario discapacidad</h2>
+  <div class="sectionTitle">
+		<h2>Discapacidades</h2>
 	</div>
 
-	{{form(formulario)}}
-
-	<script>
-		let descripcion = document.querySelectorAll('label')[1];
-		descripcion.innerHTML = 'Descripción';
-	</script>
+   {% for disca in discapacidad %}
+        <p>{{ disca.nombre }} {{ disca.descripcion }}</p>
+    {% endfor %}
 
 {% endblock %}
