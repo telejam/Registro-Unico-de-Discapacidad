@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ObraSocialController!{% endblock %}
+
+{% block body %}
+
+	{{parent()}}
+
+	<div class="sectionTitle">
+		<h2>Editar información de obra social</h2>
+	</div>
+
+	{{form(formulario)}}
+
+{% endblock %}
