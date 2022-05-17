@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 class PadronController extends AbstractController
 {
     /**
-     * @Route("/padron", name="discapacitados")
+     * @Route("/padron", name="padrongral")
      */
     public function getAll()
     {
@@ -26,7 +26,7 @@ class PadronController extends AbstractController
     }
 
     /**
-     * @Route("/padron/{id}", name="padron")
+     * @Route("/padron/{id}", name="padronindiv")
      */
     public function getBy($id)
     {
@@ -57,7 +57,7 @@ class PadronController extends AbstractController
             $em->persist($padron);
             $em->flush();
             $this->addFlash(type: 'exito', message: 'Se ha registrado exitosamente.');
-            return $this->redirectToRoute('padron');
+            return $this->redirectToRoute('padrongral');
         }
         return $this->render('padron/create.html.twig', [
             'controller_name' => 'PadronController',
@@ -81,7 +81,7 @@ class PadronController extends AbstractController
             $em->flush();
             $this->addFlash('success', 'Padron Modificado');
 
-            return $this->redirectToRoute('padron', [
+            return $this->redirectToRoute('padrongral', [
                 'id'=>$id
             ]);
         }
@@ -102,7 +102,7 @@ class PadronController extends AbstractController
             $em->remove($padron);
             $em->flush();
 
-            return $this->redirectToRoute('padron');
+            return $this->redirectToRoute('padrongral');
     }
 
 }

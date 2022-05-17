@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agregar tipo de discapacidad{% endblock %}
+
+{% block body %}
+
+{{parent()}}
+
+	<div class="sectionTitle">
+		<h2>Formulario tipo de discapacidad</h2>
+	</div>
+
+	{{form(formulario)}}
+
+	<script>
+
+		let descripcion = document.querySelectorAll('label')[1];
+		descripcion.innerHTML = 'Descripción';
+		
+	</script>
+
+{% endblock %}

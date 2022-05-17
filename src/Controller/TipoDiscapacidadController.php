@@ -12,9 +12,23 @@ use Symfony\Component\HttpFoundation\Request;
 class TipoDiscapacidadController extends AbstractController
 {
     /**
-     * @Route("/tipodiscapacidad", name="app_tipo_discapacidad")
+     * @Route("/tipodiscapacidad", name="tipodiscapacidad")
      */
-    public function index(Request $request): Response
+    public function getAll()
+    {
+            $em = $this->getDoctrine()->getManager();
+            $tipoDiscapacidad = $em->getRepository(TipoDiscapacidad::class)->findAll();
+
+            return $this->render('tipo_discapacidad/index.html.twig', [
+                'controller_name' => 'TipoDiscapacidadController',
+                'tipoDiscapacidad' => $tipoDiscapacidad
+            ]);
+    } 
+    
+    /**
+     * @Route("/tipodiscapacidad/create", name="createtipodiscapacidad")
+     */
+    public function create(Request $request): Response
     {
         $tipoDiscapacidad = new TipoDiscapacidad();
         $form = $this->createForm(TipoDiscapacidadType::class, $tipoDiscapacidad);
@@ -24,10 +38,51 @@ class TipoDiscapacidadController extends AbstractController
             $em->persist($tipoDiscapacidad);
             $em->flush();
             $this->addFlash(type: 'exito', message: 'Se ha registrado exitosamente.');
+            return $this->redirectToRoute('tipodiscapacidad');
         }
-        return $this->render('tipo_discapacidad/index.html.twig', [
+        return $this->render('tipo_discapacidad/create.html.twig', [
             'controller_name' => 'TipoDiscapacidadController',
             'formulario'=>$form->createView()
         ]);
+    }
+
+     /**
+     * @Route("/tipodiscapacidad/edit/{id}", name="edittipodiscapacidad")
+     */
+    public function edit(TipoDiscapacidad $tipoDiscapacidad, Request $request, $id): Response
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+        $tipoDiscapacidad = $em->getRepository(TipoDiscapacidad::class)->find($id);
+        $form = $this->createForm(TipoDiscapacidadType::class, $tipoDiscapacidad);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($tipoDiscapacidad);
+            $em->flush();
+            $this->addFlash('success', 'TipoDiscapacidad Modificado');
+
+            return $this->redirectToRoute('tipodiscapacidad', [
+                'id'=>$id
+            ]);
+        }
+
+        return $this->render('tipo_discapacidad/edit.html.twig', [
+            'controller_name' => 'TipoDiscapacidadController',
+            'formulario' => $form->createView()
+        ]);
+    }
+
+     /**
+     * @Route("/tipodiscapacidad/delete/{id}", name="deletetipodiscapacidad")
+     */
+    public function delete($id)
+    {
+            $em = $this->getDoctrine()->getManager();
+            $tipoDiscapacidad = $em->getRepository(TipoDiscapacidad::class)->find($id);
+            $em->remove($tipoDiscapacidad);
+            $em->flush();
+
+            return $this->redirectToRoute('tipodiscapacidad');
     }
 }

@@ -48,7 +48,7 @@ class TipoTramiteController extends AbstractController
     }
 
     /**
-     * @Route("/tipotramite/edit/{id}", name="tipotramiteedit")
+     * @Route("/tipotramite/edit/{id}", name="edittipotramite")
      */
     public function edit(TipoTramite $tipotramite, Request $request, $id): Response
     {
@@ -85,10 +85,6 @@ class TipoTramiteController extends AbstractController
 
             return $this->redirectToRoute('tipotramite');
     }
-
-
-
-
 }
 
 

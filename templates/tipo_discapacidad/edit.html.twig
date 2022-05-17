@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TipoDiscapacidadController!{% endblock %}
+
+{% block body %}
+
+	{{parent()}}
+
+	<div class="sectionTitle">
+		<h2>Editar información de tipo discapacidad</h2>
+	</div>
+
+	{{form(formulario)}}
+
+{% endblock %}

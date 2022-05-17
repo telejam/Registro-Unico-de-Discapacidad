@@ -1,29 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tipos de discapacidades{% endblock %}
+{% block title %}Tipo de discapacidades{% endblock %}
 
 {% block body %}
 
-{{parent()}}
+    {{parent()}}
 
-{% for message in app.flashes('exito') %}
-
-<div class="alert alert-success">
-{{message}}
-</div>
-{% endfor %}
-
-	<div class="sectionTitle">
-		<h2>Formulario tipo de discapacidad</h2>
-	</div>
-
-	{{form(formulario)}}
-
-	<script>
-
-		let descripcion = document.querySelectorAll('label')[1];
-		descripcion.innerHTML = 'Descripción';
-		
-	</script>
+    {% for tipo in tipodiscapacidad %}
+        <p>{{ tipo.nombre }} {{ tipo.descripcion }}</p>
+    {% endfor %}
 
 {% endblock %}
