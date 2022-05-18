@@ -148,3 +148,15 @@ i {
 .obraSocial thead tr th:nth-child(3n) {
     width: 15%;
 }
+
+#obra_social div:nth-child(6) input {
+    margin: 0;
+    width: auto;
+    margin-left: 1rem;
+}
+
+#tipo_tramite div:nth-child(5) input {
+    margin: 0;
+    width: auto;
+    margin-left: 1rem;
+}

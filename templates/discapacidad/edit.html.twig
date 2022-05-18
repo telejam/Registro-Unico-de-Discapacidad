@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DiscapacidadController!{% endblock %}
+{% block title %}Discapacidades{% endblock %}
 
 {% block body %}
 
@@ -11,5 +11,9 @@
 	</div>
 
 	{{form(formulario)}}
+
+	<div class="btnCancelar">
+        <a href="/discapacidad" class="btn btn-danger mb-4" id="cancelar">Cancelar</a>
+    </div>
 
 {% endblock %}

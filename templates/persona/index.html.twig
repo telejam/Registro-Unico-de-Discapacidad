@@ -3,11 +3,65 @@
 {% block title %}Persona{% endblock %}
 
 {% block body %}
-    
-    <h1>{{ controller_name }}</h1>
-    
-    {% for persona in personas %}
-        <p>{{ persona.nombre }} {{ persona.apellido }}</p>
-    {% endfor %}
+
+    {{parent()}}
+
+    <div class="btnAgregar">
+        <a href="/createpersona" class="btn mt-4" id="agregar"><i class="fas fa-plus"></i>Agregar persona</a>
+    </div>
+
+    <table id="tabla" class="table table-bordered table-striped text-center mt-4">
+
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Sexo</th>
+                <th>Estado civil</th>
+                <th>Tipo de DNI</th>
+                <th>DNI Nro. de Trámite</th>
+                <th>Nro. DNI</th>
+                <th>Nacionalidad</th>
+                <th>Provincia</th>
+                <th>Ciudad</th>
+                <th>Calle</th>
+                <th>Altura</th>
+                <th>Piso</th>
+                <th>Departamento</th>
+                <th>Barrio</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for persona in personas %}
+                <tr>
+                    <td>{{ persona.nombre }}</td>
+                    <td>{{ persona.apellido }}</td>
+                    <td>{{ persona.fechaNacimiento|date('d-m-Y') }}</td>
+                    <td>{{ persona.sexo }}</td>
+                    <td>{{ persona.estadocivil.tipoEstado }}</td>
+                    <td>{{ persona.dnitipo.tipo }}</td>
+                    <td>{{ persona.dnitramite }}</td>
+                    <td>{{ persona.dniNumero }}</td>
+                    <td>{{ persona.nacionalidad.pais }}</td>
+                    <td>{{ persona.provincia.nombre }}</td>
+                    <td>{{ persona.ciudad.nombre }}</td>
+                    <td>{{ persona.calle }}</td>
+                    <td>{{ persona.altura }}</td>
+                    <td>{{ persona.piso }}</td>
+                    <td>{{ persona.dpto }}</td>
+                    <td>{{ persona.barrio.nombre }}</td>
+
+                    <td>
+                        <a href="{{ path('editpersona', {'id': persona.id}) }}"><i class="fas fa-edit"></i></a>
+                        <a href="{{ path('deletepersona', {'id': persona.id}) }}"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
 
 {% endblock %}

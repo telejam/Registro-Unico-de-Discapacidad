@@ -4,7 +4,11 @@
 
 {% block body %}
 
-    <h1>{{ controller_name }}</h1>
+    {{parent()}}
+
+    <div class="sectionTitle">
+		<h2>Editar datos de persona</h2>
+	</div>
 
     {% for message in app.flashes('success') %}
         <div class="alert alert-success">
@@ -13,5 +17,9 @@
     {% endfor %}
 
     {{ form(formulario)}}
+
+    <div class="btnCancelar">
+        <a href="/personas" class="btn btn-danger mb-4" id="cancelar">Cancelar</a>
+    </div>
 
 {% endblock %}

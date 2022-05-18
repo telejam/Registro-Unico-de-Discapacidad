@@ -17,3 +17,16 @@
     background-color: #33BB66;
     color: #ffffff;
 }
+
+.btnCancelar {
+    display: flex;
+    text-align: center;
+    justify-content: center
+}
+
+#cancelar {
+    width: 50%;
+    height: 45px;
+    border-radius: 0;
+    padding: 10px;
+}
