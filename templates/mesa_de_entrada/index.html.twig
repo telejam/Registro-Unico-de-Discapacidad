@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mesa De Entrada{% endblock %}
+
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+			display: flex
+		}
+        .bloque {
+			padding: 2px 6px;
+            width: 100%;
+            border: solid 1px black
+        }
+        p {
+            padding: 3px;
+            margin: 3px;
+        }
+	</style>
+
+
+    {{parent()}}
+
+    <h1>Mesa de Entrada (en proceso)</h1>
+
+	<div class="example-wrapper">
+        <div>
+            <div class="bloque">
+                <p>Ingrese DNI</p>
+                <input type="text">
+            </div>
+            <div class="bloque">
+                <p>Responsable</p>
+                <p>Responsable</p>
+            </div>
+            <div class="bloque">
+                <p>Tramite</p>
+                <p>Tramite</p>
+                <p>Tramite</p>
+                <p>Tramite</p>
+                <p>Tramite</p>
+            </div>
+        </div>
+		<div>
+            <div class="bloque">
+                <p>{{ discapacitado.nombre }} {{ discapacitado.apellido }}</p>
+                <p>Fecha nac.: {{ discapacitado.fechaNacimiento|date('d-m-Y') }}</p>
+                <p>Sexo: {{ discapacitado.sexo }}</p>
+                <p>{{ discapacitado.estadocivil.tipoEstado }}</p>
+                <p>{{ discapacitado.dnitipo.tipo }} {{ discapacitado.dniNumero }} Trám: {{ discapacitado.dnitramite }}</p>
+                <p>{{ discapacitado.calle }} Nº{{ discapacitado.altura }} Piso: {{ discapacitado.piso }} Dpto.: {{ discapacitado.dpto }}</p>
+                <p>Barrio: {{ discapacitado.barrio.nombre }}</p>
+                <p>{{ discapacitado.ciudad.nombre }} - {{ discapacitado.provincia.nombre }} - {{ discapacitado.nacionalidad.pais }}</p>
+            </div>
+            <div class="bloque">
+                <p>CUIL: {{discapacidad.cuil}}</p>
+
+                <p>Datos discapacidad: CUD: {{discapacidad.cud}} Vigencia: {{discapacidad.cudvigencia|date('d-m-Y')}}</p>
+                <p>Diagnóstico: {{discapacidad.cuddiagnostico}}</p>
+                <p>Discapacidad: {{discapacidad.discapacidad.nombre}}</p>
+                <p>Causa: {{discapacidad.causa}}</p>
+                <p>Pensión: {{discapacidad.pension}}</p>
+                <p>Obra social: {{discapacidad.obrasocial.denominacion}}</p>
+                
+                <p>Datos educación-trabajo:</p>
+                <p>Nivel Instrucción: {{discapacidad.nivelinstruccion}}</p>
+                <p>Tipo Modalidad: {{discapacidad.tipomodalidad}}</p>
+                <p>Experiencia laboral: {{discapacidad.experiencialaboral}}</p>
+                <p>Actividades: {{discapacidad.actividades}}</p>
+                <p>Nivel Educación: {{discapacidad.niveleducacion}}</p>
+                <p>Residencia: {{discapacidad.residencia}}</p>
+            </div>
+        </div>
+	</div>
+{% endblock %}
