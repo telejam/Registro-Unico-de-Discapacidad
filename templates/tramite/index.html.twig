@@ -3,9 +3,15 @@
 {% block title %}Tramites{% endblock %}
 
 {% block body %}
+   {{parent()}}
+
+    <div class="btnAgregar">
+        <a href="/tramite/create" class="btn mt-4" id="agregar"><i class="fas fa-plus"></i>Agregar nuevo tramite</a>
+    </div>
     
     {% for tramit in tramite %}
-        <p>{{ tramit.fechaInicio }} {{ tramit.tipoTramite }}</p>
+        <p>Fecha de inicio: {{ tramit.fechaInicio|date('d-m-Y') }} </p>
+        <p>Descripción: {{ tramit.observacion}}</p>
     {% endfor %}
 
 {% endblock %}

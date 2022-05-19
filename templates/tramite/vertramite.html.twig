@@ -3,9 +3,10 @@
 {% block title %}Tramite{% endblock %}
 
 {% block body %}
+    {{parent()}}
 
-    
+    <p>Fecha de inicio: {{ tramit.fechaInicio|date('d-m-Y') }} </p>
+    <p>Descripción: {{ tramit.observacion}}</p>
 
-    
 
 {% endblock %}

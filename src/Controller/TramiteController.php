@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 class TramiteController extends AbstractController
 {
     /**
-     * @Route("/tramites", name="tramites")
+     * @Route("/tramite", name="tramite")
      */
     public function getAll(): Response
     {
