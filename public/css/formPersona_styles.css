@@ -33,3 +33,7 @@ form button{
     margin-left: auto;
     
 }
+
+.table>:not(caption)>*>* {
+    padding: 5px 5px 5px 5px;
+}
