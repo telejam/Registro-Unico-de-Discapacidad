@@ -12,17 +12,39 @@ use Symfony\Component\HttpFoundation\Request;
 class TramiteController extends AbstractController
 {
     /**
-     * @Route("/tramite", name="tramite")
+     * @Route("/tramites", name="tramites")
      */
     public function getAll(): Response
     {
         $em = $this->getDoctrine()->getManager();
-        $tramite = $em->getRepository(Tramite::class)->findAll();
+        $tramites = $em->getRepository(Tramite::class)->findAll();
 
         return $this->render('tramite/index.html.twig', [
             'controller_name' => 'TramiteController',
-            'tramite' => $tramite
+            'tramite' => $tramites
         ]);
+    }
+
+     /**
+     * @Route("/tramite/{id}", name="vertramite")
+     */
+    public function getBy($id)
+    {
+            $em = $this->getDoctrine()->getManager();
+            $tramite = $em->getRepository(Tramite::class)->find($id); 
+            $tipotramite = $tramite->getTipotramite();
+            $numeroexp = $tramite->getNumeroexpediente();
+            $estadotramite = $tramite->getEstadotramite();
+            $persona = $tramite->getPersona();
+
+            return $this->render('tramite/vertramite.html.twig', [
+                'controller_name' => 'TramiteController',
+                'tramite' => $tramite, 
+                'tipotramite' => $tipotramite,
+                'numeroexpediente' => $numeroexp,
+                'estadotramite' => $estadotramite,
+                'persona'=> $persona
+            ]);
     }
     
     /**

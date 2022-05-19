@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MesaDeEntradaController extends AbstractController
 {
     /**
-     * @Route("/mesadeentrada", name="mesadeentrada")
+     * @Route("/", name="mesadeentrada")
      */
     public function index(Request $request): Response
     {
