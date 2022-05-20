@@ -10,16 +10,150 @@
 		<h2>Editar datos de persona</h2>
 	</div>
 
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success">
-            {{ message }}
-        </div>
-    {% endfor %}
-
     {{ form(formulario)}}
 
     <div class="btnCancelar">
         <a href="/personas" class="btn btn-danger mb-4" id="cancelar">Cancelar</a>
     </div>
+
+    <script>
+    
+        let selectMes = document.querySelectorAll('select')[0];
+        selectMes[0].text = 'Enero';
+        selectMes[1].text = 'Febrero';
+        selectMes[2].text = 'Marzo';
+        selectMes[3].text = 'Abril';
+        selectMes[4].text = 'Mayo';
+        selectMes[5].text = 'Junio';
+        selectMes[6].text = 'Julio';
+        selectMes[7].text = 'Agosto';
+        selectMes[8].text = 'Septiembre';
+        selectMes[9].text = 'Octubre';
+        selectMes[10].text = 'Noviembre';
+        selectMes[11].text = 'Diciembre';
+
+        const divPersona = document.querySelectorAll('div')[4];
+
+        {# Nombre y Apellido #}
+        let nombre = divPersona.children[0];
+        let apellido = divPersona.children[1];
+
+        {# Fecha de Nacimiento #}
+        let nacimiento = divPersona.children[2];
+
+        {# Sexo y Estado civil #}
+        let sexo = divPersona.children[3];
+        let estadoCivil = divPersona.children[4];
+
+        {# DNI #}
+        let dniTipo = divPersona.children[5];
+        let dniTramite = divPersona.children[6];
+        let dniNumero = divPersona.children[7];
+
+        {# Nacionalidad, Provincia y Ciudad #}
+        let nacionalidad = divPersona.children[8];
+        let provincia = divPersona.children[9];
+        let ciudad = divPersona.children[10];
+
+        {# Calle y Altura #}
+        let calle = divPersona.children[11];
+        let altura = divPersona.children[12];
+
+        {# Piso y Depto #}
+        let piso = divPersona.children[13];
+        let depto = divPersona.children[14];
+
+        {# Barrio #}
+        let barrio = divPersona.children[15];
+
+        {# Usuario #}
+        let usuario = divPersona.children[16];
+
+
+
+        const tipoDocumento = document.querySelectorAll('select')[4];
+        const tramiteDocumento = document.querySelectorAll('input')[3];
+        const numeroDocumento = document.querySelectorAll('input')[4];
+        const btnGuardar = document.querySelectorAll('button')[1];
+
+
+
+        {# divs contenedores #}
+        let divNombre = document.createElement('div');
+        let divNacimiento = document.createElement('div');
+        let divSexo = document.createElement('div');
+        let divDocumento = document.createElement('div');
+        let divNacionalidad = document.createElement('div');
+        let divCalle = document.createElement('div');
+        let divDepto = document.createElement('div');
+        let divBarrio = document.createElement('div');
+        let divUsuario = document.createElement('div');
+
+
+
+        {# appends #}
+        divPersona.appendChild(divNombre);
+        divPersona.appendChild(divNacimiento);
+        divPersona.appendChild(divNacionalidad)
+        divPersona.appendChild(divSexo);
+        divPersona.appendChild(divDocumento);
+        divPersona.appendChild(divCalle);
+        divPersona.appendChild(divDepto);
+        divPersona.appendChild(divBarrio);
+        divPersona.appendChild(divUsuario);
+
+
+
+        {# Nombre y apellido #}
+        divNombre.appendChild(nombre);
+        divNombre.appendChild(apellido);
+
+        {# Fecha de nacimiento #}
+        divNacimiento.appendChild(nacimiento);
+
+        {# Sexo y estado civil #}
+        divSexo.appendChild(sexo);
+        divSexo.appendChild(estadoCivil);
+
+        {# Nacionalidad, provincia y Ciudad #}
+        divNacionalidad.appendChild(nacionalidad);
+        divNacionalidad.appendChild(provincia);
+        divNacionalidad.appendChild(ciudad);
+
+        {# DNI #}
+        divDocumento.appendChild(dniTipo);
+        divDocumento.appendChild(dniTramite);
+        divDocumento.appendChild(dniNumero);
+
+        {# Calle y Altura #}
+        divCalle.appendChild(calle);
+        divCalle.appendChild(altura);
+
+        {# Piso y Depto #}
+        divDepto.appendChild(depto);
+        divDepto.appendChild(piso);
+
+        {# Barrio #}
+        divBarrio.appendChild(barrio);
+
+        {# Usuario #}
+        divUsuario.appendChild(usuario);
+
+        {# Botón Guardar #}
+        divPersona.appendChild(btnGuardar);
+        
+
+
+        divNombre.classList.add('divNombre');
+        divNacimiento.classList.add('divNacimiento');
+        divNacionalidad.classList.add('divNacionalidad');
+        divSexo.classList.add('divSexo');
+        divDocumento.classList.add('divDocumento');
+        divCalle.classList.add('divCalle');
+        divDepto.classList.add('divDepto');
+        divBarrio.classList.add('divBarrio');
+        divUsuario.classList.add('divUsuario');
+
+    </script>
 
 {% endblock %}
