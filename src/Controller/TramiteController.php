@@ -26,14 +26,13 @@ class TramiteController extends AbstractController
     }
 
      /**
-     * @Route("/tramite/{id}", name="vertramite")
+     * @Route("/tramite/{numeroExpediente}", name="vertramite")
      */
-    public function getBy($id)
+    public function getBy($numeroExpediente)
     {
             $em = $this->getDoctrine()->getManager();
-            $tramite = $em->getRepository(Tramite::class)->find($id); 
-            $tipotramite = $tramite->getTipotramite();
-            $numeroexp = $tramite->getNumeroexpediente();
+            $tramite = $em->getRepository(Tramite::class)->find($numeroExpediente); 
+            $tipotramite = $tramite->getTipoTramite();
             $estadotramite = $tramite->getEstadotramite();
             $persona = $tramite->getPersona();
 
@@ -41,14 +40,13 @@ class TramiteController extends AbstractController
                 'controller_name' => 'TramiteController',
                 'tramite' => $tramite, 
                 'tipotramite' => $tipotramite,
-                'numeroexpediente' => $numeroexp,
                 'estadotramite' => $estadotramite,
                 'persona'=> $persona
             ]);
     }
     
     /**
-     * @Route("/tramite/create", name="createtramite")
+     * @Route("/createtramite", name="createtramite")
      */
     public function create(Request $request): Response
     {
@@ -61,7 +59,7 @@ class TramiteController extends AbstractController
             $em->persist($tramite);
             $em->flush();
             $this->addFlash(type: 'exito', message: 'Se ha registrado exitosamente.');
-            return $this->redirectToRoute('tramites');
+            return $this->redirectToRoute('tramite');
         }
         return $this->render('tramite/create.html.twig', [
             'controller_name' => 'TramiteController',
@@ -70,13 +68,13 @@ class TramiteController extends AbstractController
     }
 
       /**
-     * @Route("/tramite/edit/{id}", name="edittramite")
+     * @Route("/tramite/edit/{numeroExpediente}", name="edittramite")
      */
-    public function edit(Tramite $tramite, Request $request, $id): Response
+    public function edit(Tramite $tramite, Request $request, $numeroExpediente): Response
     {
         
         $em = $this->getDoctrine()->getManager();
-        $tramite = $em->getRepository(Tramite::class)->find($id);
+        $tramite = $em->getRepository(Tramite::class)->find($numeroExpediente);
         $form = $this->createForm(TramiteType::class, $tramite);
         $form->handleRequest($request);
 
@@ -86,7 +84,7 @@ class TramiteController extends AbstractController
             $this->addFlash('success', 'Tramite Modificado');
 
             return $this->redirectToRoute('tramite', [
-                'id'=>$id
+                'numeroExpediente'=>$numeroExpediente
             ]);
         }
 
@@ -97,12 +95,12 @@ class TramiteController extends AbstractController
     }
 
      /**
-     * @Route("/tramite/delete/{id}", name="deletetramite")
+     * @Route("/tramite/delete/{numeroExpediente}", name="deletetramite")
      */
-    public function delete($id)
+    public function delete($numeroExpediente)
     {
             $em = $this->getDoctrine()->getManager();
-            $tramite = $em->getRepository(Tramite::class)->find($id);
+            $tramite = $em->getRepository(Tramite::class)->find($numeroExpediente);
             $em->remove($tramite);
             $em->flush();
 

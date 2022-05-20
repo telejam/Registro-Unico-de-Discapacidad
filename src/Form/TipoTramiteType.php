@@ -19,7 +19,7 @@ class TipoTramiteType extends AbstractType
             ->add('tipo', ChoiceType::class, [
                 'choices'=>[
                     'Interno'=>true,
-                    'Externo'=>true,
+                    'Externo'=>false,
                 ]
             ])
             ->add('intervenciones')

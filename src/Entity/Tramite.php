@@ -43,7 +43,7 @@ class Tramite
     private $fecharesolucion = NULL;
 
     /**
-     * @var \Persona
+     * @var Persona
      *
      * @ORM\ManyToOne(targetEntity="Persona")
      * @ORM\JoinColumns({
@@ -53,7 +53,7 @@ class Tramite
     private $persona;
 
     /**
-     * @var \Usuario
+     * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="Usuario")
      * @ORM\JoinColumns({
@@ -63,7 +63,7 @@ class Tramite
     private $usuario;
 
     /**
-     * @var \EstadoTramite
+     * @var EstadoTramite
      *
      * @ORM\ManyToOne(targetEntity="EstadoTramite")
      * @ORM\JoinColumns({
@@ -73,7 +73,7 @@ class Tramite
     private $estadotramite;
 
     /**
-     * @var \TipoTramite
+     * @var TipoTramite
      *
      * @ORM\ManyToOne(targetEntity="TipoTramite")
      * @ORM\JoinColumns({
@@ -110,6 +110,13 @@ class Tramite
     {
         return $this->numeroexpediente;
     }
+
+    // public function setNumeroexpediente(?int $numeroExpediente): self
+    // {
+    //     $this->$numeroExpediente = $numeroExpediente;
+
+    //     return $this;
+    // }
 
     public function getFecharesolucion(): ?\DateTimeInterface
     {
