@@ -37,16 +37,13 @@
         });
 
         const divPersona = document.querySelectorAll('div')[4];
-        console.log(divPersona);
 
         {# Nombre y Apellido #}
         let nombre = divPersona.children[0];
         let apellido = divPersona.children[1];
 
-        {# Fecha de Nacimiento #}
+        {# Fecha de nacimiento #}
         let nacimiento = divPersona.children[2];
-
-        {# Sexo y Estado civil #}
         let sexo = divPersona.children[3];
         let estadoCivil = divPersona.children[4];
 
@@ -76,22 +73,13 @@
 
 
 
-        const tipoDocumento = document.querySelectorAll('select')[4];
-        console.log(tipoDocumento);
-        const tramiteDocumento = document.querySelectorAll('input')[3];
-        console.log(tramiteDocumento);
-        const numeroDocumento = document.querySelectorAll('input')[4];
-        console.log(numeroDocumento);
-
         const btnGuardar = document.querySelectorAll('button')[1];
-        console.log(btnGuardar);
 
 
 
         {# divs contenedores #}
         let divNombre = document.createElement('div');
         let divNacimiento = document.createElement('div');
-        let divSexo = document.createElement('div');
         let divDocumento = document.createElement('div');
         let divNacionalidad = document.createElement('div');
         let divCalle = document.createElement('div');
@@ -105,7 +93,6 @@
         divPersona.appendChild(divNombre);
         divPersona.appendChild(divNacimiento);
         divPersona.appendChild(divNacionalidad)
-        divPersona.appendChild(divSexo);
         divPersona.appendChild(divDocumento);
         divPersona.appendChild(divCalle);
         divPersona.appendChild(divDepto);
@@ -114,18 +101,17 @@
 
 
 
-        {# Nombre y apellido #}
+        {# Nombre y Apellido #}
         divNombre.appendChild(nombre);
         divNombre.appendChild(apellido);
 
         {# Fecha de nacimiento #}
         divNacimiento.appendChild(nacimiento);
+        divNacimiento.appendChild(sexo);
+        divNacimiento.appendChild(estadoCivil);
 
-        {# Sexo y estado civil #}
-        divSexo.appendChild(sexo);
-        divSexo.appendChild(estadoCivil);
 
-        {# Nacionalidad, provincia y Ciudad #}
+        {# Nacionalidad, Provincia y Ciudad #}
         divNacionalidad.appendChild(nacionalidad);
         divNacionalidad.appendChild(provincia);
         divNacionalidad.appendChild(ciudad);
@@ -149,7 +135,7 @@
         {# Usuario #}
         divUsuario.appendChild(usuario);
 
-        {# Botón Guardar #}
+        {# BotÃ³n Guardar #}
         divPersona.appendChild(btnGuardar);
         
 
@@ -157,7 +143,6 @@
         divNombre.classList.add('divNombre');
         divNacimiento.classList.add('divNacimiento');
         divNacionalidad.classList.add('divNacionalidad');
-        divSexo.classList.add('divSexo');
         divDocumento.classList.add('divDocumento');
         divCalle.classList.add('divCalle');
         divDepto.classList.add('divDepto');

@@ -21,12 +21,30 @@
 .btnCancelar {
     display: flex;
     text-align: center;
-    justify-content: center
+    justify-content: center;
+    border-radius: 5px;
 }
 
 #cancelar {
     width: 50%;
     height: 45px;
-    border-radius: 0;
     padding: 10px;
+}
+
+#tipo_tramite_Registrar {
+    border-radius: 5px;
+}
+
+#tipo_tramite_Registrar:hover {
+    transition: all 0.5s ease;
+    background-color: #00A65A;
+}
+
+#obra_social_Guardar {
+    border-radius: 5px;
+}
+
+#obra_social_Guardar:hover {
+    transition: all 0.5s ease;
+    background-color: #00A65A;
 }

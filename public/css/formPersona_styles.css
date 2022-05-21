@@ -38,6 +38,15 @@ form button{
     padding: 5px 5px 5px 5px;
 }
 
+#persona_Guardar {
+    border-radius: 5px;
+}
+
+#persona_Guardar:hover {
+    transition: all 0.5s ease;
+    background-color: #00A65A;
+}
+
 .divNombre {
     display: flex;
     gap: 45px;
@@ -51,6 +60,7 @@ form button{
 .divNacimiento {
     display: flex;
     margin-bottom: 5px;
+    gap: 33px
 }
 
 .divNacimiento div {
@@ -59,6 +69,10 @@ form button{
 
 #persona_fechanacimiento {
     display: flex;
+}
+
+.divNacimiento select {
+    width: auto;
 }
 
 .divNacionalidad {

@@ -1,6 +1,6 @@
-#padron div {
+/* #padron div {
     flex-direction: column;
-}
+} */
 
 .sectionTitle {
     text-align: center;
@@ -28,6 +28,12 @@
     width: 100%;
     margin-right: auto;
     margin-left: auto;
+    border-radius: 5px;
+}
+
+#padron_Registrar:hover {
+    transition: all 0.5s ease;
+    background-color: #00A65A;
 }
 
 #padron_cudvigencia {
@@ -52,4 +58,44 @@
 
 #padron {
     text-align: left;
+}
+
+.divCUIL {
+    margin-bottom: 5px;
+}
+
+.divCUD {
+    display: flex;
+    gap: 45px;
+    margin-bottom: 5px;
+}
+
+.divCUD select {
+    width: auto;
+}
+
+.divDiscapacidad {
+    display: flex;
+    gap: 45px;
+    margin-bottom: 5px;
+}
+
+.divResidencia {
+    display: flex;
+    gap: 45px;
+    margin-bottom: 10px;
+}
+
+.divEducacion {
+    display: flex;
+    gap: 45px;
+    margin-bottom: 10px;
+}
+
+.divExperienciaLaboral {
+    margin-bottom: 10px;
+}
+
+.divActividades {
+    margin-bottom: 10px;
 }
