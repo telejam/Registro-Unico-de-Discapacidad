@@ -26,12 +26,12 @@ class TramiteController extends AbstractController
     }
 
      /**
-     * @Route("/tramite/{numeroExpediente}", name="vertramite")
+     * @Route("/tramite/{numeroexpediente}", name="vertramite")
      */
-    public function getBy($numeroExpediente)
+    public function getBy($numeroexpediente)
     {
             $em = $this->getDoctrine()->getManager();
-            $tramite = $em->getRepository(Tramite::class)->find($numeroExpediente); 
+            $tramite = $em->getRepository(Tramite::class)->find($numeroexpediente); 
             $tipotramite = $tramite->getTipoTramite();
             $estadotramite = $tramite->getEstadotramite();
             $persona = $tramite->getPersona();
@@ -68,13 +68,13 @@ class TramiteController extends AbstractController
     }
 
       /**
-     * @Route("/tramite/edit/{numeroExpediente}", name="edittramite")
+     * @Route("/tramite/edit/{numeroexpediente}", name="edittramite")
      */
-    public function edit(Tramite $tramite, Request $request, $numeroExpediente): Response
+    public function edit(Request $request, $numeroexpediente): Response
     {
         
         $em = $this->getDoctrine()->getManager();
-        $tramite = $em->getRepository(Tramite::class)->find($numeroExpediente);
+        $tramite = $em->getRepository(Tramite::class)->find($numeroexpediente);
         $form = $this->createForm(TramiteType::class, $tramite);
         $form->handleRequest($request);
 
@@ -84,7 +84,7 @@ class TramiteController extends AbstractController
             $this->addFlash('success', 'Tramite Modificado');
 
             return $this->redirectToRoute('tramite', [
-                'numeroExpediente'=>$numeroExpediente
+                'numeroexpediente'=>$numeroexpediente
             ]);
         }
 
@@ -95,12 +95,12 @@ class TramiteController extends AbstractController
     }
 
      /**
-     * @Route("/tramite/delete/{numeroExpediente}", name="deletetramite")
+     * @Route("/tramite/delete/{numeroexpediente}", name="deletetramite")
      */
-    public function delete($numeroExpediente)
+    public function delete($numeroexpediente)
     {
             $em = $this->getDoctrine()->getManager();
-            $tramite = $em->getRepository(Tramite::class)->find($numeroExpediente);
+            $tramite = $em->getRepository(Tramite::class)->find($numeroexpediente);
             $em->remove($tramite);
             $em->flush();
 

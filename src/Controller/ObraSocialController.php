@@ -49,7 +49,7 @@ class ObraSocialController extends AbstractController
      /**
      * @Route("/obrasocial/edit/{id}", name="editobrasocial")
      */
-    public function edit(ObraSocial $obrasocial, Request $request, $id): Response
+    public function edit(Request $request, $id): Response
     {
         
         $em = $this->getDoctrine()->getManager();

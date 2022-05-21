@@ -49,10 +49,10 @@
                     <td>{{discapacitado.niveleducacion}}</td>
                     <td>{{discapacitado.residencia}}</td>
 
-                    {# <td>
-                        <a href="{{ path('editpadron', {id: 'discapacitado.id'}) }}"><i class="fas fa-edit"></i></a>
-                        <a href="{{ path('deletepadron', {id: 'discapacitado.id'}) }}"><i class="fas fa-trash-alt"></i></a>
-                    </td> #}
+                    <td>
+                        <a href="{{ path('editpadron', {'id': discapacitado.id.id}) }}"><i class="fas fa-edit"></i></a>
+                        <a href="{{ path('deletepadron', {'id': discapacitado.id.id}) }}"><i class="fas fa-trash-alt"></i></a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

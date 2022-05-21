@@ -68,7 +68,7 @@ class PadronController extends AbstractController
     /**
      * @Route("/padron/edit/{id}", name="editpadron")
      */
-    public function edit(Padron $padron, Request $request, $id): Response
+    public function edit(Request $request, $id): Response
     {
         
         $em = $this->getDoctrine()->getManager();

@@ -111,13 +111,6 @@ class Tramite
         return $this->numeroexpediente;
     }
 
-    // public function setNumeroexpediente(?int $numeroExpediente): self
-    // {
-    //     $this->$numeroExpediente = $numeroExpediente;
-
-    //     return $this;
-    // }
-
     public function getFecharesolucion(): ?\DateTimeInterface
     {
         return $this->fecharesolucion;

@@ -5,11 +5,16 @@
 {% block body %}
     {{parent()}}
 
-    <h2>TRAMITE INDIVIDUAL</h2>
-    {# <p>Fecha de inicio: {{ tramit.fechaInicio|date('d-m-Y') }} </p>
-    <p>Descripción: {{ tramit.observacion}}</p>
-    <p>Tipo de trámite: {{tramit.tipotramite.nombre}}</p> #}
-    
+    <div class="sectionTitle">
+		<h2>Trámite</h2>
+	</div>
+
+    <p>Fecha de inicio: {{ tramite.fechaInicio|date('d-m-Y') }} </p>
+    <p>Observación: {{ tramite.observacion}}</p>
+    <p>Tipo de trámite: {{tramite.tipotramite.nombre}}</p>
+    <p>Persona: {{tramite.persona.dniNumero}}</p>
+    <p>Estado de trámite: {{tramite.estadoTramite.id}}</p>
+    <p>Usuario: {{tramite.usuario.user}}</p>
 
 
 {% endblock %}

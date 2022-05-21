@@ -3,7 +3,11 @@
 {% block title %}Hello TramiteController!{% endblock %}
 
 {% block body %}
-	 {{parent()}}
+	{{parent()}}
+
+	<div class="sectionTitle">
+		<h2>Editar información del trámite</h2>
+	</div>
 	
 	{{form(formulario)}}
 

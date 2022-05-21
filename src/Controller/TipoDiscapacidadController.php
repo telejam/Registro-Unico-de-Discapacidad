@@ -49,7 +49,7 @@ class TipoDiscapacidadController extends AbstractController
      /**
      * @Route("/tipodiscapacidad/edit/{id}", name="edittipodiscapacidad")
      */
-    public function edit(TipoDiscapacidad $tipoDiscapacidad, Request $request, $id): Response
+    public function edit(Request $request, $id): Response
     {
         
         $em = $this->getDoctrine()->getManager();

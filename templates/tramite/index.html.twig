@@ -5,14 +5,22 @@
 {% block body %}
    {{parent()}}
 
+     <div class="sectionTitle">
+		<h2>Trámites</h2>
+	</div>
+
     <div class="btnAgregar">
         <a href="/createtramite" class="btn mt-4" id="agregar"><i class="fas fa-plus"></i>Agregar nuevo tramite</a>
     </div>
     
     {% for tramit in tramite %}
         <p>Fecha de inicio: {{ tramit.fechaInicio|date('d-m-Y') }} </p>
-        <p>Descripción: {{ tramit.observacion}}</p>
+        <p>Observación: {{ tramit.observacion}}</p>
         <p>Tipo de trámite: {{tramit.tipotramite.nombre}}</p>
+        <p>Persona: {{tramit.persona.dniNumero}}</p>
+        <p>Estado de trámite: {{tramit.estadoTramite.id}}</p>   
+        <p>Usuario: {{tramit.usuario.user}}</p>
+
     {% endfor %}
 
 {% endblock %}

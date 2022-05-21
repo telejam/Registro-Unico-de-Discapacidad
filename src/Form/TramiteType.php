@@ -20,9 +20,9 @@ class TramiteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('fechainicio', ['label'=>'Fecha de Inicio'])
+            ->add('fechainicio', DateType::class, ['label'=>'Fecha de Inicio'])
             ->add('observacion')
-            ->add('fecharesolucion', DateType::class)
+            // ->add('fecharesolucion', DateType::class)
             ->add('persona',EntityType::class, [
                 'class' =>Persona::class,
                 'choice_label' =>'dniNumero'

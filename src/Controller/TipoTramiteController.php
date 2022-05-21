@@ -50,7 +50,7 @@ class TipoTramiteController extends AbstractController
     /**
      * @Route("/tipotramite/edit/{id}", name="edittipotramite")
      */
-    public function edit(TipoTramite $tipotramite, Request $request, $id): Response
+    public function edit(Request $request, $id): Response
     {
         $em = $this->getDoctrine()->getManager();
         $tipotramite = $em->getRepository(TipoTramite::class)->find($id);
