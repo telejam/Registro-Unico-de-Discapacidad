@@ -38,12 +38,34 @@
 
                     <td>
                         <a href="{{ path('edittipotramite', {'id': tipo.id}) }}"><i class="fas fa-edit"></i></a>
-                        <a href="{{ path('deletetipotramite', {'id': tipo.id}) }}"><i class="fas fa-trash-alt"></i></a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ tipo.id }}"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
 
     </table>
+
+    {% for tipo in tipotramite %}
+    <div class="modal fade" id="modal{{ tipo.id }}" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content"> <!-- ENVOLTORIO/WRAPPER DEL MODAL-->
+            <div class="modal-header"> <!-- CABECERA/HEADER DEL MODAL-->
+                <h5 class="modal-title">Borrar tramite</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body"> <!-- CUERPO/BODY DEL MODAL-->
+                <p> &iquest; Est&aacute seguro de que desea eliminarlo &quest; </p>
+            </div>
+            
+            <div class="modal-footer"> <!-- PIE/FOOTER DEL MODAL-->
+                <!--El atributo data-bs-dismiss identifica al botón como el que puede "cerrar" el modal -->
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <a href="{{ path('deletetipotramite', {'id': tipo.id}) }}" class="btn btn-primary">Eliminar</a>
+            </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 
 {% endblock %}
