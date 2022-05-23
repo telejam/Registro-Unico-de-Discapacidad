@@ -7,7 +7,7 @@
     {{parent()}}
 
     <div class="sectionTitle">
-		<h2>Tipos de Trámites</h2>
+		<h2>TIPOS DE TRÁMITES</h2>
 	</div>
 
     <div class="btnAgregar">
@@ -51,17 +51,17 @@
         <div class="modal-dialog">
             <div class="modal-content"> <!-- ENVOLTORIO/WRAPPER DEL MODAL-->
             <div class="modal-header"> <!-- CABECERA/HEADER DEL MODAL-->
-                <h5 class="modal-title">Borrar tramite</h5>
+                <h5 class="modal-title">ELIMINAR TIPO DE TRÁMITE</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body"> <!-- CUERPO/BODY DEL MODAL-->
-                <p> &iquest; Est&aacute seguro de que desea eliminarlo &quest; </p>
+                <p> &iquest;Est&aacute seguro que desea eliminar el registro&quest; </p>
             </div>
             
             <div class="modal-footer"> <!-- PIE/FOOTER DEL MODAL-->
                 <!--El atributo data-bs-dismiss identifica al botón como el que puede "cerrar" el modal -->
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <a href="{{ path('deletetipotramite', {'id': tipo.id}) }}" class="btn btn-primary">Eliminar</a>
+                <a href="{{ path('deletetipotramite', {'id': tipo.id}) }}" class="btn btn-danger">Eliminar</a>
             </div>
             </div>
         </div>

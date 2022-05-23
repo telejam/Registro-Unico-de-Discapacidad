@@ -131,7 +131,10 @@ i {
 
 .fa-trash-alt{
     color: rgb(230, 23, 23);
-    margin-left: 15px;
+}
+
+.fa-info-circle {
+    color: #00A65A;
 }
 
 @media (max-width:991px) {
@@ -160,4 +163,23 @@ i {
     margin: 0;
     width: auto;
     margin-left: 1rem;
+}
+
+.modal-header {
+    background-color: #33BB66;
+    color: #ffffff;
+}
+
+.modal-body p {
+    display: inline-flex;
+    font-weight: 600;
+}
+
+.obraSocialModal {
+    line-height: 1;
+    margin-bottom: 15px;
+}
+
+.modal-title {
+    border-bottom: 1px solid #ffffff;
 }

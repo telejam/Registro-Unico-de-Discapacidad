@@ -13,7 +13,7 @@
 
 .sectionTitle h2 {
     border-bottom: 1px solid white;
-    width: 40%;
+    width: 65%;
     margin-right: auto;
     margin-left: auto;
 }
@@ -98,4 +98,8 @@
 
 .divActividades {
     margin-bottom: 10px;
+}
+
+#obraSocialTabla {
+    width: 35%;
 }
