@@ -33,19 +33,6 @@
                 <input type="text">
             </div>
             <div class="bloque">
-                <p>Responsable</p>
-                <p>Responsable</p>
-            </div>
-            <div class="bloque">
-                <p>Tramite</p>
-                <p>Tramite</p>
-                <p>Tramite</p>
-                <p>Tramite</p>
-                <p>Tramite</p>
-            </div>
-        </div>
-		<div>
-            <div class="bloque">
                 <p>{{ discapacitado.nombre }} {{ discapacitado.apellido }}</p>
                 <p>Fecha nac.: {{ discapacitado.fechaNacimiento|date('d-m-Y') }}</p>
                 <p>Sexo: {{ discapacitado.sexo }}</p>
@@ -55,6 +42,14 @@
                 <p>Barrio: {{ discapacitado.barrio.nombre }}</p>
                 <p>{{ discapacitado.ciudad.nombre }} - {{ discapacitado.provincia.nombre }} - {{ discapacitado.nacionalidad.pais }}</p>
             </div>
+            <div class="bloque">
+                <h2>Trámites</h2>
+                {% for tramite in tramites %}
+                    <p>{{ tramite.fechaInicio|date('d-m-Y') }} Nro. {{ tramite.numeroExpediente }} {{ tramite.estadoTramite.estado }}</p>
+                {% endfor %}
+            </div>
+        </div>
+		<div>
             <div class="bloque">
                 <p>CUIL: {{discapacidad.cuil}}</p>
 
@@ -72,6 +67,12 @@
                 <p>Actividades: {{discapacidad.actividades}}</p>
                 <p>Nivel Educación: {{discapacidad.niveleducacion}}</p>
                 <p>Residencia: {{discapacidad.residencia}}</p>
+            </div>
+            <div class="bloque">
+                <h2>Responsables</h2>
+                {% for responsable in responsables %}
+                    <p>{{ responsable.nombre }} {{ responsable.apellido }}</p>
+                {% endfor %}
             </div>
         </div>
 	</div>
