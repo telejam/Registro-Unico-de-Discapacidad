@@ -13,11 +13,18 @@ use Doctrine\ORM\Mapping as ORM;
 class ModificacionTramite
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="fechaSeguimiento", type="date", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $fechaseguimiento;
 
@@ -29,7 +36,17 @@ class ModificacionTramite
     private $observacion;
 
     /**
-     * @var \Usuario
+     * @var Tramite
+     *
+     * @ORM\ManyToOne(targetEntity="Tramite")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="numeroExpediente", referencedColumnName="numeroExpediente")
+     * })
+     */
+    private $numeroexpediente;
+
+    /**
+     * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="Usuario")
      * @ORM\JoinColumns({
@@ -38,21 +55,21 @@ class ModificacionTramite
      */
     private $usuario;
 
-    /**
-     * @var \Tramite
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Tramite")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="numeroExpediente", referencedColumnName="numeroExpediente")
-     * })
-     */
-    private $numeroexpediente;
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getFechaseguimiento(): ?\DateTimeInterface
     {
         return $this->fechaseguimiento;
+    }
+
+    public function setFechaseguimiento(\DateTimeInterface $fechaseguimiento): self
+    {
+        $this->fechaseguimiento = $fechaseguimiento;
+
+        return $this;
     }
 
     public function getObservacion(): ?string
@@ -67,18 +84,6 @@ class ModificacionTramite
         return $this;
     }
 
-    public function getUsuario(): ?Usuario
-    {
-        return $this->usuario;
-    }
-
-    public function setUsuario(?Usuario $usuario): self
-    {
-        $this->usuario = $usuario;
-
-        return $this;
-    }
-
     public function getNumeroexpediente(): ?Tramite
     {
         return $this->numeroexpediente;
@@ -87,6 +92,18 @@ class ModificacionTramite
     public function setNumeroexpediente(?Tramite $numeroexpediente): self
     {
         $this->numeroexpediente = $numeroexpediente;
+
+        return $this;
+    }
+
+    public function getUsuario(): ?Usuario
+    {
+        return $this->usuario;
+    }
+
+    public function setUsuario(?Usuario $usuario): self
+    {
+        $this->usuario = $usuario;
 
         return $this;
     }

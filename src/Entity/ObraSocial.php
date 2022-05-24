@@ -24,37 +24,37 @@ class ObraSocial
     /**
      * @var string
      *
-     * @ORM\Column(name="denominacion", type="string", length=100, nullable=false)
+     * @ORM\Column(name="denominacion", type="string", length=200, nullable=false)
      */
     private $denominacion;
 
     /**
-     * @var string
+     * @var string|null
      *
-     * @ORM\Column(name="nombre", type="string", length=45, nullable=false)
+     * @ORM\Column(name="nombre", type="string", length=45, nullable=true, options={"default"="NULL"})
      */
-    private $nombre;
+    private $nombre = 'NULL';
 
     /**
      * @var string
      *
-     * @ORM\Column(name="domicilio", type="string", length=50, nullable=false)
+     * @ORM\Column(name="domicilio", type="string", length=100, nullable=false)
      */
     private $domicilio;
 
     /**
-     * @var string
+     * @var string|null
      *
-     * @ORM\Column(name="observacion", type="string", length=45, nullable=false)
+     * @ORM\Column(name="observacion", type="string", length=200, nullable=true, options={"default"="NULL"})
      */
-    private $observacion;
+    private $observacion = 'NULL';
 
     /**
-     * @var string
+     * @var string|null
      *
-     * @ORM\Column(name="telefonoNumero", type="string", length=10, nullable=false)
+     * @ORM\Column(name="telefonoNumero", type="string", length=20, nullable=true, options={"default"="NULL"})
      */
-    private $telefononumero;
+    private $telefononumero = 'NULL';
 
     /**
      * @var bool
@@ -85,7 +85,7 @@ class ObraSocial
         return $this->nombre;
     }
 
-    public function setNombre(string $nombre): self
+    public function setNombre(?string $nombre): self
     {
         $this->nombre = $nombre;
 
@@ -109,7 +109,7 @@ class ObraSocial
         return $this->observacion;
     }
 
-    public function setObservacion(string $observacion): self
+    public function setObservacion(?string $observacion): self
     {
         $this->observacion = $observacion;
 
@@ -121,7 +121,7 @@ class ObraSocial
         return $this->telefononumero;
     }
 
-    public function setTelefononumero(string $telefononumero): self
+    public function setTelefononumero(?string $telefononumero): self
     {
         $this->telefononumero = $telefononumero;
 
