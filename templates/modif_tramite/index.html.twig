@@ -3,5 +3,17 @@
 {% block title %}Hello ModifTramiteController!{% endblock %}
 
 {% block body %}
+    {{parent()}}
+
+    <div class="sectionTitle">
+		<h2>TRÁMITES CON SEGUIMIENTO</h2>
+	</div>
+
+    {% for segui in seguimientos %}
+        <p>Numero de expediente: {{ segui.tramite.numeroExpediente}}</p>
+        <p>Fecha de seguimiento: {{ segui.fechaSeguimiento|date('d-m-Y') }} </p>
+        <p>Observación: {{ segui.observacion}}</p>
+    
+    {% endfor %}
 
 {% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ModifTramiteController!{% endblock %}
+
+{% block body %}
+	{{parent()}}
+
+	<div class="sectionTitle">
+		<h2>Seguimiento</h2>
+	</div>
+	
+	{{form(formulario)}}
+
+{% endblock %}

@@ -10,11 +10,12 @@
 	</div>
 
     <p>Fecha de inicio: {{ tramite.fechaInicio|date('d-m-Y') }} </p>
-    <p>Observación: {{ tramite.observacion}}</p>
     <p>Tipo de trámite: {{tramite.tipotramite.nombre}}</p>
+    <p>Observación: {{ tramite.observacion}}</p>
+    <p>Estado de trámite: {{tramite.estadoTramite.estado}}</p>
+    <p>Fecha de resolución: {{tramite.fechaResolucion|date('d-m-Y')}}
     <p>Persona: {{tramite.persona.dniNumero}}</p>
-    <p>Estado de trámite: {{tramite.estadoTramite.id}}</p>
-    <p>Usuario: {{tramite.usuario.user}}</p>
+    {# <p>Usuario: {{tramite.usuario.user}}</p> #}
 
 
 {% endblock %}
