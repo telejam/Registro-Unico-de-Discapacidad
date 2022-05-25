@@ -10,9 +10,10 @@
 	</div>
 
     {% for segui in seguimientos %}
-        <p>Numero de expediente: {{ segui.tramite.numeroExpediente}}</p>
+        <p>Numero de expediente del trámite: {{ segui.numeroExpediente.numeroExpediente}}</p>
         <p>Fecha de seguimiento: {{ segui.fechaSeguimiento|date('d-m-Y') }} </p>
         <p>Observación: {{ segui.observacion}}</p>
+        <p>Usuario: {{ segui.usuario.user}}</p>
     
     {% endfor %}
 
