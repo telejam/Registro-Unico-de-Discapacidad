@@ -67,34 +67,7 @@ class TramiteController extends AbstractController
         ]);     
     }
 
-      /**
-     * @Route("/tramite/edit/{numeroexpediente}", name="edittramite")
-     */
-    public function edit(Request $request, $numeroexpediente): Response
-    {
-        
-        $em = $this->getDoctrine()->getManager();
-        $tramite = $em->getRepository(Tramite::class)->find($numeroexpediente);
-        $form = $this->createForm(TramiteType::class, $tramite);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em->persist($tramite);
-            $em->flush();
-            $this->addFlash('success', 'Tramite Modificado');
-
-            return $this->redirectToRoute('tramite', [
-                'numeroexpediente'=>$numeroexpediente
-            ]);
-        }
-
-        return $this->render('tramite/edit.html.twig', [
-            'controller_name' => 'TramiteController',
-            'formulario' => $form->createView()
-        ]);
-    }
-
-     /**
+    /**
      * @Route("/tramite/delete/{numeroexpediente}", name="deletetramite")
      */
     public function delete($numeroexpediente)
