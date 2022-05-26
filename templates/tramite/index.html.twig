@@ -6,22 +6,45 @@
    {{parent()}}
 
      <div class="sectionTitle">
-		<h2>Trámites</h2>
+		<h2>TRÁMITES</h2>
 	</div>
 
     <div class="btnAgregar">
-        <a href="/createtramite" class="btn mt-4" id="agregar"><i class="fas fa-plus"></i>Agregar nuevo tramite</a>
+        <a href="/createtramite" class="btn mt-4" id="agregar"><i class="fas fa-plus"></i>Agregar nuevo trámite</a>
     </div>
-    
-    {% for tramit in tramite %}
-        <p>Fecha de inicio: {{ tramit.fechaInicio|date('d-m-Y') }} </p>
-        <p>Tipo de trámite: {{tramit.tipotramite.nombre}}</p>
-        <p>Observación: {{ tramit.observacion}}</p>
-        <p>Estado de trámite: {{tramit.estadoTramite.estado}}</p>   
-        <p>Fecha de resolución: {{tramit.fechaResolucion|date('d-m-Y')}}
-        <p>Persona: {{tramit.persona.dniNumero}}</p>
-        {# <p>Usuario: {{tramit.usuario.user}}</p> #}
 
-    {% endfor %}
+    <table id="tabla" class="table table-bordered table-striped text-center mt-4">
+
+        <thead>
+            <tr>
+                <th>Fecha de inicio</th>
+                <th>Tipo de trámite</th>
+                <th>Observación</th>
+                <th>Estado de trámite</th>
+                <th>Fecha de resolución</th>
+                <th>Persona</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for tramit in tramite %}
+                <tr>
+                    <td>{{ tramit.fechaInicio|date('d-m-Y') }}</td>
+                    <td>{{tramit.tipotramite.nombre}}</td>
+                    <td>{{ tramit.observacion}}</td>
+                    <td>{{tramit.estadoTramite.estado}}</td>
+                    <td>{{tramit.fechaResolucion|date('d-m-Y')}}</td>
+                    <td>{{tramit.persona.dniNumero}}</td>
+                    {# <td>Usuario: {{tramit.usuario.user}}</td> #}
+
+                    <td>
+                        <a href="{{ path('createseguimiento', {'id': tramit.numeroExpediente}) }}"><i class="fas fa-search"></i></a>
+                        {# <a href="{{ path('deletetramite', {'id': tramit.numeroExpediente}) }}"><i class="fas fa-trash-alt"></i></a> #}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}

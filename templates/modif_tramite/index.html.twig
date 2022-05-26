@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ModifTramiteController!{% endblock %}
+{% block title %}Trámites{% endblock %}
 
 {% block body %}
     {{parent()}}
@@ -9,12 +9,27 @@
 		<h2>TRÁMITES CON SEGUIMIENTO</h2>
 	</div>
 
-    {% for segui in seguimientos %}
-        <p>Numero de expediente del trámite: {{ segui.numeroExpediente.numeroExpediente}}</p>
-        <p>Fecha de seguimiento: {{ segui.fechaSeguimiento|date('d-m-Y') }} </p>
-        <p>Observación: {{ segui.observacion}}</p>
-        <p>Usuario: {{ segui.usuario.user}}</p>
-    
-    {% endfor %}
+    <table id="tabla" class="table table-bordered table-striped text-center mt-4">
+
+        <thead>
+            <tr>
+                <th>Numero de expediente del trámite</th>
+                <th>Fecha de seguimiento</th>
+                <th>Observación</th>
+                <th>Usuario</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for segui in seguimientos %}
+                <tr>
+                    <td>{{ segui.numeroExpediente.numeroExpediente}}</td>
+                    <td>{{ segui.fechaSeguimiento|date('d-m-Y') }}</td>
+                    <td>{{ segui.observacion}}</td>
+                    <td>{{ segui.usuario.user}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}

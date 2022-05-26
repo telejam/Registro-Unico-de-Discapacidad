@@ -1,14 +1,89 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TramiteController!{% endblock %}
+{% block title %}Trámite{% endblock %}
 
 {% block body %}
 	{{parent()}}
 
 	<div class="sectionTitle">
-		<h2>Trámite</h2>
+		<h2>TRÁMITE</h2>
 	</div>
 	
 	{{form(formulario)}}
+
+	<div class="btnCancelar">
+        <a href="/tramite" class="btn btn-danger mb-4" id="cancelar">Cancelar</a>
+    </div>
+
+	<script>
+
+		const divTramite = document.querySelectorAll('div')[4];
+
+		{# Fecha de inicio #}
+		let fechaInicio = divTramite.children[0];
+
+		{# Tipo de trámite y Estado del trámite #}
+		let tipoTramite = divTramite.children[1];
+		let estadoTramite = divTramite.children[3];
+
+		{# Observación #}
+		let observacion = divTramite.children[2];
+
+		{# Persona #}
+		let persona = divTramite.children[4];
+
+		{# Usuario #}
+		let usuario = divTramite.children[5];
+
+
+
+		const btnRegistrar = document.querySelectorAll('button')[1];
+
+
+		{# divs contenedores #}
+        let divFechaInicio = document.createElement('div');
+        let divTipoEstadoTramite = document.createElement('div');
+        let divObservacion = document.createElement('div');
+        let divPersona = document.createElement('div');
+        let divUsuario = document.createElement('div');
+
+
+		{# appends #}
+		divTramite.appendChild(divFechaInicio);
+        divTramite.appendChild(divTipoEstadoTramite);
+        divTramite.appendChild(divObservacion)
+        divTramite.appendChild(divPersona);
+        divTramite.appendChild(divUsuario);
+
+
+
+		{# Fecha de inicio #}
+		divFechaInicio.appendChild(fechaInicio);
+
+		{# Tipo de trámite y Estado del trámite #}
+		divTipoEstadoTramite.appendChild(tipoTramite);
+		divTipoEstadoTramite.appendChild(estadoTramite);
+
+		{# Observación #}
+		divObservacion.appendChild(observacion);
+
+		{# Persona #}
+		divPersona.appendChild(persona);
+
+		{# Usuario #}
+		divUsuario.appendChild(usuario);
+
+		{# Botón Registrar #}
+		divTramite.appendChild(btnRegistrar);
+
+
+
+		divFechaInicio.classList.add('divFechaInicio');
+        divTipoEstadoTramite.classList.add('divTipoEstadoTramite');
+        divObservacion.classList.add('divObservacion');
+        divPersona.classList.add('divPersona');
+        divUsuario.classList.add('divUsuario');
+
+	</script>
 
 {% endblock %}

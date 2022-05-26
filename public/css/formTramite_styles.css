@@ -1,0 +1,12 @@
+#tramite_fechainicio {
+    display: flex;
+}
+
+.divTipoEstadoTramite {
+    display: flex;
+    gap: 45px;
+}
+
+#modif_tramite_fechaseguimiento {
+    display: flex;
+}

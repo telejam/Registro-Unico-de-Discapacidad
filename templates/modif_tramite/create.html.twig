@@ -1,14 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ModifTramiteController!{% endblock %}
+{% block title %}Trámites{% endblock %}
 
 {% block body %}
 	{{parent()}}
 
 	<div class="sectionTitle">
-		<h2>Seguimiento</h2>
+		<h2>SEGUIMIENTO</h2>
 	</div>
 	
 	{{form(formulario)}}
 
+	<div class="btnCancelar">
+        <a href="/tramite" class="btn btn-danger mb-4" id="cancelar">Cancelar</a>
+    </div>
+	
 {% endblock %}
