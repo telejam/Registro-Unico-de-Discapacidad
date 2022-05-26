@@ -91,7 +91,6 @@ i {
 }
 
 #navbarSupportedContent ul li a:hover {
-    outline: 1px solid #ffffff;
     background-color: #ffffff;
     color: #33BB66;
 }
