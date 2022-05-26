@@ -39,12 +39,35 @@
                     {# <td>Usuario: {{tramit.usuario.user}}</td> #}
 
                     <td>
-                        <a href="{{ path('createseguimiento', {'id': tramit.numeroExpediente}) }}"><i class="fas fa-search"></i></a>
-                        {# <a href="{{ path('deletetramite', {'id': tramit.numeroExpediente}) }}"><i class="fas fa-trash-alt"></i></a> #}
+                        <a href="{{ path('createseguimiento', {'numeroexpediente': tramit.numeroExpediente}) }}"><i class="fas fa-search"></i></a>
+                        {# <a href="{{ path('deletetramite', {'id': tramit.numeroExpediente}) }}"><i class="fas fa-trash-alt"></i></a>  #}
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ tramit.numeroExpediente }}" ><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+
+       {% for tramit in tramite %}
+    <div class="modal fade" id="modal{{ tramit.numeroExpediente }}" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content"> <!-- ENVOLTORIO/WRAPPER DEL MODAL-->
+            <div class="modal-header"> <!-- CABECERA/HEADER DEL MODAL-->
+                <h5 class="modal-title">ELIMINAR TRÁMITE</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body"> <!-- CUERPO/BODY DEL MODAL-->
+                <p> &iquest;Est&aacute seguro que desea eliminar el registro&quest; </p>
+            </div>
+            
+            <div class="modal-footer"> <!-- PIE/FOOTER DEL MODAL-->
+                <!--El atributo data-bs-dismiss identifica al botón como el que puede "cerrar" el modal -->
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <a href="{{ path('deletetramite', {'numeroexpediente': tramit.numeroExpediente}) }}" class="btn btn-danger">Eliminar</a>
+            </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 
 {% endblock %}

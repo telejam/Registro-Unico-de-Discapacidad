@@ -19,13 +19,22 @@ class ModifTramiteType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $fechaHoy = new \DateTime();
+        $fechaHoy->setTimezone(new \DateTimeZone('America/Argentina/Buenos_Aires'));
+        
         $builder
             ->add('numeroexpediente', EntityType::class, [
                 'class' =>Tramite::class,
                 'choice_label' =>'numeroExpediente',
                 'label'=>'Numero de expediente'
             ])
-            ->add('fechaseguimiento', DateType::class, ['label'=>'Fecha de seguimiento'])
+            ->add('fechaseguimiento', DateType::class, array(
+                'input'  => 'array',
+                'widget' => 'choice',
+                'format' => 'dd MM yyyy',
+                'data'  =>  array('year' => $fechaHoy->format('Y'), 'month' => $fechaHoy->format('m'), 'day' => $fechaHoy->format('d')),
+                'label'=>'Fecha de seguimiento'
+            ))
             ->add('observacion', TextType::class, [
                 'label'=>'Observación'
             ])
