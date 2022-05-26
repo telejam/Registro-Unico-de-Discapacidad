@@ -8,18 +8,23 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ObraSocialType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('denominacion')
+            ->add('denominacion', TextType::class, [
+                'label'=>'Denominación'
+            ])
             ->add('nombre')
             ->add('domicilio')
-            ->add('observacion')
+            ->add('observacion', TextType::class, [
+                'label'=>'Observación'
+            ])
             ->add('telefononumero', TelType::class, [
-                'label'=>'Numero de Telefono'
+                'label'=>'Numero de Teléfono'
             ])
             ->add('vigente')
             ->add('Guardar', SubmitType::class)

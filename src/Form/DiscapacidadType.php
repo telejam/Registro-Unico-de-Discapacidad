@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class DiscapacidadType extends AbstractType
 {
@@ -16,7 +17,9 @@ class DiscapacidadType extends AbstractType
     {
         $builder
             ->add('nombre')
-            ->add('descripcion')
+            ->add('descripcion', TextType::class, [
+                'label'=>'Descripción'
+            ])
             ->add('vigente')
             ->add('tipo', EntityType::class, [
                 'class' =>TipoDiscapacidad::class,

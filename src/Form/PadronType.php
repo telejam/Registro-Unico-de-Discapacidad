@@ -37,11 +37,12 @@ class PadronType extends AbstractType
             ])
             ->add('discapacidad', EntityType::class, [
                 'class' =>Discapacidad::class,
-                'choice_label' =>'nombre'
+                'choice_label' =>'nombre',
             ])
             ->add('id', EntityType::class, [
                 'class' =>Persona::class,
-                'choice_label' =>'dninumero'
+                'choice_label' =>'dninumero',
+                'label' => 'Persona'
             ])
             ->add('Registrar', SubmitType::class)
         ;

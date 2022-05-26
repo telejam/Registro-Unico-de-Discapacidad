@@ -10,6 +10,12 @@
 		<h2>DISCAPACIDAD</h2>
 	</div>
 
+	{% for message in app.flashes('exito') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+    {% endfor %}
+	
 	{{form(formulario)}}
 
 	<div class="btnCancelar">

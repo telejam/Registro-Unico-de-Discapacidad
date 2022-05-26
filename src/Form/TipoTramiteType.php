@@ -6,6 +6,7 @@ use App\Entity\TipoTramite;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,7 +16,9 @@ class TipoTramiteType extends AbstractType
     {
         $builder
             ->add('nombre')
-            ->add('descripcion')
+            ->add('descripcion', TextType::class, [
+                'label'=>'Descripción'
+            ])
             ->add('tipo', ChoiceType::class, [
                 'choices'=>[
                     'Interno'=>true,

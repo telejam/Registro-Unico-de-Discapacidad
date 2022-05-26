@@ -11,6 +11,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,14 +19,15 @@ class TramiteType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $dt = new \DateTime();
+        $fechaHoy = new \DateTime();
+        $fechaHoy->setTimezone(new \DateTimeZone('America/Argentina/Buenos_Aires'));
 
         $builder
             ->add('fechainicio', DateType::class, array(
                 'input'  => 'array',
                 'widget' => 'choice',
                 'format' => 'dd MM yyyy',
-                'data'  =>  array('year' => $dt->format('Y'), 'month' => $dt->format('m'), 'day' => $dt->format('d')),
+                'data'  =>  array('year' => $fechaHoy->format('Y'), 'month' => $fechaHoy->format('m'), 'day' => $fechaHoy->format('d')),
                 'label'=>'Fecha de inicio'
             ))
             ->add('tipotramite', EntityType::class, [
@@ -33,7 +35,9 @@ class TramiteType extends AbstractType
                 'choice_label' =>'nombre',
                 'label'=>'Tipo de tramite'
             ])
-            ->add('observacion')
+            ->add('observacion', TextType::class, [
+                'label'=>'Observación'
+            ])
             ->add('estadotramite',EntityType::class, [
                 'class' =>EstadoTramite::class,
                 'choice_label' =>'estado',

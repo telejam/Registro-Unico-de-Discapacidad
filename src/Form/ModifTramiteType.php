@@ -10,6 +10,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -25,7 +26,9 @@ class ModifTramiteType extends AbstractType
                 'label'=>'Numero de expediente'
             ])
             ->add('fechaseguimiento', DateType::class, ['label'=>'Fecha de seguimiento'])
-            ->add('observacion')
+            ->add('observacion', TextType::class, [
+                'label'=>'Observación'
+            ])
             ->add('usuario', EntityType::class, [
                 'class' =>Usuario::class,
                 'choice_label' =>'user'
