@@ -34,7 +34,7 @@ class ModifTramiteType extends AbstractType
             //     'mapped' => false,
             //     'constraints'=>[
             //         new IsTrue([
-            //             'message'=> '¿Desea finalizar el tramite?'
+            //             'message'=> 'Finalizar tramite'
             //         ])
             //     ]
             // ])

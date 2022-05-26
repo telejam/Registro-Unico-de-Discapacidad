@@ -10,7 +10,6 @@ use App\Entity\Usuario;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,8 +18,16 @@ class TramiteType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $dt = new \DateTime();
+
         $builder
-            ->add('fechainicio', DateType::class, ['label'=>'Fecha de Inicio'])
+            ->add('fechainicio', DateType::class, array(
+                'input'  => 'array',
+                'widget' => 'choice',
+                'format' => 'dd MM yyyy',
+                'data'  =>  array('year' => $dt->format('Y'), 'month' => $dt->format('m'), 'day' => $dt->format('d')),
+                'label'=>'Fecha de inicio'
+            ))
             ->add('tipotramite', EntityType::class, [
                 'class' =>TipoTramite::class,
                 'choice_label' =>'nombre',

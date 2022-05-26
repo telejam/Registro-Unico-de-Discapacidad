@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ModificacionTramite;
+use App\Entity\Tramite;
 use App\Form\ModifTramiteType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,6 +37,13 @@ class ModifTramiteController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            // if (true === $form['Finalizar']->getData()) {
+            //     $tramite = $em->getRepository(Tramite::class)->findBy($tramite);
+            //     $tramite->setFecharesolucion($this->getFechaseguimiento());
+            //     $tramite->setEstadotramite()
+            // }
+
             $em->persist($seguimiento);
             $em->flush();
             $this->addFlash(type: 'exito', message: 'Se ha registrado exitosamente.');
