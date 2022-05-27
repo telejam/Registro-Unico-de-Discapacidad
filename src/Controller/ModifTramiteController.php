@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\EstadoTramite;
 use App\Entity\ModificacionTramite;
 use App\Entity\Tramite;
 use App\Form\ModifTramiteType;
@@ -31,18 +32,22 @@ class ModifTramiteController extends AbstractController
      */
     public function create(Request $request): Response
     {
+        $em = $this->getDoctrine()->getManager();
         $seguimiento = new ModificacionTramite;
+        $numeroexpediente = $request->query->get('numeroexpediente');
+        $tramite = $em->getRepository(Tramite::class)->find($numeroexpediente);
+        $seguimiento->setNumeroexpediente($tramite);
         $form = $this->createForm(ModifTramiteType::class, $seguimiento);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            // if (true === $form['Finalizar']->getData()) {
-            //     $tramite = $em->getRepository(Tramite::class)->findBy($tramite);
-            //     $tramite->setFecharesolucion($this->getFechaseguimiento());
-            //     $tramite->setEstadotramite()
-            // }
+            if ($form['Finalizar']->getData()) {
+                $estadotramite = $em->getRepository(EstadoTramite::class)->find(3);
+                $tramite->setFecharesolucion($seguimiento->getFechaseguimiento()); 
+                $tramite->setEstadotramite($estadotramite);
+            }
 
             $em->persist($seguimiento);
             $em->flush();

@@ -9,6 +9,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,18 +25,9 @@ class ModifTramiteType extends AbstractType
         $fechaHoy->setTimezone(new \DateTimeZone('America/Argentina/Buenos_Aires'));
         
         $builder
-            ->add('numeroexpediente', EntityType::class, [
-                'class' =>Tramite::class,
-                'choice_label' =>'numeroExpediente',
-                'label'=>'Numero de expediente'
-            ])
-            ->add('fechaseguimiento', DateType::class, array(
-                'input'  => 'array',
-                'widget' => 'choice',
-                'format' => 'dd MM yyyy',
-                'data'  =>  array('year' => $fechaHoy->format('Y'), 'month' => $fechaHoy->format('m'), 'day' => $fechaHoy->format('d')),
+            ->add('fechaseguimiento', DateType::class, [
                 'label'=>'Fecha de seguimiento'
-            ))
+            ])
             ->add('observacion', TextType::class, [
                 'label'=>'Observación'
             ])
@@ -42,14 +35,10 @@ class ModifTramiteType extends AbstractType
                 'class' =>Usuario::class,
                 'choice_label' =>'user'
             ])
-            // ->add('Finalizar', CheckboxType::class, [
-            //     'mapped' => false,
-            //     'constraints'=>[
-            //         new IsTrue([
-            //             'message'=> 'Finalizar tramite'
-            //         ])
-            //     ]
-            // ])
+            ->add('Finalizar', CheckboxType::class, [
+                'mapped' => false,
+                'required'=>false,
+            ])
             ->add('Guardar', SubmitType::class)
         ;
     }
