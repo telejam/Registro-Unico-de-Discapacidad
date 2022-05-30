@@ -56,8 +56,11 @@ class PadronController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($padron);
             $em->flush();
-            $this->addFlash(type: 'exito', message: 'Se ha registrado exitosamente.');
-            return $this->redirectToRoute('padrongral');
+            /*$this->addFlash(type: 'exito', message: 'Se ha registrado exitosamente.');
+            return $this->redirectToRoute('padrongral');*/
+            return $this->redirectToRoute('createpadron', [
+                'success' => '1'
+            ]);
         }
         return $this->render('padron/create.html.twig', [
             'controller_name' => 'PadronController',
