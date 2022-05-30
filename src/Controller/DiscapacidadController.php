@@ -37,8 +37,11 @@ class DiscapacidadController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($discapacidad);
             $em->flush();
-            $this->addFlash(type: 'exito', message: 'Se ha registrado exitosamente.');
-            return $this->redirectToRoute('discapacidad');
+           /* $this->addFlash(type: 'exito', message: 'Se ha registrado exitosamente.');
+            return $this->redirectToRoute('discapacidad');*/
+            return $this->redirectToRoute('creatediscapacidad', [
+                'success' => '1'
+            ]);
         }
         return $this->render('discapacidad/create.html.twig', [
             'controller_name' => 'DiscapacidadController',
