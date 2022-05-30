@@ -11,7 +11,7 @@
 	</div>
 
     <div class="btnAgregar">
-        <a href="/createpersona" class="btn mt-4" id="agregar"><i class="fas fa-plus"></i> Agregar persona</a>
+        <a href="/createpersona" class="btn mt-4" id="agregar"><i class="fas fa-plus"></i> AGREGAR PERSONA</a>
     </div>
 
     <div class="tableContainer">
@@ -19,23 +19,23 @@
 
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Fecha de Nacimiento</th>
+                <th>NOMBRE</th>
+                <th>APELLIDO</th>
+                {# <th>Fecha de Nacimiento</th>
                 <th>Sexo</th>
-                <th>Estado civil</th>
-                <th>Tipo de DNI</th>
-                <th>DNI Nro. de Trámite</th>
-                <th>Nro. DNI</th>
-                <th>Nacionalidad</th>
-                <th>Provincia</th>
-                <th>Ciudad</th>
-                <th>Calle</th>
+                <th>Estado civil</th> #}
+                <th>TIPO DE DNI</th>
+                <th>DNI NRO. DE TRÁMITE</th>
+                <th>NRO. DNI</th>
+                {# <th>Nacionalidad</th>
+                <th>Provincia</th> #}
+                <th>CIUDAD</th>
+                {# <th>Calle</th>
                 <th>Altura</th>
                 <th>Piso</th>
                 <th>Departamento</th>
-                <th>Barrio</th>
-                <th>Acción</th>
+                <th>Barrio</th> #}
+                <th>ACCIÓN</th>
             </tr>
         </thead>
 
@@ -44,24 +44,25 @@
                 <tr>
                     <td>{{ persona.nombre }}</td>
                     <td>{{ persona.apellido }}</td>
-                    <td>{{ persona.fechaNacimiento|date('d-m-Y') }}</td>
+                    {# <td>{{ persona.fechaNacimiento|date('d-m-Y') }}</td>
                     <td>{{ persona.sexo }}</td>
-                    <td>{{ persona.estadocivil.tipoEstado }}</td>
+                    <td>{{ persona.estadocivil.tipoEstado }}</td> #}
                     <td>{{ persona.dnitipo.tipo }}</td>
                     <td>{{ persona.dnitramite }}</td>
                     <td>{{ persona.dniNumero }}</td>
-                    <td>{{ persona.nacionalidad.pais }}</td>
-                    <td>{{ persona.provincia.nombre }}</td>
+                    {# <td>{{ persona.nacionalidad.pais }}</td>
+                    <td>{{ persona.provincia.nombre }}</td> #}
                     <td>{{ persona.ciudad.nombre }}</td>
-                    <td>{{ persona.calle }}</td>
+                    {# <td>{{ persona.calle }}</td>
                     <td>{{ persona.altura }}</td>
                     <td>{{ persona.piso }}</td>
                     <td>{{ persona.dpto }}</td>
-                    <td>{{ persona.barrio.nombre }}</td>
+                    <td>{{ persona.barrio.nombre }}</td> #}
 
                     <td>
                         <a href="{{ path('editpersona', {'id': persona.id}) }}"><i class="fas fa-edit"></i></a>
                         <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ persona.id }}"><i class="fas fa-trash-alt"></i></a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalVerMas{{ persona.id }}"><i class="fas fa-info-circle"></i></a>
                     </td>
                 </tr>
             {% endfor %}
@@ -90,6 +91,45 @@
         </div>
 
         {% endfor %}
+
+        {# MODAL VER MÁS #}
+            {% for persona in personas %}
+
+            <div class="modal fade" id="modalVerMas{{ persona.id }}" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content"> <!-- ENVOLTORIO/WRAPPER DEL MODAL-->
+                <div class="modal-header"> <!-- CABECERA/HEADER DEL MODAL-->
+                    <h5 class="modal-title"> INFORMACIÓN COMPLETA </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"> <!-- CUERPO/BODY DEL MODAL-->
+                        <div><p>NOMBRE:</p> {{ persona.nombre }}</div>
+                        <div><p>APELLIDO:</p> {{ persona.apellido }}</div>
+                        <div><p>FECHA DE NACIMIENTO:</p> {{ persona.fechaNacimiento|date('d-m-Y') }}</div>
+                        <div><p>SEXO</p> {{ persona.sexo }}</div>
+                        <div><p>ESTADO CIVIL</p> {{ persona.estadocivil.tipoEstado }}</div>
+                        <div><p>TIPO DE DNI:</p> {{ persona.dnitipo.tipo }}</div>
+                        <div><p>DNI NRO. DE TRÁMITE:</p> {{ persona.dnitramite }}</div>
+                        <div><p>NRO. DNI:</p> {{ persona.dniNumero }}</div>
+                        <div><p>NACIONALIDAD:</p> {{ persona.nacionalidad.pais }}</div>
+                        <div><p>PROVINCIA:</p> {{ persona.provincia.nombre }}</div>
+                        <div><p>CIUDAD:</p> {{ persona.ciudad.nombre }}</div>
+                        <div><p>CALLE:</p> {{ persona.calle }}</div>
+                        <div><p>ALTURA:</p> {{ persona.altura }}</div>
+                        <div><p>PISO:</p> {{ persona.piso }}</div>
+                        <div><p>DEPTO:</p> {{ persona.dpto }}</div>
+                        <div><p>BARRIO:</p> {{ persona.barrio.nombre }}</div>
+                </div>
+            
+                <div class="modal-footer"> <!-- PIE/FOOTER DEL MODAL-->
+                    <!--El atributo data-bs-dismiss identifica al botón como el que puede "cerrar" el modal -->
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            {% endfor %}
 
     </table>
     </div>
