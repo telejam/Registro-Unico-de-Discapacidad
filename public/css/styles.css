@@ -304,19 +304,155 @@ align-items: center;
 }
 
 .divSeguimiento input {
-border: none;
-box-shadow: none;
-margin-bottom: 0;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 0;
 }
 
 #padron h3 {
-margin-top: 1.5rem;
-color: #33BB66;
-font-weight: 600;
+  margin-top: 1.5rem;
+  color: #33BB66;
 }
 
 #persona h3 {
   margin-top: 1.5rem;
   color: #33BB66;
   font-weight: 600;
+}
+
+/* ------------------------------------------------------- *\
+|  ESTILOS GENERALES DEL POPUP ---------------------------  |
+|  En caso de querer unificar, remplazar                    |
+|  el nombre "our-popup" por "popup"                        |
+\* ------------------------------------------------------- */
+.our-popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgb(0 0 0 / 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.our-popup * {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.our-popup.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.our-popup.is-open .container {
+  transform: translateY(0);
+}
+
+.our-popup .container {
+  background-color: white;
+  padding: 1em;
+  border-radius: 0.25em;
+  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  max-width: 40em;
+  width: 90%;
+  transform: translateY(2em);
+  transition: all 0.5s;
+}
+
+.our-popup header {
+  display: flex;
+  align-items: center;
+}
+
+.our-popup header a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  margin-left: auto;
+}
+
+.our-popup header a .icon {
+  font-style: normal;
+  font-family: monospace;
+  font-weight: 900;
+  font-size: 1.5em;
+  display: flex;
+  width: 1em;
+  height: 1em;
+  align-items: center;
+  justify-content: center;
+}
+
+.our-popup header span {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.our-popup-body {
+  margin: 2em 0;
+}
+
+.our-popup-body div {
+  text-align: center;
+  font-size: 1.25em;
+}
+
+.our-popup-body div .icon {
+  display: block;
+  margin: auto;
+  font-size: 2.5em;
+}
+
+.our-popup .icon {
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-flex;
+  font-weight: 900;
+  align-items: center;
+  justify-content: center;
+}
+
+.our-popup .icon.green {
+  color: #27ae60;
+}
+
+.our-popup footer {
+}
+
+.our-popup footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.our-popup footer ul li {
+}
+
+.our-popup footer ul li + li {
+  margin-left: 1em;
+}
+
+.our-popup .button {
+  text-decoration: none;
+  padding: 0.25em 1em;
+  background-color: #33bb66;
+  color: white;
+  border-radius: 0.25em;
+  display: block;
+  transition:all 0.5s;
+}
+.our-popup .button:hover{
+  opacity:0.8;
+  transform:translateY(-1px)
+}
+.our-popup .button span {
 }
