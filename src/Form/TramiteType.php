@@ -23,13 +23,10 @@ class TramiteType extends AbstractType
         $fechaHoy->setTimezone(new \DateTimeZone('America/Argentina/Buenos_Aires'));
 
         $builder
-            ->add('fechainicio', DateType::class, array(
-                'input'  => 'array',
-                'widget' => 'choice',
-                'format' => 'dd MM yyyy',
-                'data'  =>  array('year' => $fechaHoy->format('Y'), 'month' => $fechaHoy->format('m'), 'day' => $fechaHoy->format('d')),
+            ->add('fechainicio', DateType::class, [
+                'data'  => $fechaHoy,
                 'label'=>'Fecha de inicio'
-            ))
+            ])
             ->add('tipotramite', EntityType::class, [
                 'class' =>TipoTramite::class,
                 'choice_label' =>'nombre',
