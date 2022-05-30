@@ -66,9 +66,12 @@ class PersonaController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($persona);
             $em->flush();
-            $this->addFlash('success', 'Persona agregada');
+           /* $this->addFlash('success', 'Persona agregada');
 
-            return $this->redirectToRoute('personas');
+            return $this->redirectToRoute('personas');*/
+            return $this->redirectToRoute('createpersona', [
+                'success' => '1'
+            ]);
         }
 
         return $this->render('persona/create.html.twig', [
