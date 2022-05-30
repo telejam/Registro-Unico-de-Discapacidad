@@ -13,6 +13,7 @@
         <a href="/createtramite" class="btn mt-4" id="agregar"><i class="fas fa-plus"></i> Agregar nuevo trámite</a>
     </div>
 
+    <div class="tableContainer">
     <table id="tabla" class="table table-bordered table-striped text-center mt-4">
 
         <thead>
@@ -46,6 +47,7 @@
             {% endfor %}
         </tbody>
     </table>
+    </div>
 
        {% for tramit in tramite %}
     <div class="modal fade" id="modal{{ tramit.numeroExpediente }}" tabindex="-1">

@@ -10,3 +10,13 @@
 #modif_tramite_fechaseguimiento {
     display: flex;
 }
+
+@media screen and (max-width: 768px) {
+    .divTipoEstadoTramite {
+        display: block;
+    }
+
+    #tramite_fechainicio {
+        display: block;
+    }
+}

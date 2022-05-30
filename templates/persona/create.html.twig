@@ -37,6 +37,7 @@
         });
 
         const divPersona = document.querySelectorAll('div')[5];
+        console.log(divPersona)
 
         {# Nombre y Apellido #}
         let nombre = divPersona.children[0];
@@ -72,9 +73,7 @@
         let usuario = divPersona.children[16];
 
 
-
         const btnGuardar = document.querySelectorAll('button')[0];
-
 
 
         {# divs contenedores #}
@@ -86,6 +85,7 @@
         let divDepto = document.createElement('div');
         let divBarrio = document.createElement('div');
         let divUsuario = document.createElement('div');
+
 
         divNombre.classList.add('divNombre');
         divNacimiento.classList.add('divNacimiento');
@@ -106,7 +106,6 @@
         divPersona.appendChild(divDepto);
         divPersona.appendChild(divBarrio);
         divPersona.appendChild(divUsuario);
-
 
 
         {# Nombre y Apellido #}
@@ -145,6 +144,24 @@
 
         {# BotÃ³n Guardar #}
         divPersona.appendChild(btnGuardar);
+
+        
+        {# SUBTÍTULOS #}
+        let subtitulo1 = document.createElement('h3');
+        subtitulo1.innerHTML = 'INFORMACIÓN PERSONAL';
+        divPersona.insertBefore(subtitulo1, divPersona.children[1]);
+
+        let subtitulo2 = document.createElement('h3');
+        subtitulo2.innerHTML = 'LOCALIDAD';
+        divPersona.insertBefore(subtitulo2, divPersona.children[5]);
+
+        let subtitulo3 = document.createElement('h3');
+        subtitulo3.innerHTML = 'DOCUMENTO';
+        divPersona.insertBefore(subtitulo3, divPersona.children[7]);
+
+        let subtitulo4 = document.createElement('h3');
+        subtitulo4.innerHTML = 'DOMICILIO';
+        divPersona.insertBefore(subtitulo4, divPersona.children[9]);
 
     </script>
 

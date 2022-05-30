@@ -14,6 +14,7 @@
         <a href="/tipotramite/create" class="btn mt-4" id="agregar"><i class="fas fa-plus"></i> Agregar nuevo tipo de trámite</a>
     </div>
 
+    <div class="tableContainer">
     <table id="tabla" class="table table-bordered table-striped text-center mt-4">
 
         <thead>
@@ -45,6 +46,7 @@
         </tbody>
 
     </table>
+    </div>
 
     {% for tipo in tipotramite %}
     <div class="modal fade" id="modal{{ tipo.id }}" tabindex="-1">

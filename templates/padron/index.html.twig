@@ -14,115 +14,117 @@
         <a href="/createpadron" class="btn mt-4" id="agregar"><i class="fas fa-plus"></i> Agregar</a>
     </div>
 
-    <table id="tabla" class="table table-bordered table-striped text-center mt-4">
-        <thead>
-            <tr>
-                <th>CUIL</th>
-                <th>CUD</th>
-                <th>Vigencia</th>
-                <th>Diagnóstico</th>
-                <th>Discapacidad</th>
-                <th>Causa</th>
-                {# <th>Pensión</th> #}
-                <th id="obraSocialTabla">Obra social</th>
-                {# <th>Nivel instrucción</th>
-                <th>Tipo modalidad</th>
-                <th>Experiencia laboral</th>
-                <th>Actividades</th> #}
-                <th>Nivel educación</th>
-                {# <th>Residencia</th> #}
-                <th>Acción</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            {% for discapacitado in discapacitados %}
+    <div class="tableContainer">
+        <table id="tabla" class="table table-bordered table-striped text-center mt-4">
+            <thead>
                 <tr>
-                    <td>{{discapacitado.cuil}}</td>
-                    <td>{{discapacitado.cud}}</td>
-                    <td>{{discapacitado.cudvigencia|date('d-m-Y')}}</td>
-                    <td>{{discapacitado.cuddiagnostico}}</td>
-                    <td>{{discapacitado.discapacidad.nombre}}</td>
-                    <td>{{discapacitado.causa}}</td>
-                    {# <td>{{discapacitado.pension}}</td> #}
-                    <td>{{discapacitado.obrasocial.denominacion}}</td>
-                    {# <td>{{discapacitado.nivelinstruccion}}</td>
-                    <td>{{discapacitado.tipomodalidad}}</td>
-                    <td>{{discapacitado.experiencialaboral}}</td>
-                    <td>{{discapacitado.actividades}}</td> #}
-                    <td>{{discapacitado.niveleducacion}}</td>
-                    {# <td>{{discapacitado.residencia}}</td> #}
-
-                    <td>
-                        <a href="{{ path('editpadron', {'id': discapacitado.id.id}) }}"><i class="fas fa-edit"></i></a>
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ discapacitado.id.id }}"><i class="fas fa-trash-alt"></i></a>
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalVerMas{{ discapacitado.id.id }}"><i class="fas fa-info-circle"></i></a>
-                    </td>
+                    <th>CUIL</th>
+                    <th>CUD</th>
+                    <th>Vigencia</th>
+                    <th>Diagnóstico</th>
+                    <th>Discapacidad</th>
+                    <th>Causa</th>
+                    {# <th>Pensión</th> #}
+                    <th id="obraSocialTabla">Obra social</th>
+                    {# <th>Nivel instrucción</th>
+                    <th>Tipo modalidad</th>
+                    <th>Experiencia laboral</th>
+                    <th>Actividades</th> #}
+                    <th>Nivel educación</th>
+                    {# <th>Residencia</th> #}
+                    <th>Acción</th>
                 </tr>
+            </thead>
+
+            <tbody>
+                {% for discapacitado in discapacitados %}
+                    <tr>
+                        <td>{{discapacitado.cuil}}</td>
+                        <td>{{discapacitado.cud}}</td>
+                        <td>{{discapacitado.cudvigencia|date('d-m-Y')}}</td>
+                        <td>{{discapacitado.cuddiagnostico}}</td>
+                        <td>{{discapacitado.discapacidad.nombre}}</td>
+                        <td>{{discapacitado.causa}}</td>
+                        {# <td>{{discapacitado.pension}}</td> #}
+                        <td>{{discapacitado.obrasocial.denominacion}}</td>
+                        {# <td>{{discapacitado.nivelinstruccion}}</td>
+                        <td>{{discapacitado.tipomodalidad}}</td>
+                        <td>{{discapacitado.experiencialaboral}}</td>
+                        <td>{{discapacitado.actividades}}</td> #}
+                        <td>{{discapacitado.niveleducacion}}</td>
+                        {# <td>{{discapacitado.residencia}}</td> #}
+
+                        <td>
+                            <a href="{{ path('editpadron', {'id': discapacitado.id.id}) }}"><i class="fas fa-edit"></i></a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ discapacitado.id.id }}"><i class="fas fa-trash-alt"></i></a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalVerMas{{ discapacitado.id.id }}"><i class="fas fa-info-circle"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+            {# MODAL ELIMINAR #}
+            {% for discapacitado in discapacitados %}
+
+            <div class="modal fade" id="modal{{ discapacitado.id.id }}" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content"> <!-- ENVOLTORIO/WRAPPER DEL MODAL-->
+                <div class="modal-header"> <!-- CABECERA/HEADER DEL MODAL-->
+                    <h5 class="modal-title">ELIMINAR PERSONA CON DISCAPACIDAD</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"> <!-- CUERPO/BODY DEL MODAL-->
+                    <p> &iquest;Est&aacute seguro que desea eliminar el registro&quest; </p>
+                </div>
+            
+                <div class="modal-footer"> <!-- PIE/FOOTER DEL MODAL-->
+                    <!--El atributo data-bs-dismiss identifica al botón como el que puede "cerrar" el modal -->
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <a href="{{ path('deletepadron', {'id': discapacitado.id.id}) }}" class="btn btn-danger">Eliminar</a>
+                </div>
+                </div>
+            </div>
+            </div>
+
             {% endfor %}
-        </tbody>
 
-        {# MODAL ELIMINAR #}
-        {% for discapacitado in discapacitados %}
+            {# MODAL VER MÁS #}
+            {% for discapacitado in discapacitados %}
 
-        <div class="modal fade" id="modal{{ discapacitado.id.id }}" tabindex="-1">
-         <div class="modal-dialog">
-            <div class="modal-content"> <!-- ENVOLTORIO/WRAPPER DEL MODAL-->
-            <div class="modal-header"> <!-- CABECERA/HEADER DEL MODAL-->
-                <h5 class="modal-title">ELIMINAR PERSONA CON DISCAPACIDAD</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body"> <!-- CUERPO/BODY DEL MODAL-->
-                <p> &iquest;Est&aacute seguro que desea eliminar el registro&quest; </p>
-            </div>
+            <div class="modal fade" id="modalVerMas{{ discapacitado.id.id }}" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content"> <!-- ENVOLTORIO/WRAPPER DEL MODAL-->
+                <div class="modal-header"> <!-- CABECERA/HEADER DEL MODAL-->
+                    <h5 class="modal-title"> INFORMACIÓN COMPLETA </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"> <!-- CUERPO/BODY DEL MODAL-->
+                        <div><p>CUIL:</p> {{discapacitado.cuil}}</div>
+                        <div><p>CUD:</p> {{discapacitado.cud}}</div>
+                        <div><p>CUD VIGENCIA:</p> {{discapacitado.cudvigencia|date('d-m-Y')}}</div>
+                        <div><p>CUD DIAGNÓSTICO:</p> {{discapacitado.cuddiagnostico}}</div>
+                        <div><p>DISCAPACIDAD:</p> {{discapacitado.discapacidad.nombre}}</div>
+                        <div><p>CAUSA:</p> {{discapacitado.causa}}</div>
+                        <div><p>PENSIÓN:</p> {{discapacitado.pension}}</div>
+                        <div class="obraSocialModal"><p>OBRA SOCIAL:</p> {{discapacitado.obrasocial.denominacion}}</div>
+                        <div><p>NIVEL INSTRUCCIÓN:</p> {{discapacitado.nivelinstruccion}}</div>
+                        <div><p>TIPO MODALIDAD:</p> {{discapacitado.tipomodalidad}}</div>
+                        <div><p>EXPERIENCIA LABORAL:</p> {{discapacitado.experiencialaboral}}</div>
+                        <div><p>ACTIVIDADES:</p> {{discapacitado.actividades}}</div>
+                        <div><p>NIVEL EDUCACIÓN:</p> {{discapacitado.niveleducacion}}</div>
+                        <div><p>RESIDENCIA:</p> {{discapacitado.residencia}}</div>
+                </div>
             
-            <div class="modal-footer"> <!-- PIE/FOOTER DEL MODAL-->
-                <!--El atributo data-bs-dismiss identifica al botón como el que puede "cerrar" el modal -->
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <a href="{{ path('deletepadron', {'id': discapacitado.id.id}) }}" class="btn btn-danger">Eliminar</a>
+                <div class="modal-footer"> <!-- PIE/FOOTER DEL MODAL-->
+                    <!--El atributo data-bs-dismiss identifica al botón como el que puede "cerrar" el modal -->
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+                </div>
             </div>
             </div>
-         </div>
-        </div>
 
-         {% endfor %}
-
-        {# MODAL VER MÁS #}
-        {% for discapacitado in discapacitados %}
-
-        <div class="modal fade" id="modalVerMas{{ discapacitado.id.id }}" tabindex="-1">
-         <div class="modal-dialog">
-            <div class="modal-content"> <!-- ENVOLTORIO/WRAPPER DEL MODAL-->
-            <div class="modal-header"> <!-- CABECERA/HEADER DEL MODAL-->
-                <h5 class="modal-title"> INFORMACIÓN COMPLETA </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body"> <!-- CUERPO/BODY DEL MODAL-->
-                    <div><p>CUIL:</p> {{discapacitado.cuil}}</div>
-                    <div><p>CUD:</p> {{discapacitado.cud}}</div>
-                    <div><p>CUD VIGENCIA:</p> {{discapacitado.cudvigencia|date('d-m-Y')}}</div>
-                    <div><p>CUD DIAGNÓSTICO:</p> {{discapacitado.cuddiagnostico}}</div>
-                    <div><p>DISCAPACIDAD:</p> {{discapacitado.discapacidad.nombre}}</div>
-                    <div><p>CAUSA:</p> {{discapacitado.causa}}</div>
-                    <div><p>PENSIÓN:</p> {{discapacitado.pension}}</div>
-                    <div class="obraSocialModal"><p>OBRA SOCIAL:</p> {{discapacitado.obrasocial.denominacion}}</div>
-                    <div><p>NIVEL INSTRUCCIÓN:</p> {{discapacitado.nivelinstruccion}}</div>
-                    <div><p>TIPO MODALIDAD:</p> {{discapacitado.tipomodalidad}}</div>
-                    <div><p>EXPERIENCIA LABORAL:</p> {{discapacitado.experiencialaboral}}</div>
-                    <div><p>ACTIVIDADES:</p> {{discapacitado.actividades}}</div>
-                    <div><p>NIVEL EDUCACIÓN:</p> {{discapacitado.niveleducacion}}</div>
-                    <div><p>RESIDENCIA:</p> {{discapacitado.residencia}}</div>
-            </div>
-            
-            <div class="modal-footer"> <!-- PIE/FOOTER DEL MODAL-->
-                <!--El atributo data-bs-dismiss identifica al botón como el que puede "cerrar" el modal -->
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
-            </div>
-            </div>
-         </div>
-        </div>
-
-         {% endfor %}
-    </table>
+            {% endfor %}
+        </table>
+    </div>
 
 {% endblock %}

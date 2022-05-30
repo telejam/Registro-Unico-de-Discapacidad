@@ -5,7 +5,7 @@ form label {
 }
 
 form > div {
-    width: 50%;
+    width: 40%;
     margin: auto;
 }
 
@@ -102,7 +102,7 @@ form button{
 }
 
 .divDocumento div {
-    gap: 10px;
+    width: 500px;
 }
 
 .divCalle {
@@ -131,4 +131,56 @@ form button{
 
 .divUsuario {
     display: flex;
+}
+
+@media screen and (max-width: 768px) {
+    .divNombre {
+        display: block;
+    }
+
+    .divNacimiento {
+        display: block;
+    }
+
+    .divNacionalidad {
+        display: block;
+    }
+
+    .divDocumento {
+        display: block;
+    }
+
+    .divDocumento div {
+        width: auto;
+    }
+
+    .divCalle {
+        display: block;
+    }
+
+    .divDepto {
+        display: block;
+    }
+
+    .divBarrio {
+        display: block;
+    }
+
+    .divUsuario {
+        display: block;
+    }
+
+    #persona_fechanacimiento {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .divNacimiento select {
+        width: 100%;
+    }
+
+    .sectionTitle {
+        padding-top: 60px;
+    }
 }
