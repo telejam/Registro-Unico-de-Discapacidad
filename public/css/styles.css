@@ -36,111 +36,190 @@ select {
 
 /*** INICIO NAVBAR ***/
 
-* {
-    margin: 0;
-    padding: 0;
-}
+  nav {
+    background: #33BB66;
+    width: 100%;
+    display: flex;
+  }
 
-i {
-    margin-right: 10px;
-}
-
-.navbar-logo {
-    padding: 15px;
-    color: #fff;
-}
-
-.navbar-mainbg {
-    background-color: #33BB66;
-    padding: 0;
-}
-
-#navbarSupportedContent {
-    position: relative;
-}
-
-#navbarSupportedContent ul {
-    padding: 0;
-    margin: 0;
-    gap: 25px;
-}
-
-#navbarSupportedContent ul li a i {
-    margin-right: 10px;
-}
-
-#navbarSupportedContent li {
-    list-style-type: none;
-    float: left;
-    outline: 1px solid #33BB66;
-}
-
-#navbarSupportedContent ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 15px;
-    display: block;
-    position: relative;
+  #municipalidadLogo {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  
+  nav ul {
+    display: flex;
+    margin-top: 2%;
+  }
+  
+  nav ul li {
+    display: inline-block;
     font-weight: 600;
-    padding: 10px 10px 10px 10px;
-}
-
-#navbarSupportedContent>ul>li.active>a {
+  }
+  
+  nav ul li a {
     color: #ffffff;
-    background-color: transparent;
-}
-
-#navbarSupportedContent ul li a:hover {
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+  }
+  
+  nav ul li a:hover {
     background-color: #ffffff;
     color: #33BB66;
-}
+    transition: 0.3s;
+  }
+  
+  #check {
+    display: none;
+  }
+  
+  .checkbuton {
+    color: #f6fbff;
+    font-size: 30px;
+    position: fixed;
+    top: 0%;
+    right: 5%;
+    display: none;
+  }
 
-.dropdown {
+  .dropdown {
     position: relative;
     display: inline-block;
-    color: #ffffff;
-    font-weight: 600;
-}
-
-.dropdown-content {
+  }
+  
+  .dropdown-content {
     display: none;
     position: absolute;
     background-color: #33BB66;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     padding: 12px 16px;
+    z-index: 1;
+    text-decoration: none;
     color: #ffffff;
-}
+    margin-top: 5px;
+  }
 
-.dropdown:hover .dropdown-content {
+  .dropdown:hover .dropdown-content {
     display: block;
-}
+  }
 
-#dropdownMenuButton {
+  .dropdown-content a {
     color: #ffffff;
-    background-color: #33BB66;
-    border: 1px solid #33BB66;
-    border-radius: 0px;
-    font-weight: 600;
-}
+    text-decoration: none;
+  }
 
-.dropdown-content p:hover {
+  .dropdown-content a:hover {
     color: #000000;
-}
+    text-decoration: none;
+  }
 
-.fa-trash-alt{
-    color: rgb(230, 23, 23);
-}
+  a:not([href]):not([class]) {
+    color: #ffffff;
+  }
 
-.fa-info-circle {
-    color: #00A65A;
-}
-
-@media (max-width:991px) {
-    #navbarSupportedContent ul li a {
-        padding: 12px 30px;
+  a:not([href]):not([class]):hover {
+    color: #33BB66;
+  }
+  
+  @media screen and (max-width: 1080px) {
+    nav {
+      width: 100%;
     }
-}
+  }
+  
+  @media screen and (max-width: 768px) {
+
+    h1 {
+      padding-top: 60px;
+    }
+
+    .checkbuton {
+      display: block;
+      z-index: 10;
+    }
+  
+    nav {
+      z-index: 10;
+      position: fixed;
+    }
+  
+    nav ul {
+      z-index: 5;
+      position: fixed;
+      left: 100%;
+      top: 0;
+      width: 40%;
+      height: 100vh;
+      text-align: right;
+      transition: all 0.3s;
+      background-color: #33BB66;
+      margin-top: 0;
+      display: block;
+    }
+  
+    nav ul li {
+      display: block;
+      font-weight: 400;
+      margin-right: 13%;
+      margin-top: 30px;
+    }
+  
+    nav ul li a:hover {
+      padding: 5px 10px 5px 10px;
+    }
+  
+    nav ul li:first-child {
+      margin-top: 100px;
+    }
+
+    nav ul .dropdown li {
+        margin-top: 30px;
+    }
+  
+    nav ul li a {
+      padding: 0;
+      margin-top: 10%;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: grid;
+        margin-right: 15%;
+    }
+    
+    #check:checked ~ .navBackground {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+      position: fixed;
+      background-color: rgba(0, 0, 0, .75);
+      transition: 0.3s;
+    }
+  
+    #check:checked ~ .navBackground ul {
+      left: 60%;
+      margin-top: 0px
+    }
+  
+    .hamburguerInner {
+      margin-right: -5px;
+    }
+
+    .dropdown {
+        position: relative;
+        display: block;
+    }
+
+    .dropdown-content {
+        padding: 0;
+    }
+
+    .dropdown-content a {
+        margin-top: 15px;
+        margin-left: 20px;
+    }
+  }
 
 /*** FIN NAVBAR ***/
 
@@ -181,4 +260,23 @@ i {
 
 .modal-title {
     border-bottom: 1px solid #ffffff;
+}
+
+.fa-trash-alt {
+    color: rgb(230, 23, 23);
+}
+
+.fa-info-circle {
+    color: #00A65A;
+}
+
+.divSeguimiento {
+  display: flex;
+  align-items: center;
+}
+
+.divSeguimiento input {
+  border: none;
+  box-shadow: none;
+  margin-bottom: 0;
 }

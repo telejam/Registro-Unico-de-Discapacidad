@@ -121,4 +121,8 @@ p {
         margin-left: 3%;
         margin-right: 3%;
     }
+
+    .bloqueDNI {
+        margin-top: 75px;
+    }
 }

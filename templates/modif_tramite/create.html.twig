@@ -14,5 +14,16 @@
 	<div class="btnCancelar">
         <a href="/tramite" class="btn btn-danger mb-4" id="cancelar">Cancelar</a>
     </div>
+
+	<script>
+
+		divSeguimiento = document.querySelectorAll('div')[5];
+
+		let finalizado = divSeguimiento.children[3];
+		console.log(finalizado)
+		
+		finalizado.classList.add('divSeguimiento');
+
+	</script>
 	
 {% endblock %}

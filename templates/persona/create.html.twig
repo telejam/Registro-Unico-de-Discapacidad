@@ -36,7 +36,7 @@
             elm.value = "";
         });
 
-        const divPersona = document.querySelectorAll('div')[4];
+        const divPersona = document.querySelectorAll('div')[5];
 
         {# Nombre y Apellido #}
         let nombre = divPersona.children[0];
@@ -73,7 +73,7 @@
 
 
 
-        const btnGuardar = document.querySelectorAll('button')[1];
+        const btnGuardar = document.querySelectorAll('button')[0];
 
 
 
@@ -87,6 +87,14 @@
         let divBarrio = document.createElement('div');
         let divUsuario = document.createElement('div');
 
+        divNombre.classList.add('divNombre');
+        divNacimiento.classList.add('divNacimiento');
+        divNacionalidad.classList.add('divNacionalidad');
+        divDocumento.classList.add('divDocumento');
+        divCalle.classList.add('divCalle');
+        divDepto.classList.add('divDepto');
+        divBarrio.classList.add('divBarrio');
+        divUsuario.classList.add('divUsuario');
 
 
         {# appends #}
@@ -137,17 +145,6 @@
 
         {# BotÃ³n Guardar #}
         divPersona.appendChild(btnGuardar);
-        
-
-
-        divNombre.classList.add('divNombre');
-        divNacimiento.classList.add('divNacimiento');
-        divNacionalidad.classList.add('divNacionalidad');
-        divDocumento.classList.add('divDocumento');
-        divCalle.classList.add('divCalle');
-        divDepto.classList.add('divDepto');
-        divBarrio.classList.add('divBarrio');
-        divUsuario.classList.add('divUsuario');
 
     </script>
 

@@ -17,7 +17,7 @@
 
 	<script>
 
-		const divTramite = document.querySelectorAll('div')[4];
+		const divTramite = document.querySelectorAll('div')[5];
 
 		{# Fecha de inicio #}
 		let fechaInicio = divTramite.children[0];
@@ -37,7 +37,7 @@
 
 
 
-		const btnRegistrar = document.querySelectorAll('button')[1];
+		const btnRegistrar = document.querySelectorAll('button')[0];
 
 
 		{# divs contenedores #}
@@ -46,6 +46,13 @@
         let divObservacion = document.createElement('div');
         let divPersona = document.createElement('div');
         let divUsuario = document.createElement('div');
+
+		
+		divFechaInicio.classList.add('divFechaInicio');
+        divTipoEstadoTramite.classList.add('divTipoEstadoTramite');
+        divObservacion.classList.add('divObservacion');
+        divPersona.classList.add('divPersona');
+        divUsuario.classList.add('divUsuario');
 
 
 		{# appends #}
@@ -75,14 +82,6 @@
 
 		{# Botón Registrar #}
 		divTramite.appendChild(btnRegistrar);
-
-
-
-		divFechaInicio.classList.add('divFechaInicio');
-        divTipoEstadoTramite.classList.add('divTipoEstadoTramite');
-        divObservacion.classList.add('divObservacion');
-        divPersona.classList.add('divPersona');
-        divUsuario.classList.add('divUsuario');
 
 	</script>
 

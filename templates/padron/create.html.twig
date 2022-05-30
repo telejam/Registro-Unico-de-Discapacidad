@@ -32,85 +32,36 @@
         selectMes[10].text = 'Noviembre';
         selectMes[11].text = 'Diciembre';
 
-        let selectObraSocial = document.querySelectorAll('select')[3];
-        selectObraSocial.value = '';
-
-        let selectDiscapacidad = document.querySelectorAll('select')[4];
-        selectDiscapacidad.value = '';
-
-        let selectID = document.querySelectorAll('select')[5];
-        selectID.value = '';
-
-    	let cuil = document.querySelectorAll('label')[0];
-        cuil.innerHTML = 'CUIL';
-
-        let cud = document.querySelectorAll('label')[1];
-        cud.innerHTML = 'CUD';
-
-		let cudVigencia = document.querySelectorAll('label')[2];
-        cudVigencia.innerHTML = 'CUD Vigencia';
-
-        let cudDiagnostico = document.querySelectorAll('label')[3];
-        cudDiagnostico.innerHTML = 'CUD Diagnóstico';
-
-        let pension = document.querySelectorAll('label')[5];
-        pension.innerHTML = 'Pensión';
         
-        let nivelInstruccion = document.querySelectorAll('label')[6];
-        nivelInstruccion.innerHTML = 'Nivel Instrucción';
+        const divPadron = document.querySelectorAll('div')[5];
 
-        let tipoModalidad = document.querySelectorAll('label')[7];
-        tipoModalidad.innerHTML = 'Tipo Modalidad';
-
-        let experienciaLaboral = document.querySelectorAll('label')[8];
-        experienciaLaboral.innerHTML = 'Experiencia Laboral';
-
-        let nivelEducacion = document.querySelectorAll('label')[10];
-        nivelEducacion.innerHTML = 'Nivel Educación';
-
-        let obraSocial = document.querySelectorAll('label')[12];
-        obraSocial.innerHTML = 'Obra Social';
-
-
-
-        const divPadron = document.querySelectorAll('div')[4];
-
-        
-
-        {# CUIL #}
+        {# seleccionar campos del form #}
         let cuil2 = divPadron.children[0];
 
-        {# CUD, CUD Vigencia, CUD Diagnóstico #}
         let cud2 = divPadron.children[1];
         let cudVigencia2 = divPadron.children[2];
         let cudDiagnostico2 = divPadron.children[3];
 
-        {# Discapacidad y Causa #}
         let discapacidad2 = divPadron.children[13];
         let causa2 = divPadron.children[4];
 
-        {# Residencia y Pensión #}
         let residencia2 = divPadron.children[11];
         let pension2 = divPadron.children[5];
 
-        {# Nivel educación, Tipo modalidad, Nivel instrucción #}
         let nivelEducacion2 = divPadron.children[10];
         let tipoModalidad2 = divPadron.children[7];
         let nivelInstruccion2 = divPadron.children[6];
 
-        {# Experiencia laboral #}
         let experienciaLaboral2 = divPadron.children[8];
 
-        {# Obra social #}
         let obraSocial2 = divPadron.children[12];
 
-        {# Actividades #}
         let actividades2 = divPadron.children[9];
 
-        {# ID #}
         let id2 = divPadron.children[14];
 
-        const btnRegistrar = document.querySelectorAll('button')[1];
+
+        const btnRegistrar = document.querySelectorAll('button')[0];
 
 
         {# divs contenedores #}
@@ -124,6 +75,17 @@
         let divActividades = document.createElement('div');
         let divID = document.createElement('div');
 
+        {# clases #}
+        divCUIL.classList.add('divCUIL');
+        divCUD.classList.add('divCUD');
+        divDiscapacidad.classList.add('divDiscapacidad');
+        divResidencia.classList.add('divResidencia');
+        divEducacion.classList.add('divEducacion');
+        divExperienciaLaboral.classList.add('divExperienciaLaboral');
+        divObraSocial.classList.add('divObraSocial');
+        divActividades.classList.add('divActividades');
+        divID.classList.add('divID');
+
 
         {# appends #}
         divPadron.appendChild(divCUIL);
@@ -135,7 +97,6 @@
         divPadron.appendChild(divObraSocial);
         divPadron.appendChild(divActividades);
         divPadron.appendChild(divID);
-
 
 
         {# CUIL #}
@@ -173,18 +134,6 @@
 
         {# Botón Registrar #}
         divPadron.appendChild(btnRegistrar);
-        
-
-
-        divCUIL.classList.add('divCUIL');
-        divCUD.classList.add('divCUD');
-        divDiscapacidad.classList.add('divDiscapacidad');
-        divResidencia.classList.add('divResidencia');
-        divEducacion.classList.add('divEducacion');
-        divExperienciaLaboral.classList.add('divExperienciaLaboral');
-        divObraSocial.classList.add('divObraSocial');
-        divActividades.classList.add('divActividades');
-        divID.classList.add('divID');
         
 	</script>
 
