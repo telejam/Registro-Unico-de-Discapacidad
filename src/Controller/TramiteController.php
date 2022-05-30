@@ -58,8 +58,11 @@ class TramiteController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($tramite);
             $em->flush();
-            $this->addFlash(type: 'exito', message: 'Se ha registrado exitosamente.');
-            return $this->redirectToRoute('tramite');
+            /*$this->addFlash(type: 'exito', message: 'Se ha registrado exitosamente.');
+            return $this->redirectToRoute('tramite');*/
+            return $this->redirectToRoute('createtramite', [
+                'success' => '1'
+            ]);
         }
         return $this->render('tramite/create.html.twig', [
             'controller_name' => 'TramiteController',
