@@ -14,7 +14,7 @@ class ModificacionTramite
 {
     /**
      * @var int
-     *
+     * 
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -40,10 +40,10 @@ class ModificacionTramite
      *
      * @ORM\ManyToOne(targetEntity="Tramite")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="numeroExpediente", referencedColumnName="numeroExpediente")
+     *   @ORM\JoinColumn(name="tramite", referencedColumnName="id")
      * })
      */
-    private $numeroexpediente;
+    private $tramite;
 
     /**
      * @var Usuario
@@ -84,14 +84,14 @@ class ModificacionTramite
         return $this;
     }
 
-    public function getNumeroexpediente(): ?Tramite
+    public function getTramite(): ?Tramite
     {
-        return $this->numeroexpediente;
+        return $this->tramite;
     }
 
-    public function setNumeroexpediente(?Tramite $numeroexpediente): self
+    public function setTramite(?Tramite $tramite): self
     {
-        $this->numeroexpediente = $numeroexpediente;
+        $this->tramite = $tramite;
 
         return $this;
     }

@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Tramite
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+    
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="fechaInicio", type="date", nullable=false)
@@ -30,8 +39,6 @@ class Tramite
      * @var int
      *
      * @ORM\Column(name="numeroExpediente", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $numeroexpediente;
 
@@ -82,6 +89,11 @@ class Tramite
      */
     private $tipotramite;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
     public function getFechainicio(): ?\DateTimeInterface
     {
         return $this->fechainicio;
@@ -109,6 +121,12 @@ class Tramite
     public function getNumeroexpediente(): ?int
     {
         return $this->numeroexpediente;
+    }
+
+    public function setNumeroexpediente(int $numeroexpediente): self
+    {
+        $this->numeroexpediente = $numeroexpediente;
+        return $this;
     }
 
     public function getFecharesolucion(): ?\DateTimeInterface

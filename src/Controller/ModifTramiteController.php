@@ -34,9 +34,9 @@ class ModifTramiteController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $seguimiento = new ModificacionTramite;
-        $numeroexpediente = $request->query->get('numeroexpediente');
-        $tramite = $em->getRepository(Tramite::class)->find($numeroexpediente);
-        $seguimiento->setNumeroexpediente($tramite);
+        $id = $request->query->get('id');
+        $tramite = $em->getRepository(Tramite::class)->find($id);
+        $seguimiento->setTramite($tramite);
         $form = $this->createForm(ModifTramiteType::class, $seguimiento);
         $form->handleRequest($request);
 

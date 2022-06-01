@@ -26,12 +26,12 @@ class TramiteController extends AbstractController
     }
 
      /**
-     * @Route("/tramite/{numeroexpediente}", name="vertramite")
+     * @Route("/tramite/{id}", name="vertramite")
      */
-    public function getBy($numeroexpediente)
+    public function getBy($id)
     {
             $em = $this->getDoctrine()->getManager();
-            $tramite = $em->getRepository(Tramite::class)->find($numeroexpediente); 
+            $tramite = $em->getRepository(Tramite::class)->find($id); 
             $tipotramite = $tramite->getTipoTramite();
             $estadotramite = $tramite->getEstadotramite();
             $persona = $tramite->getPersona();
@@ -71,12 +71,12 @@ class TramiteController extends AbstractController
     }
 
     /**
-     * @Route("/tramite/delete/{numeroexpediente}", name="deletetramite")
+     * @Route("/tramite/delete/{id}", name="deletetramite")
      */
-    public function delete($numeroexpediente)
+    public function delete($id)
     {
             $em = $this->getDoctrine()->getManager();
-            $tramite = $em->getRepository(Tramite::class)->find($numeroexpediente);
+            $tramite = $em->getRepository(Tramite::class)->find($id);
             $em->remove($tramite);
             $em->flush();
 

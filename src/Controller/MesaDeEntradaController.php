@@ -18,7 +18,7 @@ class MesaDeEntradaController extends AbstractController
      */
     public function index(Request $request): Response
     {
-        $idSigmu = $_POST["idSigmu"];
+        $idSigmu = 1;//$_POST["idSigmu"];
 
         $em = $this->getDoctrine()->getManager();
 

@@ -31,13 +31,6 @@ class Usuario
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=45, nullable=false)
-     */
-    private $password;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="role", type="string", length=45, nullable=false)
      */
     private $role;
@@ -55,18 +48,6 @@ class Usuario
     public function setUser(string $user): self
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
 
         return $this;
     }
