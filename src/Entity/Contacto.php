@@ -33,6 +33,13 @@ class Contacto
      */
     private $persona;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="vigente", type="boolean", nullable=false, options={"default"="1"})
+     */
+    private $vigente = true;
+
     public function getContacto(): ?string
     {
         return $this->contacto;
@@ -50,5 +57,16 @@ class Contacto
         return $this;
     }
 
+    public function getVigente(): ?bool
+    {
+        return $this->vigente;
+    }
+
+    public function setVigente(bool $vigente): self
+    {
+        $this->vigente = $vigente;
+
+        return $this;
+    }
 
 }

@@ -138,6 +138,13 @@ class Padron
     private $idresponsable;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="vigente", type="boolean", nullable=false, options={"default"="1"})
+     */
+    private $vigente = true;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -348,6 +355,18 @@ class Padron
         if ($this->idresponsable->removeElement($idresponsable)) {
             $idresponsable->removeIdpadron($this);
         }
+
+        return $this;
+    }
+
+    public function getVigente(): ?bool
+    {
+        return $this->vigente;
+    }
+
+    public function setVigente(bool $vigente): self
+    {
+        $this->vigente = $vigente;
 
         return $this;
     }

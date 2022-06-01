@@ -61,7 +61,7 @@ class ObraSocial
      *
      * @ORM\Column(name="vigente", type="boolean", nullable=false)
      */
-    private $vigente;
+    private $vigente = true;
 
     public function getId(): ?int
     {

@@ -179,6 +179,13 @@ class Persona
     private $idpadron;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="vigente", type="boolean", nullable=false, options={"default"="1"})
+     */
+    private $vigente = true;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -415,6 +422,18 @@ class Persona
     public function removeIdpadron(Padron $idpadron): self
     {
         $this->idpadron->removeElement($idpadron);
+
+        return $this;
+    }
+
+    public function getVigente(): ?bool
+    {
+        return $this->vigente;
+    }
+
+    public function setVigente(bool $vigente): self
+    {
+        $this->vigente = $vigente;
 
         return $this;
     }
