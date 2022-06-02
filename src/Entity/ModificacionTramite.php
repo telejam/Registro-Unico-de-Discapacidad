@@ -22,11 +22,11 @@ class ModificacionTramite
     private $id;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      *
-     * @ORM\Column(name="fechaSeguimiento", type="date", nullable=false)
+     * @ORM\Column(name="fechaSeguimiento", type="date", nullable=true, options={"default"="NULL"})
      */
-    private $fechaseguimiento;
+    private $fechaseguimiento = NULL;
 
     /**
      * @var string
@@ -75,6 +75,8 @@ class ModificacionTramite
     public function setFechaseguimiento(\DateTimeInterface $fechaseguimiento): self
     {
         $this->fechaseguimiento = $fechaseguimiento;
+        $fechaseguimiento = new \DateTime();
+        $fechaseguimiento->setTimezone(new \DateTimeZone('America/Argentina/Buenos_Aires'));
 
         return $this;
     }

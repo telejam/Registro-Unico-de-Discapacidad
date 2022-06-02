@@ -44,14 +44,13 @@ class ModifTramiteController extends AbstractController
             $em = $this->getDoctrine()->getManager();
 
             if ($form['Finalizar']->getData()) {
-                $estadotramite = $em->getRepository(EstadoTramite::class)->find(3);
+                $estadotramite = $em->getRepository(EstadoTramite::class)->find(2);
                 $tramite->setFecharesolucion($seguimiento->getFechaseguimiento()); 
                 $tramite->setEstadotramite($estadotramite);
             }
 
             $em->persist($seguimiento);
             $em->flush();
-            $this->addFlash(type: 'exito', message: 'Se ha registrado exitosamente.');
             return $this->redirectToRoute('seguimientos');
         }
         return $this->render('modif_tramite/create.html.twig', [

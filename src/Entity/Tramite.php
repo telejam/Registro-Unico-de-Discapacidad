@@ -22,11 +22,11 @@ class Tramite
     private $id;
     
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      *
-     * @ORM\Column(name="fechaInicio", type="date", nullable=false)
+     * @ORM\Column(name="fechaInicio", type="date", nullable=true, options={"default"="NULL"})
      */
-    private $fechainicio;
+    private $fechainicio = NULL;
 
     /**
      * @var string
@@ -109,6 +109,8 @@ class Tramite
     public function setFechainicio(\DateTimeInterface $fechainicio): self
     {
         $this->fechainicio = $fechainicio;
+        $fechainicio = new \DateTime();
+        $fechainicio->setTimezone(new \DateTimeZone('America/Argentina/Buenos_Aires'));
 
         return $this;
     }

@@ -17,14 +17,14 @@ class ModifTramiteType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $fechaHoy = new \DateTime();
-        $fechaHoy->setTimezone(new \DateTimeZone('America/Argentina/Buenos_Aires'));
+        // $fechaHoy = new \DateTime();
+        // $fechaHoy->setTimezone(new \DateTimeZone('America/Argentina/Buenos_Aires'));
         
         $builder
-            ->add('fechaseguimiento', DateType::class, [ 
-            'data'  => $fechaHoy,
-            'label'=>'Fecha de seguimiento'
-            ])
+            // ->add('fechaseguimiento', DateType::class, [ 
+            // 'data'  => $fechaHoy,
+            // 'label'=>'Fecha de seguimiento'
+            // ])
             ->add('observacion', TextType::class, [
                 'label'=>'Observación'
             ])
