@@ -58,6 +58,7 @@ class TramiteController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($tramite);
             $em->flush();
+            
             return $this->redirectToRoute('createtramite', [
                 'success' => '1'
             ]);
@@ -66,6 +67,32 @@ class TramiteController extends AbstractController
             'controller_name' => 'TramiteController',
             'formulario'=>$form->createView()
         ]);     
+    }
+
+    /**
+     * @Route("/tramite/edit/{id}", name="editTramite")
+     */
+    public function edit(Request $request, $id): Response
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+        $tramite = $em->getRepository(Tramite::class)->find($id);
+        $form = $this->createForm(TramiteType::class, $tramite);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($tramite);
+            $em->flush();
+
+            return $this->redirectToRoute('tramite', [
+                'id'=>$id
+            ]);
+        }
+
+        return $this->render('tramite/edit.html.twig', [
+            'controller_name' => 'TramiteController',
+            'formulario' => $form->createView()
+        ]);
     }
 
     /**

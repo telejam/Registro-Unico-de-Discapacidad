@@ -37,7 +37,6 @@ class ObraSocialController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($obra);
             $em->flush();
-            $this->addFlash(type: 'exito', message: 'Se ha registrado exitosamente.');
             return $this->redirectToRoute('obrasocial');
         }
         return $this->render('obra_social/create.html.twig', [

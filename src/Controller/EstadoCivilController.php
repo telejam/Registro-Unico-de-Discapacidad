@@ -24,7 +24,6 @@ class EstadoCivilController extends AbstractController
             $em =  $this->getDoctrine()->getManager();
             $em->persist($estadoCivil);
             $em->flush();
-            $this->addFlash('success', 'Estado Civil agregado');
 
             return $this->redirectToRoute('estadocivil');
         }

@@ -24,7 +24,6 @@ class TipoDniController extends AbstractController
             $em =  $this->getDoctrine()->getManager();
             $em->persist($tipoDni);
             $em->flush();
-            $this->addFlash('success', 'Tipo de DNI agregado');
 
             return $this->redirectToRoute('tipodni');
         }

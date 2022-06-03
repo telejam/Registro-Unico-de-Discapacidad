@@ -63,7 +63,6 @@ class DiscapacidadController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($discapacidad);
             $em->flush();
-            $this->addFlash('success', 'Discapacidad Modificada');
 
             return $this->redirectToRoute('discapacidad', [
                 'id'=>$id

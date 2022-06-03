@@ -24,7 +24,6 @@ class NacionalidadController extends AbstractController
             $em =  $this->getDoctrine()->getManager();
             $em->persist($nacionalidad);
             $em->flush();
-            $this->addFlash('success', 'Nacionalidad agregada');
 
             return $this->redirectToRoute('nacionalidad');
         }

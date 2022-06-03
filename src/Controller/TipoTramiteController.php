@@ -38,8 +38,7 @@ class TipoTramiteController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($tipotramite);
             $em->flush();
-            /*$this->addFlash(type: 'exito', message: 'Se ha registrado exitosamente.');
-            return $this->redirectToRoute('tipotramite');*/
+          
             return $this->redirectToRoute('createtipotramite', [
                 'success' => '1'
             ]);

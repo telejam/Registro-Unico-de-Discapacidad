@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TramiteController!{% endblock %}
+
+{% block body %}
+
+	{{parent()}}
+
+	<div class="sectionTitle">
+		<h2>EDITAR INFORMACIÓN DE TRÁMITE</h2>
+	</div>
+
+	{{form(formulario)}}
+
+	<div class="btnCancelar">
+        <a href="/tramite" class="btn btn-danger mb-4" id="cancelar">Cancelar</a>
+    </div>
+
+{% endblock %}

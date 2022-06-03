@@ -20,17 +20,17 @@ class TramiteType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        // $fechaHoy = new \DateTime();
-        // $fechaHoy->setTimezone(new \DateTimeZone('America/Argentina/Buenos_Aires'));
+        $fechaHoy = new \DateTime();
+        $fechaHoy->setTimezone(new \DateTimeZone('America/Argentina/Buenos_Aires'));
 
         $builder
             ->add('numeroexpediente', IntegerType::class, [
                 'label'=>'Numero de expediente'
             ])
-            // ->add('fechainicio', DateType::class, [
-            //     'data'  => $fechaHoy,
-            //     'label'=>'Fecha de inicio'
-            // ])
+            ->add('fechainicio', DateType::class, [
+                'data'  => $fechaHoy,
+                'label'=>'Fecha de inicio'
+            ])
             ->add('tipotramite', EntityType::class, [
                 'class' =>TipoTramite::class,
                 'choice_label' =>'nombre',
@@ -44,7 +44,6 @@ class TramiteType extends AbstractType
                 'choice_label' =>'estado',
                 'label'=>'Estado del tramite'
             ])
-            // ->add('fecharesolucion', DateType::class)
             ->add('persona',EntityType::class, [
                 'class' =>Persona::class,
                 'choice_label' =>'dniNumero'
