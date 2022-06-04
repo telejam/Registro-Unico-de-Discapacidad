@@ -75,6 +75,9 @@
         let divActividades = document.createElement('div');
         let divID = document.createElement('div');
 
+        
+        
+
         {# clases #}
         divCUIL.classList.add('divCUIL');
         divCUD.classList.add('divCUD');
@@ -152,6 +155,26 @@
         let subtitulo4 = document.createElement('h3');
         subtitulo4.innerHTML = 'EDUCACIÓN';
         divPadron.insertBefore(subtitulo4, divPadron.children[9]);
+
+
+        {# SELECTS VACÍOS #}
+        let obraSocialSelect = document.getElementById('padron_obrasocial');
+        let emptyOption = document.createElement('option');
+        emptyOption.innerHTML = 'Seleccione una obra social';
+        emptyOption.setAttribute("selected", "selected");
+        obraSocialSelect.insertBefore(emptyOption, obraSocialSelect.firstChild);
+
+        let personaSelect = document.getElementById('padron_id');
+        let emptyOption2 = document.createElement('option');
+        emptyOption2.innerHTML = '';
+        emptyOption2.setAttribute("selected", "selected");
+        personaSelect.insertBefore(emptyOption2, personaSelect.firstChild);
+
+        let discapacidadSelect = document.getElementById('padron_discapacidad');
+        let emptyOption3 = document.createElement('option');
+        emptyOption3.innerHTML = 'Seleccione una discapacidad';
+        emptyOption3.setAttribute("selected", "selected");
+        discapacidadSelect.insertBefore(emptyOption3, discapacidadSelect.firstChild);    
         
 	</script>
 

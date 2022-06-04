@@ -19,8 +19,11 @@
 
 		divSeguimiento = document.querySelectorAll('div')[5];
 
+		let fechaSeguimiento = divSeguimiento.children[0];
+		fechaSeguimiento.classList.add('divFechaSeguimiento');
+		fechaSeguimiento.style.display = 'none';
+
 		let finalizado = divSeguimiento.children[3];
-		console.log(finalizado)
 		
 		finalizado.classList.add('divSeguimiento');
 

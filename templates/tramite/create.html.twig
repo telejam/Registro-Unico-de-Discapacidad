@@ -19,21 +19,23 @@
 
 		const divTramite = document.querySelectorAll('div')[5];
 
+		let numeroExpediente = divTramite.children[0];
+
 		{# Fecha de inicio #}
-		let fechaInicio = divTramite.children[0];
+		let fechaInicio = divTramite.children[1];
 
 		{# Tipo de trámite y Estado del trámite #}
-		let tipoTramite = divTramite.children[1];
-		let estadoTramite = divTramite.children[3];
+		let tipoTramite = divTramite.children[2];
+		let estadoTramite = divTramite.children[4];
 
 		{# Observación #}
-		let observacion = divTramite.children[2];
+		let observacion = divTramite.children[3];
 
 		{# Persona #}
-		let persona = divTramite.children[4];
+		let persona = divTramite.children[5];
 
 		{# Usuario #}
-		let usuario = divTramite.children[5];
+		let usuario = divTramite.children[6];
 
 
 
@@ -82,6 +84,8 @@
 
 		{# Botón Registrar #}
 		divTramite.appendChild(btnRegistrar);
+
+		divFechaInicio.style.display = 'none';
 
 	</script>
 
