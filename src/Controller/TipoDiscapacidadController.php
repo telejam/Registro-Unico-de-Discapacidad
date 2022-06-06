@@ -62,11 +62,14 @@ class TipoDiscapacidadController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($tipoDiscapacidad);
             $em->flush();
-            $this->addFlash('success', 'TipoDiscapacidad Modificado');
+            /*$this->addFlash('success', 'TipoDiscapacidad Modificado');
 
             return $this->redirectToRoute('tipodiscapacidad', [
                 'id'=>$id
-            ]);
+            ]);*/
+            return $this->redirectToRoute('edittipodiscapacidad', [
+                'id'=>$id,
+                 'success' => '1']);
         }
 
         return $this->render('tipo_discapacidad/edit.html.twig', [
