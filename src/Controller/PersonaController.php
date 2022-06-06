@@ -94,8 +94,11 @@ class PersonaController extends AbstractController
             $em->flush();
             $this->addFlash('success', 'Persona Modificada');
 
-            return $this->redirectToRoute('persona', [
-                'id'=>$id]);
+            /*return $this->redirectToRoute('persona', [
+                'id'=>$id]);*/
+                return $this->redirectToRoute('editpersona', [
+                    'id'=>$id,
+                     'success' => '1']);
         }
 
         return $this->render('persona/edit.html.twig', [
