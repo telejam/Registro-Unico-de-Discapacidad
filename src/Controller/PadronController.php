@@ -81,11 +81,15 @@ class PadronController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($padron);
             $em->flush();
-            $this->addFlash('success', 'Padron Modificado');
+            /*$this->addFlash('success', 'Padron Modificado');
 
             return $this->redirectToRoute('padrongral', [
                 'id'=>$id
-            ]);
+            ]);*/
+            return $this->redirectToRoute('editpadron', [
+                'id'=>$id,
+                 'success' => '1']);
+
         }
 
         return $this->render('padron/edit.html.twig', [
