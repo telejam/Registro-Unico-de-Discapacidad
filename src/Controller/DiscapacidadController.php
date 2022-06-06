@@ -64,9 +64,13 @@ class DiscapacidadController extends AbstractController
             $em->persist($discapacidad);
             $em->flush();
 
-            return $this->redirectToRoute('discapacidad', [
+           /*return $this->redirectToRoute('discapacidad', [
                 'id'=>$id
-            ]);
+            ]);*/
+            return $this->redirectToRoute('editdiscapacidad', [
+                'id'=>$id,
+                 'success' => '1']);
+
         }
 
         return $this->render('discapacidad/edit.html.twig', [
