@@ -9,7 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Session\Session;
+
+// session_start();
 
 class MesaDeEntradaController extends AbstractController
 {
@@ -18,18 +19,29 @@ class MesaDeEntradaController extends AbstractController
      */
     public function index(Request $request): Response
     {
-        $idSigmu = $_POST["idSigmu"];
-
         $em = $this->getDoctrine()->getManager();
 
-        $idUser = $idSigmu; //$em->getRepository(Usuario::class)->find($idSigmu);
-        $user = 'el Jefe'; //$em->getRepository(Usuario::class)->find($idSigmu);
+        $session = $request->getSession();
 
-        $_SESSION['userid'] = $idUser;
-        $_SESSION['username'] = $user;
+        if ($request->get('idSigmu')) 
+        {
+            $idSigmu = $request->get('idSigmu');
 
-        $userName = $_SESSION['username'];
-        $idUsuario = $_SESSION['userid'];
+            $idUser = $idSigmu; //$em->getRepository(Usuario::class)->find($idSigmu);
+            $user = 'el Jefe'; //$em->getRepository(Usuario::class)->find($idSigmu);
+
+            $session->set('username', $user);
+            $session->set('userid', $idUser);
+        }
+        else if (!$session->get('userid'))
+        {
+            echo '<h1>RAJÁ DE ACÁ WACHÍNN!!!!</h1>';
+            $session->clear();
+            exit(0);
+        }
+
+        $idUsuario = $session->get('userid');
+        $userName = $session->get('username');
 
         /////////////////////////////
         $id = 1;
@@ -51,19 +63,5 @@ class MesaDeEntradaController extends AbstractController
             'responsables' => $responsables,
             'tramites' => $tramites
         ]);
-    }
-
-    private function findResponsable($em, $id): array
-    {
-        $conn = $em->getConnection();
-
-        $sql = '
-            SELECT r.idResponsable FROM responsable_de r
-            WHERE r.idPadron = :id
-            ';
-        $stmt = $conn->prepare($sql);
-        $resultSet = $stmt->executeQuery(['id' => $id]);
-
-        return $resultSet->fetchAllAssociative();
     }
 }
