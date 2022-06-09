@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Controller;
 
 use App\Entity\Persona;
@@ -9,21 +8,35 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class PersonaController extends AbstractController
 {
     /**
      * @Route("/personas", name="personas")
      */
-    public function getAll()
+    public function getAll(Request $request): Response
     {
-            $em = $this->getDoctrine()->getManager();
-            $personas = $em->getRepository(Persona::class)->findAll();
+        $em = $this->getDoctrine()->getManager();
 
-            return $this->render('persona/index.html.twig', [
-                'controller_name' => 'PersonaController',
-                'personas' => $personas
-            ]);
+        $session = $request->getSession();
+
+        if (!$session->get('userid'))
+        {
+            echo '<h1>RAJÁ DE ACÁ WACHÍNN!!!!</h1>';
+            $session->clear();
+            exit(0);
+        }
+
+        $idUsuario = $session->get('userid');
+        $userName = $session->get('username');
+
+        $personas = $em->getRepository(Persona::class)->findAll();
+
+        return $this->render('persona/index.html.twig', [
+            'controller_name' => 'PersonaController',
+            'personas' => $personas
+        ]);
     }
 
     /**
