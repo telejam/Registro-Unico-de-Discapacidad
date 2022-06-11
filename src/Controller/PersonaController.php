@@ -8,28 +8,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Session\Session;
+use App\Controller\SessionController;
 
 class PersonaController extends AbstractController
 {
     /**
      * @Route("/personas", name="personas")
      */
-    public function getAll(Request $request): Response
+    public function getAll(Request $request, SessionController $validador): Response
     {
         $em = $this->getDoctrine()->getManager();
 
-        $session = $request->getSession();
-
-        if (!$session->get('userid'))
-        {
-            echo '<h1>RAJÁ DE ACÁ WACHÍNN!!!!</h1>';
-            $session->clear();
-            exit(0);
-        }
-
-        $idUsuario = $session->get('userid');
-        $userName = $session->get('username');
+        $idUsuario = $validador->validar($request);
 
         $personas = $em->getRepository(Persona::class)->findAll();
 
@@ -42,35 +32,41 @@ class PersonaController extends AbstractController
     /**
      * @Route("/persona/{id}", name="persona")
      */
-    public function getBy($id)
+    public function getBy($id, Request $request, SessionController $validador): Response
     {
-            $em = $this->getDoctrine()->getManager();
-            $persona = $em->getRepository(Persona::class)->find($id);
-            $estadoCivil = $persona->getEstadoCivil();
-            $dniTipo = $persona->getDniTipo();
-            $barrio = $persona->getBarrio();
-            $ciudad = $persona->getCiudad();
-            $provincia = $persona->getProvincia();
-            $nacionalidad = $persona->getNacionalidad();
+        $em = $this->getDoctrine()->getManager();
 
-            return $this->render('persona/verpersona.html.twig', [
-                'controller_name' => 'PersonaController',
-                'persona' => $persona,
-                'estadocivil' => $estadoCivil,
-                'dnitipo' => $dniTipo,
-                'barrio' => $barrio,
-                'ciudad' => $ciudad,
-                'provincia' => $provincia,
-                'nacionalidad' => $nacionalidad
-            ]);
+        $idUsuario = $validador->validar($request);
+
+        $persona = $em->getRepository(Persona::class)->find($id);
+        $estadoCivil = $persona->getEstadoCivil();
+        $dniTipo = $persona->getDniTipo();
+        $barrio = $persona->getBarrio();
+        $ciudad = $persona->getCiudad();
+        $provincia = $persona->getProvincia();
+        $nacionalidad = $persona->getNacionalidad();
+
+        return $this->render('persona/verpersona.html.twig', [
+            'controller_name' => 'PersonaController',
+            'persona' => $persona,
+            'estadocivil' => $estadoCivil,
+            'dnitipo' => $dniTipo,
+            'barrio' => $barrio,
+            'ciudad' => $ciudad,
+            'provincia' => $provincia,
+            'nacionalidad' => $nacionalidad
+        ]);
     }
 
     /**
      * @Route("/createpersona", name="createpersona")
      */
-    public function create(Request $request): Response
+    public function create(Request $request, SessionController $validador): Response
     {
-        $em =  $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
+
+        $idUsuario = $validador->validar($request);
+
         $persona = new Persona();
         $form = $this->createForm(PersonaType::class, $persona);
 
@@ -79,7 +75,7 @@ class PersonaController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($persona);
             $em->flush();
-         
+
             return $this->redirectToRoute('createpersona', [
                 'success' => '1'
             ]);
@@ -94,9 +90,12 @@ class PersonaController extends AbstractController
     /**
      * @Route("/editpersona/{id}", name="editpersona")
      */
-    public function edit(Request $request, $id): Response
+    public function edit($id, Request $request, SessionController $validador): Response
     {
-        $em =  $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
+
+        $idUsuario = $validador->validar($request);
+
         $persona = $em->getRepository(Persona::class)->find($id);
         $form = $this->createForm(PersonaType::class, $persona);
 
@@ -111,7 +110,7 @@ class PersonaController extends AbstractController
                 'id'=>$id]);*/
                 return $this->redirectToRoute('editpersona', [
                     'id'=>$id,
-                     'success' => '1']);
+                    'success' => '1']);
         }
 
         return $this->render('persona/edit.html.twig', [
@@ -123,14 +122,17 @@ class PersonaController extends AbstractController
     /**
      * @Route("/deletepersona/{id}", name="deletepersona")
      */
-    public function delete($id)
+    public function delete($id, Request $request, SessionController $validador): Response
     {
-            $em = $this->getDoctrine()->getManager();
-            $persona = $em->getRepository(Persona::class)->find($id);
-            $em->remove($persona);
-            $em->flush();
+        $em = $this->getDoctrine()->getManager();
 
-            return $this->redirectToRoute('personas');
+        $idUsuario = $validador->validar($request);
+
+        $persona = $em->getRepository(Persona::class)->find($id);
+        $em->remove($persona);
+        $em->flush();
+
+        return $this->redirectToRoute('personas');
     }
 
 }

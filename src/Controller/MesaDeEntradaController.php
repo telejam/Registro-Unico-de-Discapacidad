@@ -9,39 +9,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-// session_start();
+use App\Controller\SessionController;
 
 class MesaDeEntradaController extends AbstractController
 {
     /**
      * @Route("/", name="mesadeentrada")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, SessionController $validador): Response
     {
         $em = $this->getDoctrine()->getManager();
 
-        $session = $request->getSession();
-
-        if ($request->get('idSigmu')) 
-        {
-            $idSigmu = $request->get('idSigmu');
-
-            $idUser = $idSigmu; //$em->getRepository(Usuario::class)->find($idSigmu);
-            $user = 'el Jefe'; //$em->getRepository(Usuario::class)->find($idSigmu);
-
-            $session->set('username', $user);
-            $session->set('userid', $idUser);
-        }
-        else if (!$session->get('userid'))
-        {
-            echo '<h1>RAJÁ DE ACÁ WACHÍNN!!!!</h1>';
-            $session->clear();
-            exit(0);
-        }
-
-        $idUsuario = $session->get('userid');
-        $userName = $session->get('username');
+        $idUsuario = $validador->validar($request);
 
         /////////////////////////////
         $id = 1;
@@ -49,14 +28,12 @@ class MesaDeEntradaController extends AbstractController
 
         $discapacitado = $em->getRepository(Persona::class)->find($id);
 
-
         $discapacidad = $em->getRepository(Padron::class)->find($id);
         $responsables = $discapacidad->getIdresponsable();
         // $tramites = $em->getRepository(Tramite::class)->findAll();
         $tramites = $em->getRepository(Tramite::class)->findBy(['persona' => $id]);
 
         return $this->render('mesa_de_entrada/index.html.twig', [
-            'username' => $userName,
             'userid' => $idUsuario,
             'discapacitado' => $discapacitado,
             'discapacidad' => $discapacidad,
