@@ -91,7 +91,7 @@ class Persona
      *
      * @ORM\Column(name="dpto", type="string", length=45, nullable=true, options={"default"="NULL"})
      */
-    private $dpto = 'NULL';
+    private $dpto = NULL;
 
     /**
      * @var Ciudad

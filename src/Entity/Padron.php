@@ -9,11 +9,20 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Padron
  *
- * @ORM\Table(name="padron", indexes={@ORM\Index(name="padronObraSocial_idx", columns={"obraSocial"}), @ORM\Index(name="padronDiscapacidad_idx", columns={"discapacidad"})})
+ * @ORM\Table(name="padron", indexes={@ORM\Index(name="padronObraSocial_idx", columns={"obraSocial"}), @ORM\Index(name="padronDiscapacidad_idx", columns={"discapacidad"}), @ORM\Index(name="padronPersona_idx", columns={"persona"})})
  * @ORM\Entity
  */
 class Padron
 {
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
     /**
      * @var int
      *
@@ -121,14 +130,12 @@ class Padron
     /**
      * @var Persona
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="Persona")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="persona", referencedColumnName="id")
      * })
      */
-    private $id;
+    private $persona;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -150,6 +157,11 @@ class Padron
     public function __construct()
     {
         $this->idresponsable = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
     public function getCuil(): ?int
@@ -320,14 +332,14 @@ class Padron
         return $this;
     }
 
-    public function getId(): ?Persona
+    public function getPersona(): ?Persona
     {
-        return $this->id;
+        return $this->persona;
     }
 
-    public function setId(?Persona $id): self
+    public function setPersona(?Persona $persona): self
     {
-        $this->id = $id;
+        $this->persona = $persona;
 
         return $this;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Usuario;
 use App\Entity\Persona;
 use App\Form\PersonaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -73,6 +74,8 @@ class PersonaController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $usuario = $em->getRepository(Usuario::class)->find($idUsuario);
+            $persona->setUsuario($usuario);
             $em->persist($persona);
             $em->flush();
 

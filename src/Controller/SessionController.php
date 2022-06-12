@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Usuario;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,11 +38,9 @@ class SessionController extends AbstractController
 
             $em = $this->getDoctrine()->getManager();
 
-            //$user = $em->getRepository(Usuario::class)->findOne($idSigmu);
-            $userId = $idSigmu;//$user->;
-            $userName = 'Boss';
+            $usuario = $em->getRepository(Usuario::class)->findOneBy(['idSigmu' => $idSigmu]);
+            $userId = $usuario->getId();
 
-            $session->set('username', $userName);
             $session->set('userid', $userId);
         }
         else if (!$session->get('userid'))

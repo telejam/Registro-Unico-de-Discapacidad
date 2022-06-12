@@ -18,24 +18,32 @@ class MesaDeEntradaController extends AbstractController
      */
     public function index(Request $request, SessionController $validador): Response
     {
+        $dni = null;
+        $persona = null;
+        $discapacidad = null;
+        $responsables = null;
+        $tramites = null;
+
         $em = $this->getDoctrine()->getManager();
 
         $idUsuario = $validador->validar($request);
 
-        /////////////////////////////
-        $id = 1;
-        /////////////////////////////
+        if ($request->get('dni')) 
+        {
+            $dni = $request->get('dni');
+            $persona = $em->getRepository(Persona::class)->findOneBy(['dninumero' => $dni]);
+            $discapacidad = $em->getRepository(Padron::class)->findOneBy(['persona' => $persona->getId()]);
+        }
 
-        $discapacitado = $em->getRepository(Persona::class)->find($id);
-
-        $discapacidad = $em->getRepository(Padron::class)->find($id);
-        $responsables = $discapacidad->getIdresponsable();
-        // $tramites = $em->getRepository(Tramite::class)->findAll();
-        $tramites = $em->getRepository(Tramite::class)->findBy(['persona' => $id]);
+        if ($discapacidad)
+        {
+            $responsables = $discapacidad->getIdresponsable();
+            $tramites = $em->getRepository(Tramite::class)->findBy(['persona' => $persona->getId()]);
+        }
 
         return $this->render('mesa_de_entrada/index.html.twig', [
             'userid' => $idUsuario,
-            'discapacitado' => $discapacitado,
+            'persona' => $persona,
             'discapacidad' => $discapacidad,
             'responsables' => $responsables,
             'tramites' => $tramites

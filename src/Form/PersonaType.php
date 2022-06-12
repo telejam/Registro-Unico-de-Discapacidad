@@ -59,10 +59,6 @@ class PersonaType extends AbstractType
                 'class' => Barrio::class,
                 'choice_label' => 'nombre'
             ])
-            ->add('usuario', EntityType::class, [
-                'class' => Usuario::class,
-                'choice_label' => 'user'
-            ])
             ->add('Guardar', SubmitType::class)
         ;
     }

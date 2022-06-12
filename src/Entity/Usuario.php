@@ -36,6 +36,13 @@ class Usuario
     private $role;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="idSigmu", type="integer", nullable=false)
+     */
+    private $idSigmu;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="vigente", type="boolean", nullable=false, options={"default"="1"})
@@ -67,6 +74,18 @@ class Usuario
     public function setRole(string $role): self
     {
         $this->role = $role;
+
+        return $this;
+    }
+
+    public function getIdSigmu(): ?int
+    {
+        return $this->idSigmu;
+    }
+
+    public function setidSigmu(int $idSigmu): self
+    {
+        $this->idSigmu = $idSigmu;
 
         return $this;
     }
