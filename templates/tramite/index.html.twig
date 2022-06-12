@@ -43,9 +43,13 @@
                     <td>{{tramit.tipotramite.nombre}}</td>
                     <td>{{ tramit.observacion}}</td>
                     <td>{{tramit.estadoTramite.estado}}</td>
+                    {% if tramit.fechaResolucion is defined and tramit.fechaResolucion %}
                     <td>{{tramit.fechaResolucion|date('d-m-Y')}}</td>
+                    
+                    {%else%}
+                    <td>Sin fecha de resolución</td>
+                    {%endif%}
                     <td>{{tramit.persona.dniNumero}}</td>
-                    {# <td>Usuario: {{tramit.usuario.user}}</td> #}
 
                     <td>
                         <a href="{{ path('createseguimiento', {'id': tramit.id}) }}"><i class="fas fa-search"></i></a>

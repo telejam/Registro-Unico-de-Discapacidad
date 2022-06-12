@@ -32,7 +32,12 @@ class MesaDeEntradaController extends AbstractController
         {
             $dni = $request->get('dni');
             $persona = $em->getRepository(Persona::class)->findOneBy(['dninumero' => $dni]);
-            $discapacidad = $em->getRepository(Padron::class)->findOneBy(['persona' => $persona->getId()]);
+            if($persona){
+                $discapacidad = $em->getRepository(Padron::class)->findOneBy(['persona' => $persona->getId()]);
+            }
+            else{
+                // "Poner modal que avise que no existe la persona y q le pregunte si la quiere crear ahora (manda al createpersona) o cancelar";
+            }
         }
 
         if ($discapacidad)

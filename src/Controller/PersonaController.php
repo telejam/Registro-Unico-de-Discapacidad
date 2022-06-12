@@ -132,7 +132,8 @@ class PersonaController extends AbstractController
         $idUsuario = $validador->validar($request);
 
         $persona = $em->getRepository(Persona::class)->find($id);
-        $em->remove($persona);
+        // $em->remove($persona);
+        
         $em->flush();
 
         return $this->redirectToRoute('personas');

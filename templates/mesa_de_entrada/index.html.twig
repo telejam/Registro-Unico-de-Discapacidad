@@ -26,6 +26,7 @@
 							{{ tramite.numeroExpediente }}
 							{{ tramite.estadoTramite.estado }}</p>
 					{% endfor %}
+				{% else %}<p>Sin trámites realizados.</p>
 				{% endif %}
 			</div>
 		</div>
@@ -58,6 +59,7 @@
 							{{ persona.provincia.nombre }}
 							-
 							{{ persona.nacionalidad.pais }}</p>
+					{% else %}<p>Sin datos personales.</p>
 					{% endif %}
 				</div>
 				<div class="bloqueInformacion">
@@ -75,6 +77,7 @@
 							{{discapacidad.niveleducacion}}</p>
 						<p>Residencia:
 							{{discapacidad.residencia}}</p>
+					{% else %}<p>Sin datos de educación-trabajo.</p>
 					{% endif %}
 				</div>
 			</div>
@@ -98,6 +101,7 @@
 							{{discapacidad.pension}}</p>
 						<p>Obra social:
 							{{discapacidad.obrasocial.denominacion}}</p>
+					{% else %}<p>Sin datos de discapacidad.</p>
 					{% endif %}
 				</div>
 				<div class="bloqueInformacion">
@@ -107,6 +111,7 @@
 							<p>{{ responsable.nombre }}
 								{{ responsable.apellido }}</p>
 						{% endfor %}
+					{% else %}<p>Sin datos de responsable</p>
 					{% endif %}
 				</div>
 			</div>

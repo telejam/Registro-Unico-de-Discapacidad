@@ -18,14 +18,8 @@ class SessionController extends AbstractController
         if ($request->hasSession() && ($session = $request->getSession())) 
         {
             $session->clear();
-            echo '<h1>GRACIAS POR USAR *RUD*</h1>';
         }
-        else 
-        {
-            echo '<h1>SOLO PERSONAL AUTORIZADO</h1>';
-        }
-        echo '<p>acá hay que mandarlos de vuelta al Sigmu</p>';
-        exit(0);
+        return $this->redirect('launch.html');
     }
 
     public function validar(Request $request)

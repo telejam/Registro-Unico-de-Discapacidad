@@ -82,9 +82,9 @@ class Persona
     /**
      * @var int|null
      *
-     * @ORM\Column(name="piso", type="integer", nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="piso", type="integer", nullable=true, options={"default"=0})
      */
-    private $piso = NULL;
+    private $piso = 0;
 
     /**
      * @var string|null
