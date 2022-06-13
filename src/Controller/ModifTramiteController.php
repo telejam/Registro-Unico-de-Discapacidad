@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\EstadoTramite;
 use App\Entity\ModificacionTramite;
 use App\Entity\Tramite;
+use App\Entity\Usuario;
 use App\Form\ModifTramiteType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,6 +38,7 @@ class ModifTramiteController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $idUsuario = $validador->validar($request);
+        $usuario = NULL;
         
         $seguimiento = new ModificacionTramite;
         $id = $request->query->get('id');
@@ -62,7 +64,7 @@ class ModifTramiteController extends AbstractController
                 $tramite->setFecharesolucion($seguimiento->getFechaseguimiento()); 
                 $tramite->setEstadotramite($estadotramite);
             }
-
+            $seguimiento->setUsuario($usuario);
             $em->persist($seguimiento);
             $em->flush();
             return $this->redirectToRoute('seguimientos');

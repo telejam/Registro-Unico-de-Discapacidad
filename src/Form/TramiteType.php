@@ -46,11 +46,8 @@ class TramiteType extends AbstractType
             ])
             ->add('persona',EntityType::class, [
                 'class' =>Persona::class,
-                'choice_label' =>'dniNumero'
-            ])
-            ->add('usuario', EntityType::class, [
-                'class' =>Usuario::class,
-                'choice_label' =>'user'
+                'choice_label' =>'dniNumero',
+                'label'=>'DNI'
             ])
             ->add('Registrar', SubmitType::class)
         ;

@@ -28,10 +28,6 @@ class ModifTramiteType extends AbstractType
             ->add('observacion', TextType::class, [
                 'label'=>'Observación'
             ])
-            ->add('usuario', EntityType::class, [
-                'class' =>Usuario::class,
-                'choice_label' =>'user'
-            ])
             ->add('Finalizar', CheckboxType::class, [
                 'mapped' => false,
                 'required'=>false,

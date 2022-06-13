@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Tramite;
 use App\Form\TramiteType;
+use App\Entity\Usuario;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -55,14 +56,17 @@ class TramiteController extends AbstractController
      */
     public function create(Request $request, SessionController $validador): Response
     {
-        $idUsuario = $validador->validar($request);
-
         $tramite = new Tramite();
+        
+        $idUsuario = $validador->validar($request);
+        $usuario = NULL;
+
         $form = $this->createForm(TramiteType::class, $tramite);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $tramite->setUsuario($usuario);
             $em->persist($tramite);
             $em->flush();
             
