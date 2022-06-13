@@ -52,6 +52,7 @@ nav {
   background: #33BB66;
   width: 100%;
   display: flex;
+  justify-content: space-between;
 }
 
 #municipalidadLogo {
@@ -62,6 +63,7 @@ nav {
 nav ul {
   display: flex;
   margin-top: 2%;
+  margin-right: 10px;
 }
 
 nav ul li {

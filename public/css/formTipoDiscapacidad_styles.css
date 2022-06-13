@@ -31,8 +31,6 @@
     align-items: center;
 }
 
-#tipo_discapacidad div:nth-child(3) input{
-    margin: 0;
-    width: auto;
-    margin-left: 1rem;
+#tipo_discapacidad div:nth-child(3) {
+    display: none;
 }

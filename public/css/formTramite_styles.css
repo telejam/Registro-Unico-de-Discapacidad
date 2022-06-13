@@ -11,6 +11,22 @@
     display: flex;
 }
 
+.divTipoEstadoTramite div:last-child {
+    display: none;
+}
+
+#tipo_tramite div:nth-child(5) {
+    display: none;
+}
+
+#tramite div:nth-child(2) {
+    display: none;
+}
+
+#tramite div:nth-child(5) {
+    display: none;
+}
+
 @media screen and (max-width: 768px) {
     .divTipoEstadoTramite {
         display: block;
