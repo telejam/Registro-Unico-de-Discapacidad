@@ -67,6 +67,7 @@ class PersonaController extends AbstractController
         $em = $this->getDoctrine()->getManager();
 
         $idUsuario = $validador->validar($request);
+        $usuario = NULL;
 
         $persona = new Persona();
         $form = $this->createForm(PersonaType::class, $persona);
@@ -74,7 +75,7 @@ class PersonaController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $usuario = $em->getRepository(Usuario::class)->find($idUsuario);
+            $this->usuario = $em->getRepository(Usuario::class)->find($idUsuario);
             $persona->setUsuario($usuario);
             $em->persist($persona);
             $em->flush();
@@ -86,6 +87,7 @@ class PersonaController extends AbstractController
 
         return $this->render('persona/create.html.twig', [
             'controller_name' => 'PersonaController',
+            'user'=>$usuario,
             'formulario' => $form->createView()
         ]);
     }

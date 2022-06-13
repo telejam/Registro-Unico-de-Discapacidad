@@ -36,6 +36,15 @@ class ModifTramiteController extends AbstractController
         $seguimiento = new ModificacionTramite;
         $id = $request->query->get('id');
         $tramite = $em->getRepository(Tramite::class)->find($id);
+        $numeroexpediente = $tramite->getNumeroexpediente();
+        
+        //uno sirve, el otro no, a descubrirlo
+        $historial = $em->getRepository(ModificacionTramite::class)->findAll($numeroexpediente);
+        $historial = $em->getRepository(ModificacionTramite::class)->findBy(['tramite'=>$numeroexpediente]);
+
+
+        dump($historial);
+
         $seguimiento->setTramite($tramite);
         $form = $this->createForm(ModifTramiteType::class, $seguimiento);
         $form->handleRequest($request);
@@ -54,7 +63,7 @@ class ModifTramiteController extends AbstractController
             return $this->redirectToRoute('seguimientos');
         }
         return $this->render('modif_tramite/create.html.twig', [
-            'controller_name' => 'ModifTramiteController',
+            'seguimientos'=>$historial,
             'formulario'=>$form->createView()
         ]);     
     }

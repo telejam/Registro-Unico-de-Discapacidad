@@ -9,6 +9,10 @@
 		<h2>SEGUIMIENTO</h2>
 	</div>
 	
+	<h4>HISTORIAL DE SEGUIMIENTOS</h4>
+	{% for seguimiento in seguimientos %}
+	<p>{{seguimiento.observacion}}</p>
+	{% endfor %}
 	{{form(formulario)}}
 
 	<div class="btnCancelar">
