@@ -7,15 +7,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Controller\SessionController;
 
 class TipoDniController extends AbstractController
 {
     /**
      * @Route("/tipodni", name="tipodni")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, SessionController $validador): Response
     {
         $tipoDni = new TipoDni();
+        $idUsuario = $validador->validar($request);
+        
         $form = $this->createForm(PersonaType::class, $tipoDni);
 
         $form->handleRequest($request);

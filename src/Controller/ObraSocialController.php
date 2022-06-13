@@ -8,15 +8,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Controller\SessionController;
 
 class ObraSocialController extends AbstractController
 {
     /**
      * @Route("/obrasocial", name="obrasocial")
      */
-    public function getAll()
+    public function getAll(Request $request, SessionController $validador)
     {
             $em = $this->getDoctrine()->getManager();
+            $idUsuario = $validador->validar($request);
+            
             $obrasocial = $em->getRepository(ObraSocial::class)->findAll();
 
             return $this->render('obra_social/index.html.twig', [
@@ -28,9 +31,11 @@ class ObraSocialController extends AbstractController
     /**
      * @Route("/obrasocial/create", name="createobrasocial")
      */
-    public function create(Request $request): Response
+    public function create(Request $request, SessionController $validador): Response
     {
         $obra = new ObraSocial();
+        $idUsuario = $validador->validar($request);
+
         $form = $this->createForm(ObraSocialType::class, $obra);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
@@ -48,10 +53,12 @@ class ObraSocialController extends AbstractController
      /**
      * @Route("/obrasocial/edit/{id}", name="editobrasocial")
      */
-    public function edit(Request $request, $id): Response
+    public function edit($id, Request $request, SessionController $validador): Response
     {
         
         $em = $this->getDoctrine()->getManager();
+        $idUsuario = $validador->validar($request);
+
         $obrasocial = $em->getRepository(ObraSocial::class)->find($id);
         $form = $this->createForm(ObraSocialType::class, $obrasocial);
         $form->handleRequest($request);
@@ -75,9 +82,11 @@ class ObraSocialController extends AbstractController
     /**
      * @Route("/obrasocial/delete/{id}", name="deleteobrasocial")
      */
-    public function delete($id)
+    public function delete($id, Request $request, SessionController $validador)
     {
             $em = $this->getDoctrine()->getManager();
+            $idUsuario = $validador->validar($request);
+
             $obrasocial= $em->getRepository(ObraSocial::class)->find($id);
             $em->remove($obrasocial);
             $em->flush();

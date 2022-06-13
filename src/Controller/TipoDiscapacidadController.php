@@ -8,15 +8,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Controller\SessionController;
 
 class TipoDiscapacidadController extends AbstractController
 {
     /**
      * @Route("/tipodiscapacidad", name="tipodiscapacidad")
      */
-    public function getAll()
+    public function getAll(Request $request, SessionController $validador)
     {
             $em = $this->getDoctrine()->getManager();
+            $idUsuario = $validador->validar($request);
+            
             $tipoDiscapacidad = $em->getRepository(TipoDiscapacidad::class)->findAll();
 
             return $this->render('tipo_discapacidad/index.html.twig', [
@@ -28,9 +31,11 @@ class TipoDiscapacidadController extends AbstractController
     /**
      * @Route("/tipodiscapacidad/create", name="createtipodiscapacidad")
      */
-    public function create(Request $request): Response
+    public function create(Request $request, SessionController $validador): Response
     {
         $tipoDiscapacidad = new TipoDiscapacidad();
+        $idUsuario = $validador->validar($request);
+
         $form = $this->createForm(TipoDiscapacidadType::class, $tipoDiscapacidad);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
@@ -51,10 +56,12 @@ class TipoDiscapacidadController extends AbstractController
      /**
      * @Route("/tipodiscapacidad/edit/{id}", name="edittipodiscapacidad")
      */
-    public function edit(Request $request, $id): Response
+    public function edit($id, Request $request, SessionController $validador): Response
     {
         
         $em = $this->getDoctrine()->getManager();
+        $idUsuario = $validador->validar($request);
+
         $tipoDiscapacidad = $em->getRepository(TipoDiscapacidad::class)->find($id);
         $form = $this->createForm(TipoDiscapacidadType::class, $tipoDiscapacidad);
         $form->handleRequest($request);
@@ -81,9 +88,11 @@ class TipoDiscapacidadController extends AbstractController
      /**
      * @Route("/tipodiscapacidad/delete/{id}", name="deletetipodiscapacidad")
      */
-    public function delete($id)
+    public function delete($id, Request $request, SessionController $validador)
     {
             $em = $this->getDoctrine()->getManager();
+            $idUsuario = $validador->validar($request);
+
             $tipoDiscapacidad = $em->getRepository(TipoDiscapacidad::class)->find($id);
             $em->remove($tipoDiscapacidad);
             $em->flush();

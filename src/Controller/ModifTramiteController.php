@@ -10,15 +10,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Controller\SessionController;
 
 class ModifTramiteController extends AbstractController
 {
     /**
      * @Route("/seguimientos", name="seguimientos")
      */
-    public function getAll(): Response
+    public function getAll(Request $request, SessionController $validador): Response
     {
         $em = $this->getDoctrine()->getManager();
+        $idUsuario = $validador->validar($request);
+
         $seguimientos = $em->getRepository(ModificacionTramite::class)->findAll();
 
         return $this->render('modif_tramite/index.html.twig', [
@@ -30,9 +33,11 @@ class ModifTramiteController extends AbstractController
     /**
      * @Route("/createseguimiento", name="createseguimiento")
      */
-    public function create(Request $request): Response
+    public function create(Request $request, SessionController $validador): Response
     {
         $em = $this->getDoctrine()->getManager();
+        $idUsuario = $validador->validar($request);
+        
         $seguimiento = new ModificacionTramite;
         $id = $request->query->get('id');
         $tramite = $em->getRepository(Tramite::class)->find($id);

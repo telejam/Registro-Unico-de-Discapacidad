@@ -8,15 +8,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Controller\SessionController;
 
 class TipoTramiteController extends AbstractController
 {
     /**
      * @Route("/tipotramite", name="tipotramite")
      */
-    public function getAll(): Response
+    public function getAll(Request $request, SessionController $validador): Response
     {
         $em = $this->getDoctrine()->getManager();
+        $idUsuario = $validador->validar($request);
+        
         $tipotramite= $em->getRepository(TipoTramite::class)->findAll();
 
         return $this->render('tipo_tramite/index.html.twig', [
@@ -28,9 +31,11 @@ class TipoTramiteController extends AbstractController
     /**
      * @Route("/tipotramite/create", name="createtipotramite")
      */
-    public function create(Request  $request): Response
+    public function create(Request $request, SessionController $validador): Response
     {
         $tipotramite = new TipoTramite();
+        $idUsuario = $validador->validar($request);
+
         $form = $this->createForm(TipoTramiteType::class, $tipotramite);
         $form->handleRequest($request);
 
@@ -52,9 +57,11 @@ class TipoTramiteController extends AbstractController
     /**
      * @Route("/tipotramite/edit/{id}", name="edittipotramite")
      */
-    public function edit(Request $request, $id): Response
+    public function edit($id, Request $request, SessionController $validador): Response
     {
         $em = $this->getDoctrine()->getManager();
+        $idUsuario = $validador->validar($request);
+
         $tipotramite = $em->getRepository(TipoTramite::class)->find($id);
         $form = $this->createForm(TipoTramiteType::class, $tipotramite);
         $form->handleRequest($request);
@@ -81,9 +88,11 @@ class TipoTramiteController extends AbstractController
     /**
      * @Route("/tipotramite/delete/{id}", name="deletetipotramite")
      */
-    public function delete($id)
+    public function delete($id, Request $request, SessionController $validador)
     {
             $em = $this->getDoctrine()->getManager();
+            $idUsuario = $validador->validar($request);
+
             $tipotramite = $em->getRepository(TipoTramite::class)->find($id);
             $em->remove($tipotramite);
             $em->flush();

@@ -8,15 +8,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Controller\SessionController;
 
 class TramiteController extends AbstractController
 {
     /**
      * @Route("/tramite", name="tramite")
      */
-    public function getAll(): Response
+    public function getAll(Request $request, SessionController $validador): Response
     {
         $em = $this->getDoctrine()->getManager();
+        $idUsuario = $validador->validar($request);
+
         $tramites = $em->getRepository(Tramite::class)->findAll();
 
         return $this->render('tramite/index.html.twig', [
@@ -28,9 +31,11 @@ class TramiteController extends AbstractController
      /**
      * @Route("/tramite/{id}", name="vertramite")
      */
-    public function getBy($id)
+    public function getBy($id, Request $request, SessionController $validador)
     {
             $em = $this->getDoctrine()->getManager();
+            $idUsuario = $validador->validar($request);
+
             $tramite = $em->getRepository(Tramite::class)->find($id); 
             $tipotramite = $tramite->getTipoTramite();
             $estadotramite = $tramite->getEstadotramite();
@@ -48,8 +53,10 @@ class TramiteController extends AbstractController
     /**
      * @Route("/createtramite", name="createtramite")
      */
-    public function create(Request $request): Response
+    public function create(Request $request, SessionController $validador): Response
     {
+        $idUsuario = $validador->validar($request);
+
         $tramite = new Tramite();
         $form = $this->createForm(TramiteType::class, $tramite);
         $form->handleRequest($request);
@@ -72,10 +79,12 @@ class TramiteController extends AbstractController
     /**
      * @Route("/tramite/edit/{id}", name="editTramite")
      */
-    public function edit(Request $request, $id): Response
+    public function edit($id, Request $request, SessionController $validador): Response
     {
         
         $em = $this->getDoctrine()->getManager();
+        $idUsuario = $validador->validar($request);
+
         $tramite = $em->getRepository(Tramite::class)->find($id);
         $form = $this->createForm(TramiteType::class, $tramite);
         $form->handleRequest($request);
@@ -103,9 +112,11 @@ class TramiteController extends AbstractController
     /**
      * @Route("/tramite/delete/{id}", name="deletetramite")
      */
-    public function delete($id)
+    public function delete($id, Request $request, SessionController $validador)
     {
             $em = $this->getDoctrine()->getManager();
+            $idUsuario = $validador->validar($request);
+
             $tramite = $em->getRepository(Tramite::class)->find($id);
             $em->remove($tramite);
             $em->flush();
