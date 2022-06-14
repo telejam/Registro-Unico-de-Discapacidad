@@ -16,6 +16,14 @@
         <a href="/tipotramite" class="btn btn-danger mb-4" id="cancelar">Cancelar</a>
     </div>
 
+	<script>
+		let tipoTramiteSelect2 = document.getElementById('tipo_tramite_tipo');
+        let emptyOption3 = document.createElement('option');
+        emptyOption3.innerHTML = 'Seleccione un tipo';
+        emptyOption3.setAttribute("selected", "selected");
+        tipoTramiteSelect2.insertBefore(emptyOption3, tipoTramiteSelect2.firstChild);
+	</script>
+
 		<!-- POPUP MADE IN NOSOTROS -->
 	<!-- Para funcionar tienen que agregar la clase 'is-open' al elemento con clase 'popup' -->
 

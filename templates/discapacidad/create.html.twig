@@ -22,6 +22,14 @@
         <a href="/discapacidad" class="btn btn-danger mb-4" id="cancelar">Cancelar</a>
     </div>
 
+	<script>
+		let discapacidadSelect = document.getElementById('discapacidad_tipo');
+        let emptyOption4 = document.createElement('option');
+        emptyOption4.innerHTML = 'Seleccione un tipo';
+        emptyOption4.setAttribute("selected", "selected");
+        discapacidadSelect.insertBefore(emptyOption4, discapacidadSelect.firstChild);
+	</script>
+
 <!-- POPUP MADE IN NOSOTROS -->
 	<!-- Para funcionar tienen que agregar la clase 'is-open' al elemento con clase 'popup' -->
 

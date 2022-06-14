@@ -168,6 +168,42 @@
         let deptoInput = document.getElementById('persona_dpto');
         deptoInput.value = '';
 
+        
+        let estadoCivilSelect = document.getElementById('persona_estadocivil');
+        let emptyOption4 = document.createElement('option');
+        emptyOption4.innerHTML = 'Seleccione estado civil';
+        emptyOption4.setAttribute("selected", "selected");
+        estadoCivilSelect.insertBefore(emptyOption4, estadoCivilSelect.firstChild);
+        
+        let nacionalidadSelect = document.getElementById('persona_nacionalidad');
+        let emptyOption5 = document.createElement('option');
+        emptyOption5.innerHTML = 'Seleccione nacionalidad';
+        emptyOption5.setAttribute("selected", "selected");
+        nacionalidadSelect.insertBefore(emptyOption5, nacionalidadSelect.firstChild);
+
+        let provinciaSelect = document.getElementById('persona_provincia');
+        let emptyOption6 = document.createElement('option');
+        emptyOption6.innerHTML = 'Seleccione provincia';
+        emptyOption6.setAttribute("selected", "selected");
+        provinciaSelect.insertBefore(emptyOption6, provinciaSelect.firstChild);
+
+        let ciudadSelect = document.getElementById('persona_ciudad');
+        let emptyOption7 = document.createElement('option');
+        emptyOption7.innerHTML = 'Seleccione ciudad';
+        emptyOption7.setAttribute("selected", "selected");
+        ciudadSelect.insertBefore(emptyOption7, ciudadSelect.firstChild);
+
+        let documentoSelect = document.getElementById('persona_dnitipo');
+        let emptyOption8 = document.createElement('option');
+        emptyOption8.innerHTML = 'Seleccione tipo documento';
+        emptyOption8.setAttribute("selected", "selected");
+        documentoSelect.insertBefore(emptyOption8, documentoSelect.firstChild);
+
+        let barrioSelect = document.getElementById('persona_barrio');
+        let emptyOption9 = document.createElement('option');
+        emptyOption9.innerHTML = 'Seleccione barrio';
+        emptyOption9.setAttribute("selected", "selected");
+        barrioSelect.insertBefore(emptyOption9, barrioSelect.firstChild);
 
     </script>
 
