@@ -50,33 +50,41 @@
 
 .divCUD {
     display: flex;
-    gap: 45px;
+    gap: 25px;
     margin-bottom: 5px;
 }
 
 .divCUD select {
-    width: auto;
+    width: 68%;
+}
+
+.divCUD div {
+    width: 100%;
 }
 
 .divDiscapacidad {
     display: flex;
-    gap: 45px;
+    gap: 25px;
     margin-bottom: 5px;
 }
 
 .divDiscapacidad div {
-    width: 35%;
+    width: 100%;
 }
 
 .divResidencia {
     display: flex;
-    gap: 45px;
+    gap: 25px;
     margin-bottom: 10px;
+}
+
+.divResidencia div {
+    width: 100%;
 }
 
 .divEducacion {
     display: flex;
-    gap: 45px;
+    gap: 25px;
     margin-bottom: 10px;
 }
 
@@ -92,9 +100,13 @@
     width: 35%;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1080px) {
     .divCUD {
         display: block;
+    }
+    
+    .divCUD select {
+        width: 100%;
     }
 
     .divDiscapacidad {
@@ -123,5 +135,10 @@
     .divDiscapacidad div {
         width: 100%;
     }
+}
 
+@media screen and (max-width: 1440px) {
+    .divCUD {
+        display: block;
+    }
 }

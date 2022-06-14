@@ -49,21 +49,23 @@ form button{
 
 .divNombre {
     display: flex;
-    gap: 45px;
+    gap: 25px;
     margin-bottom: 5px;
 }
 
 .divNombre div {
+    width: 100%;
     gap: 10px;
 }
 
 .divNacimiento {
     display: flex;
     margin-bottom: 5px;
-    gap: 33px
+    gap: 25px;
 }
 
 .divNacimiento div {
+    width: 100%;
     gap: 10px;
 }
 
@@ -71,18 +73,15 @@ form button{
     display: flex;
 }
 
-.divNacimiento select {
-    width: auto;
-}
-
 .divNacionalidad {
     display: flex;
-    gap: 15px;
+    gap: 25px;
     margin-bottom: 5px;
 }
 
 .divNacionalidad div {
     gap: 10px;
+    width: 100%;
 }
 
 .divSexo {
@@ -97,43 +96,49 @@ form button{
 
 .divDocumento {
     display: flex;
-    gap: 15px;
+    gap: 25px;
     margin-bottom: 5px;
 }
 
 .divDocumento div {
-    width: 500px;
+    width: 100%;
 }
 
 .divCalle {
     display: flex;
-    gap: 45px;
+    gap: 25px;
     margin-bottom: 5px;
 }
 
 .divCalle div {
     gap: 10px;
+    width: 100%;
 }
 
 .divDepto {
     display: flex;
-    gap: 45px;
+    gap: 25px;
     margin-bottom: 5px;
 }
 
 .divDepto div {
     gap: 10px;
+    width: 100%;
 }
 
 .divBarrio {
     display: flex;
 }
 
+.divBarrio div {
+    width: 100%;
+}
+
 .divUsuario {
     display: flex;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1080px) {
     .divNombre {
         display: block;
     }
@@ -182,5 +187,15 @@ form button{
 
     .sectionTitle {
         padding-top: 60px;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .divNacimiento {
+        display: block;
+    }
+
+    .divDocumento {
+        display: block;
     }
 }
