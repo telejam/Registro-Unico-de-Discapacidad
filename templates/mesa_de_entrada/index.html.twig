@@ -87,7 +87,7 @@
 					{% if discapacidad is defined and discapacidad %}
 						<p>CUIL:
 							{{discapacidad.cuil}}</p>
-						<p>Datos discapacidad: CUD:
+						<p>CUD:
 							{{discapacidad.cud}}
 							Vigencia:
 							{{discapacidad.cudvigencia|date('d-m-Y')}}</p>
@@ -111,7 +111,7 @@
 							<p>{{ responsable.nombre }}
 								{{ responsable.apellido }}</p>
 						{% endfor %}
-					{% else %}<p>Sin datos de responsable</p>
+					{% else %}<p>Sin datos de responsable.</p>
 					{% endif %}
 				</div>
 			</div>
