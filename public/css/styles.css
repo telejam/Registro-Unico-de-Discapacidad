@@ -115,6 +115,7 @@ nav ul li a:hover {
   width: 65%;
   margin-right: auto;
   margin-left: auto;
+  display: block !important;
 }
 
 .dropdown {
@@ -423,9 +424,6 @@ align-items: center;
   color: #27ae60;
 }
 
-.our-popup footer {
-}
-
 .our-popup footer ul {
   list-style: none;
   padding: 0;
@@ -433,9 +431,6 @@ align-items: center;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.our-popup footer ul li {
 }
 
 .our-popup footer ul li + li {
@@ -454,6 +449,4 @@ align-items: center;
 .our-popup .button:hover{
   opacity:0.8;
   transform:translateY(-1px)
-}
-.our-popup .button span {
 }
