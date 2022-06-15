@@ -31,8 +31,9 @@ class PadronType extends AbstractType
             ])
             ->add('cudvigencia', DateType::class, [
                 'data'  => $fechaHoy,
-                'label'=>'CUD Vigencia'
-            ])
+                'label'=>'CUD Vigencia',
+                'widget'=>'single_text',
+                'years'=>range(1990, 'Now' )])
             ->add('cuddiagnostico', TextType::class, [
                 'label'=>'CUD Diagnóstico'
             ])
