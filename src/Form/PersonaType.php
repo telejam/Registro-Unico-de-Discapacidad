@@ -10,6 +10,8 @@ use App\Entity\Nacionalidad;
 use App\Entity\Persona;
 use App\Entity\TipoDni;
 use App\Entity\Usuario;
+use DateTime;
+use PhpParser\Node\Expr\New_;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -25,7 +27,10 @@ class PersonaType extends AbstractType
         $builder
             ->add('nombre')
             ->add('apellido')
-            ->add('fechanacimiento', DateType::class, ['label'=>'Fecha de Nacimiento'])
+            ->add('fechanacimiento', DateType::class, [
+                'label'=>'Fecha de Nacimiento',
+                'widget'=>'single_text',
+                'years'=>range(1990, 'Now' )])
             ->add('sexo')
             ->add('estadocivil', EntityType::class, [
                 'label'=>'Estado Civil',
