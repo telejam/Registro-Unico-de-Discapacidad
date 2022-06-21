@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Controller\SessionController;
+use App\Entity\Persona;
 
 class PadronController extends AbstractController
 {
@@ -49,27 +50,36 @@ class PadronController extends AbstractController
     }
     
     /**
-     * @Route("/createpadron", name="createpadron")
+     * @Route("/createpadron/{id}", name="createpadron")
      */
-    public function create(Request $request, SessionController $validador): Response
+    public function create($id, Request $request, SessionController $validador): Response
     {
         $padron = new Padron();
+        $em = $this->getDoctrine()->getManager();
+        $persona =  $em->getRepository(Persona::class)->find($id);
         $idUsuario = $validador->validar($request);
+        $dni = $persona->getDninumero();
+        $nombre = $persona->getNombre();
+        $apellido = $persona->getApellido();
+        $nombreCompleto = $nombre." ".$apellido;
 
         $form = $this->createForm(PadronType::class, $padron);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $padron->setPersona($persona);
             $em->persist($padron);
             $em->flush();
 
             return $this->redirectToRoute('createpadron', [
+                'id'=>$id,
                 'success' => '1'
             ]);
         }
         return $this->render('padron/create.html.twig', [
-            'controller_name' => 'PadronController',
+            'id'=>$id,
+            'dni'=>$dni,
+            'nombrecompleto'=>$nombreCompleto,
             'formulario'=>$form->createView()
         ]);
     }
@@ -90,15 +100,8 @@ class PadronController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($padron);
             $em->flush();
-            /*$this->addFlash('success', 'Padron Modificado');
-
-            return $this->redirectToRoute('padrongral', [
-                'id'=>$id
-            ]);*/
-            return $this->redirectToRoute('editpadron', [
-                'id'=>$id,
-                 'success' => '1']);
-
+            
+            return $this->redirectToRoute('editpadron', ['id'=>$id,'success' => '1']);
         }
 
         return $this->render('padron/edit.html.twig', [

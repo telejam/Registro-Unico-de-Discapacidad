@@ -10,14 +10,13 @@
 	    <h2>REGISTRO ÚNICO DE DISCAPACIDAD</h2>
 	</div>
 
-    <div class="btnAgregar">
-        <a href="/createpadron" class="btn mt-4" id="agregar"><i class="fas fa-plus"></i> AGREGAR</a>
-    </div>
-
     <div class="tableContainer">
         <table id="tabla" class="table table-bordered table-striped text-center mt-4">
             <thead>
                 <tr>
+                    <th>NOMBRE</th>
+                    <th>APELLIDO</th>
+                    <th>DNI NUMERO</th>
                     <th>CUIL</th>
                     <th>CUD</th>
                     <th>CUD VIGENCIA</th>
@@ -39,6 +38,9 @@
             <tbody>
                 {% for discapacitado in discapacitados %}
                     <tr>
+                        <td>{{discapacitado.persona.nombre}}</td>
+                        <td>{{discapacitado.persona.apellido}}</td>
+                        <td>{{discapacitado.persona.dniNumero}}</td>
                         <td>{{discapacitado.cuil}}</td>
                         <td>{{discapacitado.cud}}</td>
                         <td>{{discapacitado.cudvigencia|date('d-m-Y')}}</td>

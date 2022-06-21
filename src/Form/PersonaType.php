@@ -9,11 +9,9 @@ use App\Entity\EstadoCivil;
 use App\Entity\Nacionalidad;
 use App\Entity\Persona;
 use App\Entity\TipoDni;
-use App\Entity\Usuario;
-use DateTime;
-use PhpParser\Node\Expr\New_;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -64,7 +62,14 @@ class PersonaType extends AbstractType
                 'class' => Barrio::class,
                 'choice_label' => 'nombre'
             ])
+            ->add('discapacidad', CheckboxType::class,[
+                'mapped' => false,
+                'required'=>false,
+                'label'=>'¿Tiene una discapacidad?'
+            ])
             ->add('Guardar', SubmitType::class)
+            
+            
         ;
     }
 

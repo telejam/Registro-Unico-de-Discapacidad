@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Controller\SessionController;
+use App\Entity\Padron;
+use phpDocumentor\Reflection\Types\Null_;
 
 class PersonaController extends AbstractController
 {
@@ -75,12 +77,24 @@ class PersonaController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->usuario = $em->getRepository(Usuario::class)->find($idUsuario);
+            $usuario = $em->getRepository(Usuario::class)->find($idUsuario);
             $persona->setUsuario($usuario);
             $em->persist($persona);
             $em->flush();
 
+            $id = $persona->getId();
+
+            if ($form['discapacidad']->getData()) {
+                return $this->redirectToRoute('createpadron', [
+                    'id'=>$id,
+                    'user'=>$usuario,
+                ]);
+                
+            }
+
             return $this->redirectToRoute('createpersona', [
+                // 'id'=>$id,
+                'user'=>$usuario,
                 'success' => '1'
             ]);
         }
@@ -100,22 +114,46 @@ class PersonaController extends AbstractController
         $em = $this->getDoctrine()->getManager();
 
         $idUsuario = $validador->validar($request);
+        $usuario = NULL;
 
         $persona = $em->getRepository(Persona::class)->find($id);
+        $discapacidad = $em->getRepository(Padron::class)->findOneBy(['persona' => $persona->getId()]);
         $form = $this->createForm(PersonaType::class, $persona);
+        if($discapacidad){
+            $form['discapacidad']->setData(true);
+        }
+       
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($persona);
             $em->flush();
+            $this->usuario = $em->getRepository(Usuario::class)->find($idUsuario);
+
+            if ($form['discapacidad']->getData()) {
+                
+                if($discapacidad){
+                    return $this->redirectToRoute('editpadron', [
+                        'id'=>$discapacidad->getId(),
+                        'user'=>$usuario
+                    ]);
+                }
+                return $this->redirectToRoute('createpadron', [
+                    'id'=>$id,
+                    'user'=>$usuario
+                ]);
+                
+            }
             $this->addFlash('success', 'Persona Modificada');
 
-            /*return $this->redirectToRoute('persona', [
-                'id'=>$id]);*/
+
+
+            
+        
                 return $this->redirectToRoute('editpersona', [
                     'id'=>$id,
-                    'success' => '1']);
+                /*'success' => '1'*/]);
         }
 
         return $this->render('persona/edit.html.twig', [
