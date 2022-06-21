@@ -18,19 +18,7 @@
 
     <script>
     
-        let selectMes = document.querySelectorAll('select')[0];
-        selectMes[0].text = 'Enero';
-        selectMes[1].text = 'Febrero';
-        selectMes[2].text = 'Marzo';
-        selectMes[3].text = 'Abril';
-        selectMes[4].text = 'Mayo';
-        selectMes[5].text = 'Junio';
-        selectMes[6].text = 'Julio';
-        selectMes[7].text = 'Agosto';
-        selectMes[8].text = 'Septiembre';
-        selectMes[9].text = 'Octubre';
-        selectMes[10].text = 'Noviembre';
-        selectMes[11].text = 'Diciembre';
+        let selectFecha = document.querySelectorAll('data')[0];
 
         const divPersona = document.querySelectorAll('div')[6];
 
@@ -151,15 +139,15 @@
 
         let subtitulo2 = document.createElement('h3');
         subtitulo2.innerHTML = 'LOCALIDAD';
-        divPersona.insertBefore(subtitulo2, divPersona.children[4]);
+        divPersona.insertBefore(subtitulo2, divPersona.children[5]);
 
         let subtitulo3 = document.createElement('h3');
         subtitulo3.innerHTML = 'DOCUMENTO';
-        divPersona.insertBefore(subtitulo3, divPersona.children[6]);
+        divPersona.insertBefore(subtitulo3, divPersona.children[7]);
 
         let subtitulo4 = document.createElement('h3');
         subtitulo4.innerHTML = 'DOMICILIO';
-        divPersona.insertBefore(subtitulo4, divPersona.children[8]);
+        divPersona.insertBefore(subtitulo4, divPersona.children[9]);
 
     </script>
 

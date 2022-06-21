@@ -138,6 +138,16 @@ form button{
     display: flex;
 }
 
+.divUsuario div {
+    display: flex;
+    align-items: center;
+}
+
+#persona_discapacidad {
+    width: auto;
+    margin-left: 20px;
+}
+
 @media screen and (max-width: 1080px) {
     .divNombre {
         display: block;
