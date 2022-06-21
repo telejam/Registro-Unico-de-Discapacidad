@@ -124,5 +124,6 @@ p {
 
     .bloqueDNI {
         margin-top: 75px;
+        justify-content: center;
     }
 }
