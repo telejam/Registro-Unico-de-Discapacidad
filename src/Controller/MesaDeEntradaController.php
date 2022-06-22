@@ -39,7 +39,6 @@ class MesaDeEntradaController extends AbstractController
                 return $this->redirectToRoute('mesadeentrada', [
                     'error' => '1'
                 ]);
-                // "Poner modal que avise que no existe la persona y q le pregunte si la quiere crear ahora (manda al createpersona) o cancelar";
             }
         }
 

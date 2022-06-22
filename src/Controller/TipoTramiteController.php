@@ -69,14 +69,11 @@ class TipoTramiteController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($tipotramite);
             $em->flush();
-            /*$this->addFlash('success', 'Tipo de Tramite Modificado');
 
-            return $this->redirectToRoute('tipotramite', [
-                'id'=>$id
-            ]);*/
             return $this->redirectToRoute('edittipotramite', [
                 'id'=>$id,
-                 'success' => '1']);
+                 'success' => '1'
+            ]);
         }
 
         return $this->render('tipo_tramite/edit.html.twig', [

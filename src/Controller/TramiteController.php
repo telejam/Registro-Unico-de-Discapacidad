@@ -99,9 +99,6 @@ class TramiteController extends AbstractController
             $em->persist($tramite);
             $em->flush();
 
-            /*return $this->redirectToRoute('tramite', [
-                'id'=>$id
-            ]);*/
             return $this->redirectToRoute('editTramite', [
                 'id'=>$id,
                  'success' => '1']);

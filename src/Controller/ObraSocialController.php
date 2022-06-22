@@ -55,7 +55,6 @@ class ObraSocialController extends AbstractController
      */
     public function edit($id, Request $request, SessionController $validador): Response
     {
-        
         $em = $this->getDoctrine()->getManager();
         $idUsuario = $validador->validar($request);
 

@@ -71,11 +71,6 @@ class PadronType extends AbstractType
                 'choice_label' =>'nombre',
                 'label'=>'Discapacidad'
             ])
-            // ->add('persona', EntityType::class, [
-            //     'class' =>Persona::class,
-            //     'choice_label' =>'dninumero',
-            //     'label' => 'DNI'
-            // ])
             ->add('Registrar', SubmitType::class)
         ;
     }

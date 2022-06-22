@@ -46,8 +46,8 @@ class ModifTramiteController extends AbstractController
         $tramite = $em->getRepository(Tramite::class)->find($id);
         $numeroexpediente = $tramite->getNumeroexpediente(); //retorna un entero
         
-        // $historial = $em->getRepository(ModificacionTramite::class)->findAll($numeroexpediente); //trae todos los tramites con seguimientos
-        $historial = $em->getRepository(ModificacionTramite::class)->findBy(['tramite'=>$numeroexpediente]);
+        $historial = $em->getRepository(ModificacionTramite::class)->findBy(['tramite'=>$numeroexpediente]); //se supone que traiga el numeroexpediente 
+        //de cada tramite, para así mostrar los seguimientos que tenga un tramite concreto, por eso probamos con el findBy
 
         $seguimiento->setTramite($tramite);
         $form = $this->createForm(ModifTramiteType::class, $seguimiento);
@@ -57,11 +57,11 @@ class ModifTramiteController extends AbstractController
             $em = $this->getDoctrine()->getManager();
 
             if ($form['Finalizar']->getData()) {
-                $estadotramite = $em->getRepository(EstadoTramite::class)->find(2);
-                $tramite->setFecharesolucion($seguimiento->getFechaseguimiento()); 
-                $tramite->setEstadotramite($estadotramite);
+                $estadotramite = $em->getRepository(EstadoTramite::class)->find(2); //el 2 es la posición del estado Finalizado
+                $tramite->setFecharesolucion($seguimiento->getFechaseguimiento()); //setea en la fecharesolucion la misma fecha que posee fechaseguimiento al momento de darle al checkbox finalizar
+                $tramite->setEstadotramite($estadotramite); //setea en el estado tramite el estado finalizado
             }
-            $seguimiento->setUsuario($usuario);
+            $seguimiento->setUsuario($usuario); 
             $em->persist($seguimiento);
             $em->flush();
             return $this->redirectToRoute('seguimientos');

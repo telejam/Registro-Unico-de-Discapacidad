@@ -93,7 +93,6 @@ class PersonaController extends AbstractController
             }
 
             return $this->redirectToRoute('createpersona', [
-                // 'id'=>$id,
                 'user'=>$usuario,
                 'success' => '1'
             ]);
@@ -146,14 +145,11 @@ class PersonaController extends AbstractController
                 
             }
             $this->addFlash('success', 'Persona Modificada');
-
-
-
-            
         
-                return $this->redirectToRoute('editpersona', [
-                    'id'=>$id,
-                /*'success' => '1'*/]);
+            return $this->redirectToRoute('editpersona', [
+                'id'=>$id,
+                /*'success' => '1'*/]); //esta linea llama al modal de editado con exito pero lo comentamos porque no nos dejaba redigir a createpadron en caso
+                //de que se quisiera añadir una discapacidad
         }
 
         return $this->render('persona/edit.html.twig', [
@@ -172,8 +168,7 @@ class PersonaController extends AbstractController
         $idUsuario = $validador->validar($request);
 
         $persona = $em->getRepository(Persona::class)->find($id);
-        // $em->remove($persona);
-        
+        $em->remove($persona);
         $em->flush();
 
         return $this->redirectToRoute('personas');

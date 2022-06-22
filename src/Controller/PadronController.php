@@ -89,7 +89,6 @@ class PadronController extends AbstractController
      */
     public function edit($id, Request $request, SessionController $validador): Response
     {
-        
         $em = $this->getDoctrine()->getManager();
         $idUsuario = $validador->validar($request);
 
@@ -101,7 +100,10 @@ class PadronController extends AbstractController
             $em->persist($padron);
             $em->flush();
             
-            return $this->redirectToRoute('editpadron', ['id'=>$id,'success' => '1']);
+            return $this->redirectToRoute('editpadron', [
+                'id'=>$id,
+                'success' => '1'
+            ]);
         }
 
         return $this->render('padron/edit.html.twig', [

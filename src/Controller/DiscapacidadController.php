@@ -17,15 +17,15 @@ class DiscapacidadController extends AbstractController
      */
     public function getAll(Request $request, SessionController $validador)
     {
-            $em = $this->getDoctrine()->getManager();
-            $idUsuario = $validador->validar($request);
+        $em = $this->getDoctrine()->getManager();
+        $idUsuario = $validador->validar($request);
 
-            $discapacidad = $em->getRepository(Discapacidad::class)->findAll();
+        $discapacidad = $em->getRepository(Discapacidad::class)->findAll();
 
-            return $this->render('discapacidad/index.html.twig', [
-                'controller_name' => 'DiscapacidadController',
-                'discapacidad' => $discapacidad
-            ]);
+        return $this->render('discapacidad/index.html.twig', [
+            'controller_name' => 'DiscapacidadController',
+            'discapacidad' => $discapacidad
+        ]);
     }
     
     /**
@@ -42,8 +42,7 @@ class DiscapacidadController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($discapacidad);
             $em->flush();
-           /* $this->addFlash(type: 'exito', message: 'Se ha registrado exitosamente.');
-            return $this->redirectToRoute('discapacidad');*/
+
             return $this->redirectToRoute('creatediscapacidad', [
                 'success' => '1'
             ]);
@@ -70,12 +69,10 @@ class DiscapacidadController extends AbstractController
             $em->persist($discapacidad);
             $em->flush();
 
-           /*return $this->redirectToRoute('discapacidad', [
-                'id'=>$id
-            ]);*/
             return $this->redirectToRoute('editdiscapacidad', [
                 'id'=>$id,
-                 'success' => '1']);
+                'success' => '1'
+            ]);
 
         }
 
@@ -90,13 +87,13 @@ class DiscapacidadController extends AbstractController
      */
     public function delete($id, Request $request, SessionController $validador)
     {
-            $em = $this->getDoctrine()->getManager();
-            $idUsuario = $validador->validar($request);
+        $em = $this->getDoctrine()->getManager();
+        $idUsuario = $validador->validar($request);
 
-            $discapacidad = $em->getRepository(Discapacidad::class)->find($id);
-            $em->remove($discapacidad);
-            $em->flush();
+        $discapacidad = $em->getRepository(Discapacidad::class)->find($id);
+        $em->remove($discapacidad);
+        $em->flush();
 
-            return $this->redirectToRoute('discapacidad');
+        return $this->redirectToRoute('discapacidad');
     }
 }
