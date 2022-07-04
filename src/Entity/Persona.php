@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Persona
  *
- * @ORM\Table(name="persona", indexes={@ORM\Index(name="personaEstadoCivil_idx", columns={"estadoCivil"}), @ORM\Index(name="personaDNI_idx", columns={"dniTipo"}), @ORM\Index(name="personaUsuario_idx", columns={"usuario"}), @ORM\Index(name="personaNacionalidad_idx", columns={"nacionalidad"})})
+ * @ORM\Table(name="persona", indexes={@ORM\Index(name="personaCiudad_idx", columns={"ciudad"}), @ORM\Index(name="personaNacionalidad_idx", columns={"nacionalidad"}), @ORM\Index(name="personaBarrio_idx", columns={"barrio"}), @ORM\Index(name="personaEstadoCivil_idx", columns={"estadoCivil"}), @ORM\Index(name="personaDNI_idx", columns={"dniTipo"}), @ORM\Index(name="personaProvincia_idx", columns={"provincia"}), @ORM\Index(name="personaUsuario_idx", columns={"usuario"})})
  * @ORM\Entity
  */
 class Persona
@@ -66,7 +66,45 @@ class Persona
     private $dninumero;
 
     /**
-     * @var \EstadoCivil
+     * @var string
+     *
+     * @ORM\Column(name="calle", type="string", length=45, nullable=false)
+     */
+    private $calle;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="altura", type="integer", nullable=false)
+     */
+    private $altura;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="piso", type="integer", nullable=true, options={"default"=0})
+     */
+    private $piso = 0;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="dpto", type="string", length=45, nullable=true, options={"default"="NULL"})
+     */
+    private $dpto = NULL;
+
+    /**
+     * @var Ciudad
+     *
+     * @ORM\ManyToOne(targetEntity="Ciudad")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ciudad", referencedColumnName="id")
+     * })
+     */
+    private $ciudad;
+
+    /**
+     * @var EstadoCivil
      *
      * @ORM\ManyToOne(targetEntity="EstadoCivil")
      * @ORM\JoinColumns({
@@ -76,17 +114,27 @@ class Persona
     private $estadocivil;
 
     /**
-     * @var \Usuario
+     * @var Provincia
      *
-     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\ManyToOne(targetEntity="Provincia")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="usuario", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="provincia", referencedColumnName="id")
      * })
      */
-    private $usuario;
+    private $provincia;
 
     /**
-     * @var \TipoDni
+     * @var Barrio
+     *
+     * @ORM\ManyToOne(targetEntity="Barrio")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="barrio", referencedColumnName="id")
+     * })
+     */
+    private $barrio;
+
+    /**
+     * @var TipoDni
      *
      * @ORM\ManyToOne(targetEntity="TipoDni")
      * @ORM\JoinColumns({
@@ -96,7 +144,7 @@ class Persona
     private $dnitipo;
 
     /**
-     * @var \Nacionalidad
+     * @var Nacionalidad
      *
      * @ORM\ManyToOne(targetEntity="Nacionalidad")
      * @ORM\JoinColumns({
@@ -104,6 +152,16 @@ class Persona
      * })
      */
     private $nacionalidad;
+
+    /**
+     * @var Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuario", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -119,6 +177,13 @@ class Persona
      * )
      */
     private $idpadron;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="vigente", type="boolean", nullable=false, options={"default"="1"})
+     */
+    private $vigente = true;
 
     /**
      * Constructor
@@ -205,6 +270,66 @@ class Persona
         return $this;
     }
 
+    public function getCalle(): ?string
+    {
+        return $this->calle;
+    }
+
+    public function setCalle(string $calle): self
+    {
+        $this->calle = $calle;
+
+        return $this;
+    }
+
+    public function getAltura(): ?int
+    {
+        return $this->altura;
+    }
+
+    public function setAltura(int $altura): self
+    {
+        $this->altura = $altura;
+
+        return $this;
+    }
+
+    public function getPiso(): ?int
+    {
+        return $this->piso;
+    }
+
+    public function setPiso(?int $piso): self
+    {
+        $this->piso = $piso;
+
+        return $this;
+    }
+
+    public function getDpto(): ?string
+    {
+        return $this->dpto;
+    }
+
+    public function setDpto(?string $dpto): self
+    {
+        $this->dpto = $dpto;
+
+        return $this;
+    }
+
+    public function getCiudad(): ?Ciudad
+    {
+        return $this->ciudad;
+    }
+
+    public function setCiudad(?Ciudad $ciudad): self
+    {
+        $this->ciudad = $ciudad;
+
+        return $this;
+    }
+
     public function getEstadocivil(): ?EstadoCivil
     {
         return $this->estadocivil;
@@ -217,14 +342,26 @@ class Persona
         return $this;
     }
 
-    public function getUsuario(): ?Usuario
+    public function getProvincia(): ?Provincia
     {
-        return $this->usuario;
+        return $this->provincia;
     }
 
-    public function setUsuario(?Usuario $usuario): self
+    public function setProvincia(?Provincia $provincia): self
     {
-        $this->usuario = $usuario;
+        $this->provincia = $provincia;
+
+        return $this;
+    }
+
+    public function getBarrio(): ?Barrio
+    {
+        return $this->barrio;
+    }
+
+    public function setBarrio(?Barrio $barrio): self
+    {
+        $this->barrio = $barrio;
 
         return $this;
     }
@@ -253,6 +390,18 @@ class Persona
         return $this;
     }
 
+    public function getUsuario(): ?Usuario
+    {
+        return $this->usuario;
+    }
+
+    public function setUsuario(?Usuario $usuario): self
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
     /**
      * @return Collection<int, Padron>
      */
@@ -273,6 +422,18 @@ class Persona
     public function removeIdpadron(Padron $idpadron): self
     {
         $this->idpadron->removeElement($idpadron);
+
+        return $this;
+    }
+
+    public function getVigente(): ?bool
+    {
+        return $this->vigente;
+    }
+
+    public function setVigente(bool $vigente): self
+    {
+        $this->vigente = $vigente;
 
         return $this;
     }

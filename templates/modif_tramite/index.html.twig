@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trámites{% endblock %}
+
+{% block body %}
+    {{parent()}}
+
+    <div class="sectionTitle">
+		<h2>TRÁMITES CON SEGUIMIENTO</h2>
+	</div>
+
+    <table id="tabla" class="table table-bordered table-striped text-center mt-4">
+
+        <thead>
+            <tr>
+                <th>NÚMERO DE EXPEDIENTE</th>
+                <th>FECHA DE SEGUIMIENTO</th>
+                <th>OBSERVACIÓN</th>
+                <th>USUARIO</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for segui in seguimientos %}
+                <tr>
+                    <td>{{ segui.tramite.numeroExpediente}}</td>
+                    <td>{{ segui.fechaSeguimiento|date('d-m-Y') }}</td>
+                    <td>{{ segui.observacion}}</td>
+                    <td>{{ segui.usuario.user}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

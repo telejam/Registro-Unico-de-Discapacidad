@@ -1,0 +1,177 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mesa De Entrada
+{% endblock %}
+
+{% block body %}
+
+	{{parent()}}
+
+	<h1>Mesa de Entrada | Usuario 
+		{{userid}}</h1>
+	<div class="example-wrapper">
+		<div class="dniTramites">
+			<div class="bloqueDNI">
+				<form action="/" method="post">
+                    <input type="text" name="dni" placeholder="Ingrese DNI">
+                    <button id="btnBuscarDNI">Buscar</button>
+                </form>
+			</div>
+			<div class="bloqueTramites">
+				<h2>Trámites</h2>
+				{% if tramites is defined and tramites %}
+					{% for tramite in tramites %}
+						<p>{{ tramite.fechaInicio|date('d-m-Y') }}
+							Nro.
+							{{ tramite.numeroExpediente }}
+							{{ tramite.estadoTramite.estado }}</p>
+					{% endfor %}
+				{% else %}<p>Sin trámites realizados.</p>
+				{% endif %}
+			</div>
+		</div>
+		<div class="bigContainer">
+			<div class="discapacitadoEducación">
+				<div class="bloqueInformacion">
+					<h2>Datos Personales</h2>
+					{% if persona is defined and persona %}
+						<p>{{ persona.nombre }}
+							{{ persona.apellido }}</p>
+						<p>Fecha nac.:
+							{{ persona.fechaNacimiento|date('d-m-Y') }}</p>
+						<p>Sexo:
+							{{ persona.sexo }}</p>
+						<p>{{ persona.estadocivil.tipoEstado }}</p>
+						<p>{{ persona.dnitipo.tipo }}
+							{{ persona.dniNumero }}
+							Trám:
+							{{ persona.dnitramite }}</p>
+						<p>{{ persona.calle }}
+							Nº{{ persona.altura }}
+							Piso:
+							{{ persona.piso }}
+							Dpto.:
+							{{ persona.dpto }}</p>
+						<p>Barrio:
+							{{ persona.barrio.nombre }}</p>
+						<p>{{ persona.ciudad.nombre }}
+							-
+							{{ persona.provincia.nombre }}
+							-
+							{{ persona.nacionalidad.pais }}</p>
+					{% else %}<p>Sin datos personales.</p>
+					{% endif %}
+				</div>
+				<div class="bloqueInformacion">
+					<h2>Datos Educación-Trabajo</h2>
+					{% if discapacidad is defined and discapacidad %}
+						<p>Nivel Instrucción:
+							{{discapacidad.nivelinstruccion}}</p>
+						<p>Tipo Modalidad:
+							{{discapacidad.tipomodalidad}}</p>
+						<p>Experiencia laboral:
+							{{discapacidad.experiencialaboral}}</p>
+						<p>Actividades:
+							{{discapacidad.actividades}}</p>
+						<p>Nivel Educación:
+							{{discapacidad.niveleducacion}}</p>
+						<p>Residencia:
+							{{discapacidad.residencia}}</p>
+					{% else %}<p>Sin datos de educación-trabajo.</p>
+					{% endif %}
+				</div>
+			</div>
+			<div class="discapacidadResponsables">
+				<div class="bloqueInformacion">
+					<h2>Datos Discapacidad</h2>
+					{% if discapacidad is defined and discapacidad %}
+						<p>CUIL:
+							{{discapacidad.cuil}}</p>
+						<p>CUD:
+							{{discapacidad.cud}}
+							Vigencia:
+							{{discapacidad.cudvigencia|date('d-m-Y')}}</p>
+						<p>Diagnóstico:
+							{{discapacidad.cuddiagnostico}}</p>
+						<p>Discapacidad:
+							{{discapacidad.discapacidad.nombre}}</p>
+						<p>Causa:
+							{{discapacidad.causa}}</p>
+						<p>Pensión:
+							{{discapacidad.pension}}</p>
+						<p>Obra social:
+							{{discapacidad.obrasocial.denominacion}}</p>
+					{% else %}<p>Sin datos de discapacidad.</p>
+					{% endif %}
+				</div>
+				<div class="bloqueInformacion">
+					<h2>Datos Responsables</h2>
+					{% if responsables is defined and responsables %}
+						{% for responsable in responsables %}
+							<p>{{ responsable.nombre }}
+								{{ responsable.apellido }}</p>
+						{% endfor %}
+					{% else %}<p>Sin datos de responsable.</p>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<!-- POPUP MADE IN NOSOTROS -->
+	<!-- Para funcionar tienen que agregar la clase 'is-open' al elemento con clase 'popup' -->
+
+	<div class="our-popup" id="popup-persona-no-encontrada">
+		<div class="container">
+			<header>
+				<span></span>
+				<a href="#" data-close>
+					<i class="icon">X</i> <!-- Porfavor poner iconito luego... -->
+				</a> 
+			</header>
+			<div class="our-popup-body">
+				<div>
+					
+					<span> La persona que intenta buscar, no se encuentra en nuestra base de datos</span>
+				</div>	
+			</div>
+			<footer>
+				<ul>
+					<li>
+						<a href="/createpersona" class="button">
+							<span>Cargar una nueva persona</span>
+						</a>
+					</li>
+						<li>
+						<a href="#" class="button" style="background-color:red" data-close>
+							<span> Cancelar </span>
+						</a>
+					</li>
+				</ul>
+			</footer>
+		</div>
+	</div>
+
+	<!---------------------------->
+
+	<script>
+		document.querySelectorAll('.our-popup')
+						.forEach(function(popup) {
+							popup.querySelectorAll('[data-close]')
+									 .forEach(function(closeBtn) {
+										 closeBtn.addEventListener('click', function(btn) {
+											 popup.classList.remove('is-open');
+										 });
+									 })
+						})
+
+		if(location.search.includes('error=1')) {
+			setTimeout(function(){
+				document.querySelector('#popup-persona-no-encontrada')
+							.classList.add('is-open');
+			}, 500)
+		}
+
+	</script>
+{% endblock %}

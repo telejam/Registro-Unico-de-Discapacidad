@@ -1,0 +1,48 @@
+#tramite_fechainicio {
+    display: flex;
+}
+
+.divTipoEstadoTramite {
+    display: flex;
+    gap: 45px;
+}
+
+#modif_tramite_fechaseguimiento {
+    display: flex;
+}
+
+.divTipoEstadoTramite div:last-child {
+    display: none;
+}
+
+#tipo_tramite div:nth-child(5) {
+    display: none;
+}
+
+#tramite div:nth-child(2) {
+    display: none;
+}
+
+#tramite div:nth-child(5) {
+    display: none;
+}
+
+#modif_tramite div:first-child {
+    display: none;
+}
+
+#modif_tramite_Finalizar {
+    width: auto;
+    margin-left: 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .divTipoEstadoTramite {
+        display: block;
+    }
+
+    #tramite_fechainicio {
+        display: block;
+    }
+}

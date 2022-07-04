@@ -28,6 +28,13 @@ class TipoDni
      */
     private $tipo;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="vigente", type="boolean", nullable=false, options={"default"="1"})
+     */
+    private $vigente = true;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +51,17 @@ class TipoDni
 
         return $this;
     }
+  
+    public function getVigente(): ?bool
+    {
+        return $this->vigente;
+    }
 
+    public function setVigente(bool $vigente): self
+    {
+        $this->vigente = $vigente;
+
+        return $this;
+    }
 
 }

@@ -31,16 +31,23 @@ class Usuario
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=45, nullable=false)
-     */
-    private $password;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="role", type="string", length=45, nullable=false)
      */
     private $role;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="idSigmu", type="integer", nullable=false)
+     */
+    private $idSigmu;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="vigente", type="boolean", nullable=false, options={"default"="1"})
+     */
+    private $vigente = true;
 
     public function getId(): ?int
     {
@@ -59,18 +66,6 @@ class Usuario
         return $this;
     }
 
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
     public function getRole(): ?string
     {
         return $this->role;
@@ -79,6 +74,30 @@ class Usuario
     public function setRole(string $role): self
     {
         $this->role = $role;
+
+        return $this;
+    }
+
+    public function getIdSigmu(): ?int
+    {
+        return $this->idSigmu;
+    }
+
+    public function setidSigmu(int $idSigmu): self
+    {
+        $this->idSigmu = $idSigmu;
+
+        return $this;
+    }
+
+    public function getVigente(): ?bool
+    {
+        return $this->vigente;
+    }
+
+    public function setVigente(bool $vigente): self
+    {
+        $this->vigente = $vigente;
 
         return $this;
     }

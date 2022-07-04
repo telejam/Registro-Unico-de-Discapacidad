@@ -1,0 +1,452 @@
+* {
+  font-family: 'Montserrat';
+}
+
+html, body { 
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  overflow: auto;
+}
+
+label {
+  display: inline-block;
+  margin-left: 25%;
+  text-align: left;
+}
+
+input {
+  margin-bottom: 5px;
+  background-color: #ffffff;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 5px;
+  box-shadow: 0px 0px 3px lightgrey;
+}
+
+select {
+  display: flex;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  background-color: #ffffff;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  width: 100%;
+  padding: 5px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0px 0px 3px lightgrey;
+}
+
+.tableContainer {
+  overflow: auto;
+}
+
+/*** INICIO NAVBAR ***/
+
+nav {
+  background: #33BB66;
+  width: 100%;
+  display: flex;
+}
+
+#municipalidadLogo {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+nav ul {
+  display: block;
+  margin-top: 1%;
+  margin-right: 10px;
+  width: 96vw;
+}
+
+nav ul li {
+  display: inline-block;
+  font-weight: 600;
+}
+
+nav ul li a {
+  color: #ffffff;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  background-color: #ffffff;
+  color: #33BB66;
+  transition: 0.3s;
+}
+
+.logout {
+  float: right;
+  position: relative;
+}
+
+#check {
+  display: none;
+}
+
+.checkbuton {
+  color: #f6fbff;
+  font-size: 30px;
+  position: fixed;
+  top: 0%;
+  right: 5%;
+  display: none;
+}
+
+.sectionTitle {
+  text-align: center;
+  background-color: #00A65A;
+  color: #ffffff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.sectionTitle h2 {
+  border-bottom: 1px solid white;
+  width: 65%;
+  margin-right: auto;
+  margin-left: auto;
+  display: block !important;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #33BB66;
+  min-width: 160px;
+  padding: 12px 16px;
+  z-index: 1;
+  text-decoration: none;
+  color: #ffffff;
+  margin-top: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  color: #000000;
+  text-decoration: none;
+}
+
+a:not([href]):not([class]) {
+  color: #ffffff;
+}
+
+a:not([href]):not([class]):hover {
+  color: #33BB66;
+}
+
+@media screen and (max-width: 1080px) {
+
+  h1 {
+    padding-top: 60px;
+  }
+
+  .checkbuton {
+    display: block;
+    z-index: 10;
+  }
+
+  nav {
+    z-index: 10;
+    position: fixed;
+  }
+
+  nav ul {
+    z-index: 5;
+    position: fixed;
+    left: 100%;
+    top: 0;
+    width: 40%;
+    height: 100vh;
+    text-align: right;
+    transition: all 0.3s;
+    background-color: #33BB66;
+    margin-top: 0;
+    display: block;
+  }
+
+  nav ul li {
+    display: block;
+    font-weight: 400;
+    margin-right: 13%;
+    margin-top: 30px;
+  }
+
+  nav ul li a:hover {
+    padding: 5px 10px 5px 10px;
+  }
+
+  nav ul li:first-child {
+    margin-top: 100px;
+  }
+
+  nav ul .dropdown li {
+      margin-top: 30px;
+  }
+
+  nav ul li a {
+    padding: 0;
+    margin-top: 10%;
+  }
+
+  .dropdown:hover .dropdown-content {
+      display: grid;
+      margin-right: 15%;
+  }
+  
+  #check:checked ~ .navBackground {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background-color: rgba(0, 0, 0, .75);
+    transition: 0.3s;
+  }
+
+  #check:checked ~ .navBackground ul {
+    left: 60%;
+    margin-top: 0px
+  }
+
+  .hamburguerInner {
+    margin-right: -5px;
+  }
+
+  .dropdown {
+      position: relative;
+      display: block;
+  }
+
+  .dropdown-content {
+      padding: 0;
+  }
+
+  .dropdown-content a {
+      margin-top: 15px;
+      margin-left: 20px;
+  }
+}
+
+/*** FIN NAVBAR ***/
+
+.obraSocial thead tr th:first-child {
+  width: 30%;
+}
+
+.obraSocial thead tr th:nth-child(3n) {
+  width: 15%;
+}
+
+#obra_social div:nth-child(6) input {
+  margin: 0;
+  width: auto;
+  margin-left: 1rem;
+}
+
+#tipo_tramite div:nth-child(5) input {
+  margin: 0;
+  width: auto;
+  margin-left: 1rem;
+}
+
+.modal-header {
+  background-color: #33BB66;
+  color: #ffffff;
+}
+
+.modal-body p {
+  display: inline-flex;
+  font-weight: 600;
+}
+
+.obraSocialModal {
+  line-height: 1;
+  margin-bottom: 15px;
+}
+
+.modal-title {
+  border-bottom: 1px solid #ffffff;
+}
+
+.fa-trash-alt {
+  color: rgb(230, 23, 23);
+}
+
+.fa-info-circle {
+  color: #00A65A;
+}
+
+.divSeguimiento {
+display: flex;
+align-items: center;
+}
+
+.divSeguimiento input {
+  border: none;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+
+#padron h3 {
+  margin-top: 1.5rem;
+  color: #33BB66;
+}
+
+#persona h3 {
+  margin-top: 1.5rem;
+  color: #33BB66;
+  font-weight: 600;
+}
+
+/* ------------------------------------------------------- *\
+|  ESTILOS GENERALES DEL POPUP ---------------------------  |
+|  En caso de querer unificar, remplazar                    |
+|  el nombre "our-popup" por "popup"                        |
+\* ------------------------------------------------------- */
+.our-popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgb(0 0 0 / 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.our-popup * {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.our-popup.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.our-popup.is-open .container {
+  transform: translateY(0);
+}
+
+.our-popup .container {
+  background-color: white;
+  padding: 1em;
+  border-radius: 0.25em;
+  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  max-width: 40em;
+  width: 90%;
+  transform: translateY(2em);
+  transition: all 0.5s;
+}
+
+.our-popup header {
+  display: flex;
+  align-items: center;
+}
+
+.our-popup header a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  margin-left: auto;
+}
+
+.our-popup header a .icon {
+  font-style: normal;
+  font-family: monospace;
+  font-weight: 900;
+  font-size: 1.5em;
+  display: flex;
+  width: 1em;
+  height: 1em;
+  align-items: center;
+  justify-content: center;
+}
+
+.our-popup header span {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.our-popup-body {
+  margin: 2em 0;
+}
+
+.our-popup-body div {
+  text-align: center;
+  font-size: 1.25em;
+}
+
+.our-popup-body div .icon {
+  display: block;
+  margin: auto;
+  font-size: 2.5em;
+}
+
+.our-popup .icon {
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-flex;
+  font-weight: 900;
+  align-items: center;
+  justify-content: center;
+}
+
+.our-popup .icon.green {
+  color: #27ae60;
+}
+
+.our-popup footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.our-popup footer ul li + li {
+  margin-left: 1em;
+}
+
+.our-popup .button {
+  text-decoration: none;
+  padding: 0.25em 1em;
+  background-color: #33bb66;
+  color: white;
+  border-radius: 0.25em;
+  display: block;
+  transition:all 0.5s;
+}
+.our-popup .button:hover{
+  opacity:0.8;
+  transform:translateY(-1px)
+}

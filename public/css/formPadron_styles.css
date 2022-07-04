@@ -1,0 +1,144 @@
+/* #padron div {
+    flex-direction: column;
+} */
+
+#padron_Registrar {
+    background-color: #33BB66;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    color: #ffffff;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 5px;
+}
+
+#padron_Registrar:hover {
+    transition: all 0.5s ease;
+    background-color: #00A65A;
+}
+
+#padron_cudvigencia {
+    display: -webkit-box !important;
+    width: 100%;
+}
+
+#padron_obrasocial {
+    display: -webkit-box !important;
+    width: 100%;
+}
+
+#padron_discapacidad {
+    display: -webkit-box !important;
+    width: 100%;
+}
+
+#padron_id {
+    display: -webkit-box !important;
+    width: 100%;
+}
+
+#padron {
+    text-align: left;
+}
+
+.divCUIL {
+    margin-bottom: 5px;
+}
+
+.divCUD {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 5px;
+}
+
+.divCUD select {
+    width: 68%;
+}
+
+.divCUD div {
+    width: 100%;
+}
+
+.divDiscapacidad {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 5px;
+}
+
+.divDiscapacidad div {
+    width: 100%;
+}
+
+.divResidencia {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 10px;
+}
+
+.divResidencia div {
+    width: 100%;
+}
+
+.divEducacion {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 10px;
+}
+
+.divExperienciaLaboral {
+    margin-bottom: 10px;
+}
+
+.divActividades {
+    margin-bottom: 10px;
+}
+
+#obraSocialTabla {
+    width: 35%;
+}
+
+@media screen and (max-width: 1080px) {
+    .divCUD {
+        display: block;
+    }
+    
+    .divCUD select {
+        width: 100%;
+    }
+
+    .divDiscapacidad {
+        display: block;
+    }
+
+    .divResidencia {
+        display: block;
+    }
+
+    .divEducacion {
+        display: block;
+    }
+
+    .divID {
+        display: block;
+    }
+
+    #padron_cudvigencia {
+        display: flex !important;
+        flex-wrap: wrap;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .divDiscapacidad div {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .divCUD {
+        display: block;
+    }
+}

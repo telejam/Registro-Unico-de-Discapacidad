@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trámites{% endblock %}
+
+{% block body %}
+	{{parent()}}
+
+	<div class="sectionTitle">
+		<h2>SEGUIMIENTO</h2>
+	</div>
+	
+	{# <h4>HISTORIAL DE SEGUIMIENTOS</h4> #}
+	{# {{numeroexpediente}} #}
+	{% for seguimiento in seguimientos %}
+	<p>{{seguimiento.observacion}}</p>
+	{% endfor %}
+	{{form(formulario)}}
+
+	<div class="btnCancelar">
+        <a href="/tramite" class="btn btn-danger mb-4" id="cancelar">Cancelar</a>
+    </div>
+
+	<script>
+
+		divSeguimiento = document.querySelectorAll('div')[5];
+
+		let fechaSeguimiento = divSeguimiento.children[0];
+		fechaSeguimiento.classList.add('divFechaSeguimiento');
+		fechaSeguimiento.style.display = 'none';
+
+		let finalizado = divSeguimiento.children[3];
+		
+		finalizado.classList.add('divSeguimiento');
+
+	</script>
+	
+{% endblock %}

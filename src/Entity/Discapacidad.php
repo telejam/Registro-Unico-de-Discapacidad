@@ -40,7 +40,7 @@ class Discapacidad
      *
      * @ORM\Column(name="vigente", type="boolean", nullable=false)
      */
-    private $vigente;
+    private $vigente = true;
 
     /**
      * @var \TipoDiscapacidad

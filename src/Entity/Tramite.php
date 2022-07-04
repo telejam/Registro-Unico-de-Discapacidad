@@ -13,11 +13,20 @@ use Doctrine\ORM\Mapping as ORM;
 class Tramite
 {
     /**
-     * @var \DateTime
+     * @var int
      *
-     * @ORM\Column(name="fechaInicio", type="date", nullable=false)
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $fechainicio;
+    private $id;
+    
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="fechaInicio", type="date", nullable=true, options={"default"="NULL"})
+     */
+    private $fechainicio = NULL;
 
     /**
      * @var string
@@ -30,8 +39,6 @@ class Tramite
      * @var int
      *
      * @ORM\Column(name="numeroExpediente", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $numeroexpediente;
 
@@ -40,10 +47,10 @@ class Tramite
      *
      * @ORM\Column(name="fechaResolucion", type="date", nullable=true, options={"default"="NULL"})
      */
-    private $fecharesolucion = 'NULL';
+    private $fecharesolucion = NULL;
 
     /**
-     * @var \Persona
+     * @var Persona
      *
      * @ORM\ManyToOne(targetEntity="Persona")
      * @ORM\JoinColumns({
@@ -53,7 +60,7 @@ class Tramite
     private $persona;
 
     /**
-     * @var \Usuario
+     * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="Usuario")
      * @ORM\JoinColumns({
@@ -63,7 +70,7 @@ class Tramite
     private $usuario;
 
     /**
-     * @var \EstadoTramite
+     * @var EstadoTramite
      *
      * @ORM\ManyToOne(targetEntity="EstadoTramite")
      * @ORM\JoinColumns({
@@ -73,7 +80,7 @@ class Tramite
     private $estadotramite;
 
     /**
-     * @var \TipoTramite
+     * @var TipoTramite
      *
      * @ORM\ManyToOne(targetEntity="TipoTramite")
      * @ORM\JoinColumns({
@@ -81,6 +88,18 @@ class Tramite
      * })
      */
     private $tipotramite;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="vigente", type="boolean", nullable=false, options={"default"="1"})
+     */
+    private $vigente = true;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getFechainicio(): ?\DateTimeInterface
     {
@@ -109,6 +128,12 @@ class Tramite
     public function getNumeroexpediente(): ?int
     {
         return $this->numeroexpediente;
+    }
+
+    public function setNumeroexpediente(int $numeroexpediente): self
+    {
+        $this->numeroexpediente = $numeroexpediente;
+        return $this;
     }
 
     public function getFecharesolucion(): ?\DateTimeInterface
@@ -167,6 +192,18 @@ class Tramite
     public function setTipotramite(?TipoTramite $tipotramite): self
     {
         $this->tipotramite = $tipotramite;
+
+        return $this;
+    }
+
+    public function getVigente(): ?bool
+    {
+        return $this->vigente;
+    }
+
+    public function setVigente(bool $vigente): self
+    {
+        $this->vigente = $vigente;
 
         return $this;
     }

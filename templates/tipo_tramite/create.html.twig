@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tipos de trámites{% endblock %}
+
+{% block body %}
+
+	{{parent()}}
+
+	<div class="sectionTitle">
+		<h2>TIPO DE TRÁMITE</h2>
+	</div>
+
+	{{form(formulario)}}
+
+	<div class="btnCancelar">
+        <a href="/tipotramite" class="btn btn-danger mb-4" id="cancelar">Cancelar</a>
+    </div>
+
+	<script>
+		let tipoTramiteSelect2 = document.getElementById('tipo_tramite_tipo');
+        let emptyOption3 = document.createElement('option');
+        emptyOption3.innerHTML = 'Seleccione un tipo';
+        emptyOption3.setAttribute("selected", "selected");
+        tipoTramiteSelect2.insertBefore(emptyOption3, tipoTramiteSelect2.firstChild);
+	</script>
+
+		<!-- POPUP MADE IN NOSOTROS -->
+	<!-- Para funcionar tienen que agregar la clase 'is-open' al elemento con clase 'popup' -->
+
+	<div class="our-popup" id="popup-carga-exitosa">
+		<div class="container">
+			<header>
+				<span></span>
+				<a href="#" data-close>
+					<i class="icon">X</i> <!-- Porfavor poner iconito luego... -->
+				</a> 
+			</header>
+			<div class="our-popup-body">
+				<div>
+					<i class="icon green">&check;</i>
+					<span> Tipo de tramite agregado exitosamente</span>
+				</div>	
+			</div>
+			<footer>
+				<ul>
+					<li>
+						<a href="/tipotramite" class="button">
+							<span>Volver al listado</span>
+						</a>
+					</li>
+						<li>
+						<a href="#" class="button" data-close>
+							<span>Seguir cargando</span>
+						</a>
+					</li>
+				</ul>
+			</footer>
+		</div>
+	</div>
+
+	<!---------------------------->
+
+	<script>
+		document.querySelectorAll('.our-popup')
+						.forEach(function(popup) {
+							popup.querySelectorAll('[data-close]')
+									 .forEach(function(closeBtn) {
+										 closeBtn.addEventListener('click', function(btn) {
+											 popup.classList.remove('is-open');
+										 });
+									 })
+						})
+
+		if(location.search.includes('success=1')) {
+			setTimeout(function(){
+				document.querySelector('#popup-carga-exitosa')
+							.classList.add('is-open');
+			}, 500)
+		}
+
+	</script>
+
+{% endblock %}

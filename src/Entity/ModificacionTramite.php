@@ -13,13 +13,20 @@ use Doctrine\ORM\Mapping as ORM;
 class ModificacionTramite
 {
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="fechaSeguimiento", type="date", nullable=false)
+     * @var int
+     * 
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $fechaseguimiento;
+    private $id;
+
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="fechaSeguimiento", type="date", nullable=true, options={"default"="NULL"})
+     */
+    private $fechaseguimiento = NULL;
 
     /**
      * @var string
@@ -29,7 +36,17 @@ class ModificacionTramite
     private $observacion;
 
     /**
-     * @var \Usuario
+     * @var Tramite
+     *
+     * @ORM\ManyToOne(targetEntity="Tramite")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tramite", referencedColumnName="id")
+     * })
+     */
+    private $tramite;
+
+    /**
+     * @var Usuario
      *
      * @ORM\ManyToOne(targetEntity="Usuario")
      * @ORM\JoinColumns({
@@ -39,20 +56,27 @@ class ModificacionTramite
     private $usuario;
 
     /**
-     * @var \Tramite
+     * @var bool
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Tramite")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="numeroExpediente", referencedColumnName="numeroExpediente")
-     * })
+     * @ORM\Column(name="vigente", type="boolean", nullable=false, options={"default"="1"})
      */
-    private $numeroexpediente;
+    private $vigente = true;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getFechaseguimiento(): ?\DateTimeInterface
     {
         return $this->fechaseguimiento;
+    }
+
+    public function setFechaseguimiento(\DateTimeInterface $fechaseguimiento): self
+    {
+        $this->fechaseguimiento = $fechaseguimiento;
+
+        return $this;
     }
 
     public function getObservacion(): ?string
@@ -63,6 +87,18 @@ class ModificacionTramite
     public function setObservacion(string $observacion): self
     {
         $this->observacion = $observacion;
+
+        return $this;
+    }
+
+    public function getTramite(): ?Tramite
+    {
+        return $this->tramite;
+    }
+
+    public function setTramite(?Tramite $tramite): self
+    {
+        $this->tramite = $tramite;
 
         return $this;
     }
@@ -79,17 +115,16 @@ class ModificacionTramite
         return $this;
     }
 
-    public function getNumeroexpediente(): ?Tramite
+    public function getVigente(): ?bool
     {
-        return $this->numeroexpediente;
+        return $this->vigente;
     }
 
-    public function setNumeroexpediente(?Tramite $numeroexpediente): self
+    public function setVigente(bool $vigente): self
     {
-        $this->numeroexpediente = $numeroexpediente;
+        $this->vigente = $vigente;
 
         return $this;
     }
-
 
 }

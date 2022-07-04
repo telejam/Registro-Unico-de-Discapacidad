@@ -1,0 +1,211 @@
+form label {
+    display: block;
+    margin: auto;
+    font-weight: 600;
+}
+
+form > div {
+    width: 40%;
+    margin: auto;
+}
+
+/* form > div > div > div {
+    display: flex;
+}
+
+form > div > div > select {
+    width: 100%;
+}
+
+form input {
+    width: 100%;
+} */
+
+form button{
+    background-color: #33BB66;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border: none;
+    color: #ffffff;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+.table>:not(caption)>*>* {
+    padding: 5px 5px 5px 5px;
+}
+
+#persona_Guardar {
+    border-radius: 5px;
+}
+
+#persona_Guardar:hover {
+    transition: all 0.5s ease;
+    background-color: #00A65A;
+}
+
+.divNombre {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 5px;
+}
+
+.divNombre div {
+    width: 100%;
+    gap: 10px;
+}
+
+.divNacimiento {
+    display: flex;
+    margin-bottom: 5px;
+    gap: 25px;
+}
+
+.divNacimiento div {
+    width: 100%;
+    gap: 10px;
+}
+
+#persona_fechanacimiento {
+    display: flex;
+}
+
+.divNacionalidad {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 5px;
+}
+
+.divNacionalidad div {
+    gap: 10px;
+    width: 100%;
+}
+
+.divSexo {
+    display: flex;
+    gap: 45px;
+    margin-bottom: 5px;
+}
+
+.divSexo div {
+    gap: 10px;
+}
+
+.divDocumento {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 5px;
+}
+
+.divDocumento div {
+    width: 100%;
+}
+
+.divCalle {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 5px;
+}
+
+.divCalle div {
+    gap: 10px;
+    width: 100%;
+}
+
+.divDepto {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 5px;
+}
+
+.divDepto div {
+    gap: 10px;
+    width: 100%;
+}
+
+.divBarrio {
+    display: flex;
+}
+
+.divBarrio div {
+    width: 100%;
+}
+
+.divUsuario {
+    display: flex;
+}
+
+.divUsuario div {
+    display: flex;
+    align-items: center;
+}
+
+#persona_discapacidad {
+    width: auto;
+    margin-left: 20px;
+}
+
+@media screen and (max-width: 1080px) {
+    .divNombre {
+        display: block;
+    }
+
+    .divNacimiento {
+        display: block;
+    }
+
+    .divNacionalidad {
+        display: block;
+    }
+
+    .divDocumento {
+        display: block;
+    }
+
+    .divDocumento div {
+        width: auto;
+    }
+
+    .divCalle {
+        display: block;
+    }
+
+    .divDepto {
+        display: block;
+    }
+
+    .divBarrio {
+        display: block;
+    }
+
+    .divUsuario {
+        display: block;
+    }
+
+    #persona_fechanacimiento {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .divNacimiento select {
+        width: 100%;
+    }
+
+    .sectionTitle {
+        padding-top: 60px;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .divNacimiento {
+        display: block;
+    }
+
+    .divDocumento {
+        display: block;
+    }
+}

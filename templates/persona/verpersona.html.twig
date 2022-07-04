@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Persona{% endblock %}
+
+{% block body %}
+
+  <p>{{ persona.nombre }} {{ persona.apellido }}</p>
+
+  <p>Fecha nac.: {{ persona.fechaNacimiento|date('d-m-Y') }}</p>
+
+  <p>Sexo: {{ persona.sexo }}</p>
+
+  <p>{{ estadocivil.tipoEstado }}</p>
+
+  <p>{{ dnitipo.tipo }} {{ persona.dniNumero }} Trám: {{ persona.dnitramite }}</p>
+
+  <p>{{ persona.calle }} Nº{{ persona.altura }} Piso: {{ persona.piso }} Dpto.: {{ persona.dpto }}</p>
+
+  <p>Barrio: {{ barrio.nombre }}</p>
+
+  <p>{{ ciudad.nombre }} - {{ provincia.nombre }} - {{ nacionalidad.pais }}</p>
+
+{% endblock %}

@@ -7,91 +7,66 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Contacto
  *
- * @ORM\Table(name="contacto")
+ * @ORM\Table(name="contacto", indexes={@ORM\Index(name="contactoPersona_idx", columns={"persona"})})
  * @ORM\Entity
  */
 class Contacto
 {
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="email", type="string", length=100, nullable=true, options={"default"="NULL"})
-     */
-    private $email = 'NULL';
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="tipoTelefono", type="string", length=10, nullable=false)
+     * @ORM\Column(name="contacto", type="string", length=100, nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $tipotelefono;
+    private $contacto;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="numeroTelefono", type="string", length=10, nullable=false)
-     */
-    private $numerotelefono;
-
-    /**
-     * @var \Persona
+     * @var Persona
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="Persona")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="persona", referencedColumnName="id")
      * })
      */
-    private $id;
+    private $persona;
 
-    public function getEmail(): ?string
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="vigente", type="boolean", nullable=false, options={"default"="1"})
+     */
+    private $vigente = true;
+
+    public function getContacto(): ?string
     {
-        return $this->email;
+        return $this->contacto;
     }
 
-    public function setEmail(?string $email): self
+    public function getPersona(): ?Persona
     {
-        $this->email = $email;
+        return $this->persona;
+    }
+
+    public function setPersona(?Persona $persona): self
+    {
+        $this->persona = $persona;
 
         return $this;
     }
 
-    public function getTipotelefono(): ?string
+    public function getVigente(): ?bool
     {
-        return $this->tipotelefono;
+        return $this->vigente;
     }
 
-    public function setTipotelefono(string $tipotelefono): self
+    public function setVigente(bool $vigente): self
     {
-        $this->tipotelefono = $tipotelefono;
+        $this->vigente = $vigente;
 
         return $this;
     }
-
-    public function getNumerotelefono(): ?string
-    {
-        return $this->numerotelefono;
-    }
-
-    public function setNumerotelefono(string $numerotelefono): self
-    {
-        $this->numerotelefono = $numerotelefono;
-
-        return $this;
-    }
-
-    public function getId(): ?Persona
-    {
-        return $this->id;
-    }
-
-    public function setId(?Persona $id): self
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
 
 }

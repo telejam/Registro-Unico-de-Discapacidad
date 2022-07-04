@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Ciudad
  *
- * @ORM\Table(name="ciudad", indexes={@ORM\Index(name="ciudadProvincia_idx", columns={"idProvincia"})})
+ * @ORM\Table(name="ciudad")
  * @ORM\Entity
  */
 class Ciudad
@@ -24,48 +24,47 @@ class Ciudad
     /**
      * @var string
      *
-     * @ORM\Column(name="ciudad", type="string", length=45, nullable=false)
+     * @ORM\Column(name="nombre", type="string", length=45, nullable=false)
      */
-    private $ciudad;
+    private $nombre;
 
     /**
-     * @var \Provincia
+     * @var Provincia
      *
      * @ORM\ManyToOne(targetEntity="Provincia")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idProvincia", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="provincia", referencedColumnName="id")
      * })
      */
-    private $idprovincia;
+    private $provincia;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCiudad(): ?string
+    public function getNombre(): ?string
     {
-        return $this->ciudad;
+        return $this->nombre;
     }
 
-    public function setCiudad(string $ciudad): self
+    public function setNombre(string $nombre): self
     {
-        $this->ciudad = $ciudad;
+        $this->nombre = $nombre;
 
         return $this;
     }
 
-    public function getIdprovincia(): ?Provincia
+    public function getProvincia(): ?Provincia
     {
-        return $this->idprovincia;
+        return $this->provincia;
     }
 
-    public function setIdprovincia(?Provincia $idprovincia): self
+    public function setProvincia(?Provincia $provincia): self
     {
-        $this->idprovincia = $idprovincia;
+        $this->provincia = $provincia;
 
         return $this;
     }
-
 
 }

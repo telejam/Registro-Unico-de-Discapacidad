@@ -1,0 +1,212 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Persona{% endblock %}
+
+{% block body %}
+
+    {{parent()}}
+
+    <div class="sectionTitle">
+		<h2>EDITAR DATOS DE PERSONA</h2>
+	</div>
+
+    {{ form(formulario)}}
+
+    <div class="btnCancelar">
+        <a href="/personas" class="btn btn-danger mb-4" id="cancelar">Cancelar</a>
+    </div>
+
+    <script>
+    
+        let selectFecha = document.querySelectorAll('data')[0];
+
+        const divPersona = document.querySelectorAll('div')[6];
+
+        {# Nombre y Apellido #}
+        let nombre = divPersona.children[0];
+        let apellido = divPersona.children[1];
+
+        {# Fecha de nacimiento #}
+        let nacimiento = divPersona.children[2];
+        let sexo = divPersona.children[3];
+        let estadoCivil = divPersona.children[4];
+
+        {# DNI #}
+        let dniTipo = divPersona.children[5];
+        let dniTramite = divPersona.children[6];
+        let dniNumero = divPersona.children[7];
+
+        {# Nacionalidad, Provincia y Ciudad #}
+        let nacionalidad = divPersona.children[8];
+        let provincia = divPersona.children[9];
+        let ciudad = divPersona.children[10];
+
+        {# Calle y Altura #}
+        let calle = divPersona.children[11];
+        let altura = divPersona.children[12];
+
+        {# Piso y Depto #}
+        let piso = divPersona.children[13];
+        let depto = divPersona.children[14];
+
+        {# Barrio #}
+        let barrio = divPersona.children[15];
+
+        {# Usuario #}
+        let usuario = divPersona.children[16];
+
+
+
+        const btnGuardar = document.querySelectorAll('button')[0];
+
+
+
+        {# divs contenedores #}
+        let divNombre = document.createElement('div');
+        let divNacimiento = document.createElement('div');
+        let divDocumento = document.createElement('div');
+        let divNacionalidad = document.createElement('div');
+        let divCalle = document.createElement('div');
+        let divDepto = document.createElement('div');
+        let divBarrio = document.createElement('div');
+        let divUsuario = document.createElement('div');
+
+
+        divNombre.classList.add('divNombre');
+        divNacimiento.classList.add('divNacimiento');
+        divNacionalidad.classList.add('divNacionalidad');
+        divDocumento.classList.add('divDocumento');
+        divCalle.classList.add('divCalle');
+        divDepto.classList.add('divDepto');
+        divBarrio.classList.add('divBarrio');
+        divUsuario.classList.add('divUsuario');
+
+
+        {# appends #}
+        divPersona.appendChild(divNombre);
+        divPersona.appendChild(divNacimiento);
+        divPersona.appendChild(divNacionalidad)
+        divPersona.appendChild(divDocumento);
+        divPersona.appendChild(divCalle);
+        divPersona.appendChild(divDepto);
+        divPersona.appendChild(divBarrio);
+        divPersona.appendChild(divUsuario);
+
+
+
+        {# Nombre y Apellido #}
+        divNombre.appendChild(nombre);
+        divNombre.appendChild(apellido);
+
+        {# Fecha de nacimiento #}
+        divNacimiento.appendChild(nacimiento);
+        divNacimiento.appendChild(sexo);
+        divNacimiento.appendChild(estadoCivil);
+
+
+        {# Nacionalidad, Provincia y Ciudad #}
+        divNacionalidad.appendChild(nacionalidad);
+        divNacionalidad.appendChild(provincia);
+        divNacionalidad.appendChild(ciudad);
+
+        {# DNI #}
+        divDocumento.appendChild(dniTipo);
+        divDocumento.appendChild(dniTramite);
+        divDocumento.appendChild(dniNumero);
+
+        {# Calle y Altura #}
+        divCalle.appendChild(calle);
+        divCalle.appendChild(altura);
+
+        {# Piso y Depto #}
+        divDepto.appendChild(depto);
+        divDepto.appendChild(piso);
+
+        {# Barrio #}
+        divBarrio.appendChild(barrio);
+
+        {# Usuario #}
+        divUsuario.appendChild(usuario);
+
+        {# BotÃ³n Guardar #}
+        divPersona.appendChild(btnGuardar);
+
+
+        {# SUBTÍTULOS #}
+        let subtitulo1 = document.createElement('h3');
+        subtitulo1.innerHTML = 'INFORMACIÓN PERSONAL';
+        divPersona.insertBefore(subtitulo1, divPersona.children[1]);
+
+        let subtitulo2 = document.createElement('h3');
+        subtitulo2.innerHTML = 'LOCALIDAD';
+        divPersona.insertBefore(subtitulo2, divPersona.children[5]);
+
+        let subtitulo3 = document.createElement('h3');
+        subtitulo3.innerHTML = 'DOCUMENTO';
+        divPersona.insertBefore(subtitulo3, divPersona.children[7]);
+
+        let subtitulo4 = document.createElement('h3');
+        subtitulo4.innerHTML = 'DOMICILIO';
+        divPersona.insertBefore(subtitulo4, divPersona.children[9]);
+
+    </script>
+
+    
+	<!-- POPUP MADE IN NOSOTROS -->
+	<!-- Para funcionar tienen que agregar la clase 'is-open' al elemento con clase 'popup' -->
+
+	<div class="our-popup" id="popup-carga-exitosa">
+		<div class="container">
+			<header>
+				<span></span>
+				<a href="#" data-close>
+					<i class="icon">X</i> <!-- Porfavor poner iconito luego... -->
+				</a> 
+			</header>
+			<div class="our-popup-body">
+				<div>
+					<i class="icon green">&check;</i>
+					<span> Persona editada exitosamente</span>
+				</div>	
+			</div>
+			<footer>
+				<ul>
+					<li>
+						<a href="/personas" class="button">
+							<span>Volver al listado</span>
+						</a>
+					</li>
+						<li>
+						<a href="#" class="button" data-close>
+							<span>Seguir cargando</span>
+						</a>
+					</li>
+				</ul>
+			</footer>
+		</div>
+	</div>
+
+	<!---------------------------->
+
+	<script>
+		document.querySelectorAll('.our-popup')
+						.forEach(function(popup) {
+							popup.querySelectorAll('[data-close]')
+									 .forEach(function(closeBtn) {
+										 closeBtn.addEventListener('click', function(btn) {
+											 popup.classList.remove('is-open');
+										 });
+									 })
+						})
+
+		if(location.search.includes('success=1')) {
+			setTimeout(function(){
+				document.querySelector('#popup-carga-exitosa')
+							.classList.add('is-open');
+			}, 500)
+		}
+
+	</script>
+
+
+{% endblock %}

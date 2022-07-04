@@ -1,0 +1,78 @@
+#agregar {
+    border: 1px solid #00A65A;
+    background-color: #00A65A;
+    color: #ffffff;
+    padding: 10px;
+    margin-left: 20px;
+}
+
+#agregar:hover {
+    border: 1px solid #33BB66;
+    background-color: #33BB66;
+    color: #ffffff;
+}
+
+.btnCancelar {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+#cancelar {
+    width: 40%;
+    height: 45px;
+    padding: 10px;
+}
+
+#tipo_tramite_Registrar {
+    border-radius: 5px;
+}
+
+#tipo_tramite_Registrar:hover {
+    transition: all 0.5s ease;
+    background-color: #00A65A;
+}
+
+#obra_social_Guardar {
+    border-radius: 5px;
+}
+
+#obra_social_Guardar:hover {
+    transition: all 0.5s ease;
+    background-color: #00A65A;
+}
+
+#tramite_Registrar {
+    border-radius: 5px;
+}
+
+#modif_tramite_Guardar {
+    border-radius: 5px;
+}
+
+#seguimientos {
+    border: 1px solid #00A65A;
+    background-color: #00A65A;
+    color: #ffffff;
+    padding: 10px;
+    margin-left: 20px;
+}
+
+#seguimientos:hover {
+    border: 1px solid #33BB66;
+    background-color: #33BB66;
+    color: #ffffff;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnAgregar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

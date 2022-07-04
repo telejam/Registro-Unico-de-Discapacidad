@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tramites{% endblock %}
+
+{% block body %}
+   {{parent()}}
+
+     <div class="sectionTitle">
+		<h2>TRÁMITES</h2>
+	</div>
+
+    <div class="buttons">
+        <div class="btnAgregar">
+            <a href="/createtramite" class="btn mt-4" id="agregar"><i class="fas fa-plus"></i> AGREGAR NUEVO TRÁMITE</a>
+        </div>
+
+        <div class="btnSeguimientos">
+            <a href="/seguimientos" class="btn mt-4" id="seguimientos"><i class="fas fa-shipping-fast"></i> TRÁMITES CON SEGUIMIENTO</a>
+        </div>
+    </div>
+
+    <div class="tableContainer">
+    <table id="tabla" class="table table-bordered table-striped text-center mt-4">
+
+        <thead>
+            <tr>
+                <th>NUMERO DE EXPEDIENTE</th>
+                <th>FECHA DE INICIO</th>
+                <th>TIPO DE TRÁMITE</th>
+                <th>OBSERVACIÓN</th>
+                <th>ESTADO DE TRÁMITE</th>
+                <th>FECHA DE RESOLUCIÓN</th>
+                <th>PERSONA</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for tramit in tramite %}
+                <tr>
+                     <td>{{tramit.numeroExpediente}}</td>
+                    <td>{{ tramit.fechaInicio|date('d-m-Y') }}</td>
+                    <td>{{tramit.tipotramite.nombre}}</td>
+                    <td>{{ tramit.observacion}}</td>
+                    <td>{{tramit.estadoTramite.estado}}</td>
+                    {% if tramit.fechaResolucion is defined and tramit.fechaResolucion %}
+                    <td>{{tramit.fechaResolucion|date('d-m-Y')}}</td>
+                    
+                    {%else%}
+                    <td>Sin fecha de resolución</td>
+                    {%endif%}
+                    <td>{{tramit.persona.dniNumero}}</td>
+
+                    <td>
+                        <a href="{{ path('createseguimiento', {'id': tramit.id}) }}"><i class="fas fa-search"></i></a>
+                        <a href="{{ path('editTramite', {'id': tramit.id}) }}"><i class="fas fa-edit"></i></a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ tramit.id }}" ><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+       {% for tramit in tramite %}
+    <div class="modal fade" id="modal{{ tramit.id }}" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content"> <!-- ENVOLTORIO/WRAPPER DEL MODAL-->
+            <div class="modal-header"> <!-- CABECERA/HEADER DEL MODAL-->
+                <h5 class="modal-title">ELIMINAR TRÁMITE</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body"> <!-- CUERPO/BODY DEL MODAL-->
+                <p> &iquest;Est&aacute seguro que desea eliminar el registro&quest; </p>
+            </div>
+            
+            <div class="modal-footer"> <!-- PIE/FOOTER DEL MODAL-->
+                <!--El atributo data-bs-dismiss identifica al botón como el que puede "cerrar" el modal -->
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <a href="{{ path('deletetramite', {'id': tramit.id}) }}" class="btn btn-danger">Eliminar</a>
+            </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}

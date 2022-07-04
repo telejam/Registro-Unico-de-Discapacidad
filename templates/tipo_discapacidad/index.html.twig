@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tipo de discapacidades
+{% endblock %}
+
+{% block body %}
+
+	{{parent()}}
+
+	<div class="sectionTitle">
+		<h2>TIPOS DE DISCAPACIDADES</h2>
+	</div>
+
+    <div class="btnAgregar">
+        <a href="/tipodiscapacidad/create" class="btn mt-4" id="agregar"><i class="fas fa-plus"></i> AGREGAR NUEVO TIPO DE DISCAPACIDAD</a>
+    </div>
+
+	<div class="tableContainer">
+	<table id="tabla" class="table table-bordered table-striped text-center mt-4">
+
+		<thead>
+			<tr>
+				<th>NOMBRE</th>
+				<th>DESCRIPCIÓN</th>
+				<th>VIGENTE</th>
+				<th>ACCIÓN</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for tipo in tipodiscapacidad %}
+				<tr>
+					<td>{{tipo.nombre}}</td>
+					<td>{{tipo.descripcion}}</td>
+					<td>{{tipo.vigente}}</td>
+
+					<td>
+						<a href="{{ path('edittipodiscapacidad', {'id': tipo.id}) }}"><i class="fas fa-edit"></i></a>
+						<a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ tipo.id }}"><i class="fas fa-trash-alt"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+
+		 {% for tipo in tipodiscapacidad %}
+		 <div class="modal fade" id="modal{{ tipo.id }}" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content"> <!-- ENVOLTORIO/WRAPPER DEL MODAL-->
+            <div class="modal-header"> <!-- CABECERA/HEADER DEL MODAL-->
+                <h5 class="modal-title">ELIMINAR TIPO DE DISCAPACIDAD</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body"> <!-- CUERPO/BODY DEL MODAL-->
+                <p> &iquest;Est&aacute seguro que desea eliminar el registro&quest; </p>
+            </div>
+            
+            <div class="modal-footer"> <!-- PIE/FOOTER DEL MODAL-->
+                <!--El atributo data-bs-dismiss identifica al botón como el que puede "cerrar" el modal -->
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <a href="{{ path('deletetipodiscapacidad', {'id': tipo.id}) }}" class="btn btn-danger">Eliminar</a>
+            </div>
+            </div>
+        </div>
+     </div>
+		
+		 {% endfor %}
+		 </table>
+		 </div>
+	{% endblock %}
+	
+

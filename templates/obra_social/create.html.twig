@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Obra social{% endblock %}
+
+{% block body %}
+
+    {{parent()}}
+
+    <div class="sectionTitle">
+	    <h2>OBRA SOCIAL</h2>
+	</div>
+
+    {{form(formulario)}}
+
+    <div class="btnCancelar">
+        <a href="/obrasocial" class="btn btn-danger mb-4" id="cancelar">Cancelar</a>
+    </div>
+
+{% endblock %}

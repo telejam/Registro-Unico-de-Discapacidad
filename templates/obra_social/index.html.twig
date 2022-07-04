@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Obras Sociales{% endblock %}
+
+{% block body %}
+
+    {{parent()}}
+
+    <div class="sectionTitle">
+		<h2>OBRAS SOCIALES</h2>
+	</div>
+
+    <div class="btnAgregar">
+        <a href="/obrasocial/create" class="btn mt-4" id="agregar"><i class="fas fa-plus"></i>Agregar obra social</a>
+    </div>
+
+    <table id="tabla" class="table table-bordered table-striped text-center mt-4 obraSocial">
+
+		<thead>
+			<tr>
+				<th>Denominación</th>
+				<th>Nombre</th>
+				<th>Domicilio</th>
+                <th>Observación</th>
+                <th>Nro. de Teléfono</th>
+                <th>Vigente</th>
+                <th>Acción</th>
+			</tr>
+		</thead>
+
+		<tbody>
+            {% for obra in obrasocial %}
+				<tr>
+					<td>{{obra.denominacion}}</td>
+					<td>{{obra.nombre}}</td>
+					<td>{{obra.domicilio}}</td>
+                    <td>{{obra.observacion}}</td>
+                    <td>{{obra.telefonoNumero}}</td>
+                    <td>{{obra.Vigente}}</td>
+
+					<td>
+						<a href="{{ path('editobrasocial', {'id': obra.id}) }}"><i class="fas fa-edit"></i></a>
+						<a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ obra.id }}"><i class="fas fa-trash-alt"></i></a>
+					</td>
+				</tr>
+            {% endfor %}
+		</tbody>
+
+		{% for obra in obrasocial %}
+		 <div class="modal fade" id="modal{{ obra.id }}" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content"> <!-- ENVOLTORIO/WRAPPER DEL MODAL-->
+            <div class="modal-header"> <!-- CABECERA/HEADER DEL MODAL-->
+                <h5 class="modal-title">ELIMINAR OBRA SOCIAL</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body"> <!-- CUERPO/BODY DEL MODAL-->
+                <p> &iquest;Est&aacute seguro que desea eliminar el registro&quest; </p>
+            </div>
+            
+            <div class="modal-footer"> <!-- PIE/FOOTER DEL MODAL-->
+                <!--El atributo data-bs-dismiss identifica al botón como el que puede "cerrar" el modal -->
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <a href="{{ path('deleteobrasocial', {'id': obra.id}) }}" class="btn btn-danger">Eliminar</a>
+            </div>
+            </div>
+        </div>
+      </div>
+
+		{% endfor %}
+			
+			</table>
+
+{% endblock %}

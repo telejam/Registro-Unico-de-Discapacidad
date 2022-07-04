@@ -1,0 +1,129 @@
+h1 {
+    text-align: center
+}
+
+.example-wrapper {
+    margin: 1em auto;
+    font: 18px / 1.5 sans-serif;
+    display: flex;
+}
+
+.bloque {
+    padding: 2px 6px;
+    width: 100%;
+    border: solid 1px green;
+}
+
+p {
+    padding: 3px;
+    margin: 3px;
+}
+
+.bloqueDNI {
+    text-align: center;
+}
+
+.bigContainer {
+    margin-left: 3%;
+}
+
+.dniTramites {
+    margin-left: 3%;
+}
+
+.bloqueTramites {
+    border: solid 1px #2c75ba;
+    margin-top: 10%;
+    box-shadow: 10px 10px 10px lightgrey;
+    border-radius: 12px;
+    background-color: whitesmoke;
+}
+
+.bloqueTramites h2 {
+    background-color: #2c75ba;
+    color: #ffffff;
+    padding: 10px 20px 10px 20px;
+    text-align: center;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.discapacitadoEducación {
+    display: flex;
+    gap: 60px;
+}
+
+.discapacidadResponsables {
+    display: flex;
+    gap: 60px;
+    margin-top: 60px;
+}
+
+.bloqueInformacion {
+    border: solid 1px #e65f4b;
+    width: 100%;
+    box-shadow: 10px 10px 10px lightgrey;
+    border-radius: 12px;
+    background-color: whitesmoke;
+}
+
+.bloqueInformacion h2 {
+    background-color: #e65f4b;
+    color: #ffffff;
+    padding: 10px 20px 10px 20px;
+    text-align: center;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.bloqueDNI {
+    text-align: center;
+    display: flex;
+    gap: 10px;
+}
+
+#btnBuscarDNI {
+    background-color: #00A65A;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    width: 40%;
+    height: 39px;
+}
+
+@media screen and (max-width: 768px) {
+    .bigContainer {
+        display: flex;
+        flex-direction: column;
+        margin-right: 3%;
+    }
+
+    .discapacitadoEducación {
+        display: block;
+    }
+
+    .discapacidadResponsables {
+        display: block;
+        margin-top: 0px;
+    }
+
+    .bloqueInformacion {
+        margin-bottom: 30px;
+    }
+
+    .example-wrapper {
+        display: block;
+    }
+
+    .bloqueTramites {
+        margin-bottom: 30px;
+    }
+
+    .dniTramites {
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+
+    .bloqueDNI {
+        margin-top: 75px;
+        justify-content: center;
+    }
+}
